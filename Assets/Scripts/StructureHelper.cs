@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StructureHelper : MonoBehaviour
 {
-    public GameObject prefab;//the prefab we wanna spawn
+    /*public GameObject prefab;//the prefab we wanna spawn
     public Dictionary<Vector3Int, GameObject> StructureDictionary = new Dictionary<Vector3Int, GameObject>(); //a dictionary containing the positions of all prefabs and their precise position
 
     public void PlaceStructureAroundRoad(List<Vector3Int> roadPositions)
@@ -30,5 +30,5 @@ public class StructureHelper : MonoBehaviour
             }
             
         }
-    }
+    }*/
 }
