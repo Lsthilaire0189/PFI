@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,5 +37,26 @@ public static class PlacementHelper
 
         return neighborDirections;
     }
-    
+
+    internal static Vector3Int GetOffsetFromDirection(Direction direction)//switch acts as a simpler version of and if statement. In this case, it takes in a direction
+    //and analyzes it. If the direction received is Direction.Up, then it will return Vector3Int(0,0,1), if the direction is Direction.Down, it will return
+    //Vector3Int(0,0,-1) and etc...
+    {
+        switch (direction)
+        {
+            case Direction.Up:
+                return new Vector3Int(0,0,1);
+            case Direction.Down:
+                return new Vector3Int(0,0,-1);
+            case Direction.Left:
+                return Vector3Int.left;
+            case Direction.Right:
+                return Vector3Int.right;
+            default:
+                break;
+
+        }
+
+        throw new SystemException("No direction such as" + direction);
+    }
 }

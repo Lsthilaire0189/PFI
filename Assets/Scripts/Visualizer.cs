@@ -10,6 +10,8 @@ using UnityEngine;
 
         public RoadHelper roadHelper;
 
+        public StructureHelper structureHelper;
+        
         private int length = 6;
         private float angle = 90;
 
@@ -89,6 +91,7 @@ using UnityEngine;
                 }
             }
             roadHelper.FixRoad();
+            structureHelper.PlaceStructureAroundRoad(roadHelper.GetRoadPositions());
 
         }
     }

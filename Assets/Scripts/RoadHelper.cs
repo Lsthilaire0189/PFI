@@ -9,10 +9,12 @@ using UnityEngine;
 		Dictionary<Vector3Int, GameObject> roadDictionary = new Dictionary<Vector3Int, GameObject>();
 		HashSet<Vector3Int> fixRoadCandidates = new HashSet<Vector3Int>();
 
-		public List<Vector3Int> GetRoadPositions()
+
+		public List<Vector3Int> GetRoadPositions()//takes the Keys of roadDictionary (which are positions) and returns them as a list
 		{
 			return roadDictionary.Keys.ToList();
 		}
+		
 
 		public void PlaceStreetPositions(Vector3 startPosition, Vector3Int direction, int length)
 		{
