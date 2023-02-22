@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class ScriptCamera : MonoBehaviour
 {
-    [SerializeField] GameObject Auto;
-    GameObject auto;
-    private void Start()
-    {
-        auto = Auto;
-    }
+    [SerializeField] Transform resetTransform;
+    [SerializeField] GameObject player;
+    [SerializeField] Camera playerHead;
 
-    void Update()
+    public void ResetPosition()
     {
-        if (auto!= null)
-        {
-            transform.position = new Vector3(auto.transform.position.x, transform.position.y, auto.transform.position.z);
-        }
+        var rotationAngley = playerHead.transform.rotation.eulerAngles.y - resetTransform.rotation.eulerAngles.y;
+        player.transform.Rotate(0, rotationAngley, 0);
+        var distanceDiff =resetTransform.position - playerHead.transform.position;
+        playerHead.transform.position += distanceDiff; 
     }
 
 }
