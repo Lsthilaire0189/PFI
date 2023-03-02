@@ -59,35 +59,4 @@ public static class PlacementHelper
 
         throw new SystemException("No direction such as" + direction);
     }
-
-    /*public static Direction FindOrientation(Vector3Int newPosition)
-    {
-        foreach (var VARIABLE in COLLECTION)
-        {
-            
-        }
-        if (newPosition + Vector3Int.left== GameObject.tra) //this checks if there is a road to the right of the position
-        {
-            neighborDirections.Add(Direction.Right);
-
-        }
-
-        if (collection.Contains(position -
-                                Vector3Int.right)) //this checks if there is a road to the left of the position
-        {
-            neighborDirections.Add(Direction.Left);
-        }
-
-        if (collection.Contains(position + new Vector3Int(0, 0, 1))) //this checks if there is a road above the position
-        {
-            neighborDirections.Add(Direction.Up);
-        }
-
-        if (collection.Contains(position - new Vector3Int(0, 0, 1))) //this checks if there is a road below the position
-        {
-            neighborDirections.Add(Direction.Down);
-        }
-
-        return neighborDirections;
-    }*/
 }

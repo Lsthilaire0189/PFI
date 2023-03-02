@@ -119,6 +119,33 @@ using UnityEngine;
 				
 			}
 		}
+		/*public Direction FindOrientation(Vector3Int newPosition)
+		{
+			Direction rotationBatiment = Direction.Right;
+			List<Vector3Int> roadPositions = roadDictionary.Keys.ToList();
+			foreach (var position in roadPositions)
+			{
+				if (newPosition + Vector3Int.right == position)
+				{
+					rotationBatiment = Direction.Right;
+				}
+				else if (newPosition + Vector3Int.left == position)
+				{
+					rotationBatiment = Direction.Left;
+				}
+				else if (newPosition + new Vector3Int(0, 0, 1) == position)
+				{
+					rotationBatiment = Direction.Up;
+				}
+
+				else if (newPosition - new Vector3Int(0, 0, 1) == position)
+				{
+					rotationBatiment = Direction.Down;
+				}
+			}
+
+			return rotationBatiment;
+		}*/
 		
 	}
 

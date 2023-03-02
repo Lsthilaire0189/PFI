@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class StructureHelper : MonoBehaviour
 {
+    public RoadHelper roadHelper;
     public GameObject prefab;//the prefab we wanna spawn
     public Dictionary<Vector3Int, GameObject> StructureDictionary = new Dictionary<Vector3Int, GameObject>(); //a dictionary containing the positions of all prefabs and their precise position
 
@@ -35,7 +36,7 @@ public class StructureHelper : MonoBehaviour
                     {
                         continue;//to avoid duplication
                     }
-                    freeSpaces.Add(newPosition, Direction.Right);//PlacementHelper.FindOrientation(newPosition)
+                    freeSpaces.Add(newPosition, roadHelper.FindOrientation(newPosition));//roadHelper.FindOrientation(newPosition)
                 }
             }
             
@@ -43,4 +44,33 @@ public class StructureHelper : MonoBehaviour
 
         return freeSpaces;
     }
+    public Direction FindOrientation(Vector3Int newPosition)
+    {
+        Direction rotationBatiment = Direction.Right;
+        List<Vector3Int> roadPositions = 
+        foreach (var position in roadPositions)
+        {
+            if (newPosition + Vector3Int.right == position)
+            {
+                rotationBatiment = Direction.Right;
+            }
+            else if (newPosition + Vector3Int.left == position)
+            {
+                rotationBatiment = Direction.Left;
+            }
+            else if (newPosition + new Vector3Int(0, 0, 1) == position)
+            {
+                rotationBatiment = Direction.Up;
+            }
+
+            else if (newPosition - new Vector3Int(0, 0, 1) == position)
+            {
+                rotationBatiment = Direction.Down;
+            }
+        }
+
+        return rotationBatiment;
+    }
+		
+}
 }
