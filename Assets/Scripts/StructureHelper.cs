@@ -35,7 +35,7 @@ public class StructureHelper : MonoBehaviour
                     {
                         continue;//to avoid duplication
                     }
-                    freeSpaces.Add(newPosition, PlacementHelper.FindOrientation(newPosition));
+                    freeSpaces.Add(newPosition, Direction.Right);//PlacementHelper.FindOrientation(newPosition)
                 }
             }
             

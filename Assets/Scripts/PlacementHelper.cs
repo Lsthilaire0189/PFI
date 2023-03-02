@@ -60,7 +60,7 @@ public static class PlacementHelper
         throw new SystemException("No direction such as" + direction);
     }
 
-    public static Direction FindOrientation(Vector3Int newPosition)
+    /*public static Direction FindOrientation(Vector3Int newPosition)
     {
         foreach (var VARIABLE in COLLECTION)
         {
