@@ -5,16 +5,24 @@ using UnityEngine;
 
 public class StructureHelper : MonoBehaviour
 {
-    public RoadHelper roadHelper;
     public GameObject prefab;//the prefab we wanna spawn
     public Dictionary<Vector3Int, GameObject> StructureDictionary = new Dictionary<Vector3Int, GameObject>(); //a dictionary containing the positions of all prefabs and their precise position
 
     public void PlaceStructureAroundRoad(List<Vector3Int> roadPositions)
     {
         Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions);
-        foreach (var position in freeEstateSpots.Keys)//for each position in freeEstateSpots, we will Instantiate a prefab
+        foreach (var freeSpot in freeEstateSpots)//for each position in freeEstateSpots, we will Instantiate a prefab
         {
-            Instantiate(prefab, position, Quaternion.identity, transform);
+            var rotation = Quaternion.identity;
+            
+            if(freeSpot.Value==Direction.Up)
+                rotation=Quaternion.Euler(0,90,0);
+            else if(freeSpot.Value==Direction.Down)
+                rotation=Quaternion.Euler(0,-90,0);
+            else if(freeSpot.Value==Direction.Right)
+                rotation=Quaternion.Euler(0,180,0);
+            
+            Instantiate(prefab, freeSpot.Key, rotation, transform);
         }
     }
 
@@ -36,7 +44,7 @@ public class StructureHelper : MonoBehaviour
                     {
                         continue;//to avoid duplication
                     }
-                    freeSpaces.Add(newPosition, roadHelper.FindOrientation(newPosition));//roadHelper.FindOrientation(newPosition)
+                    freeSpaces.Add(newPosition, FindOrientation(newPosition, roadPositions));
                 }
             }
             
@@ -44,33 +52,34 @@ public class StructureHelper : MonoBehaviour
 
         return freeSpaces;
     }
-    public Direction FindOrientation(Vector3Int newPosition)
+    
+    //I need to find the list with the positions of the buildings
+    public Direction FindOrientation(Vector3Int newPosition, List<Vector3Int> roadPositions)
     {
-        Direction rotationBatiment = Direction.Right;
-        List<Vector3Int> roadPositions = 
+        Direction rotationBatiment = Direction.Up;
         foreach (var position in roadPositions)
         {
-            if (newPosition + Vector3Int.right == position)
+            if (position + Vector3Int.right == newPosition)
             {
-                rotationBatiment = Direction.Right;
+                rotationBatiment= Direction.Left;
             }
-            else if (newPosition + Vector3Int.left == position)
+            else if (position + Vector3Int.left == newPosition)
             {
-                rotationBatiment = Direction.Left;
+                rotationBatiment= Direction.Right;
             }
-            else if (newPosition + new Vector3Int(0, 0, 1) == position)
+            else if (position + new Vector3Int(0, 0, 1) == newPosition)
             {
-                rotationBatiment = Direction.Up;
+                rotationBatiment= Direction.Down;
             }
-
-            else if (newPosition - new Vector3Int(0, 0, 1) == position)
+            else if(position - new Vector3Int(0, 0, 1) == newPosition)
             {
-                rotationBatiment = Direction.Down;
+                rotationBatiment= Direction.Up;
             }
+            
         }
-
+        Debug.Log(rotationBatiment);
         return rotationBatiment;
     }
-		
+
 }
-}
+
