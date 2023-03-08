@@ -3,14 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class StructureHelper : MonoBehaviour
 {
     public GameObject prefab;//the prefab we wanna spawn
+    public GameObject BigBuilding;
+    [Range(0, 1)]
+    public float chanceToSpawnBigBuilding = 0.1f;
     public Dictionary<Vector3Int, GameObject> StructureDictionary = new Dictionary<Vector3Int, GameObject>(); //a dictionary containing the positions of all prefabs and their precise position
 
     public void PlaceStructureAroundRoad(List<Vector3Int> roadPositions)
     {
         Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions);
+        Dictionary<Vector3, Direction> freeBigBuildingsSpot = BigBuildingPositionGetter(freeEstateSpots);
+
         foreach (var freeSpot in freeEstateSpots)//for each position in freeEstateSpots, we will Instantiate a prefab
         {
             var rotation = Quaternion.identity;
@@ -23,6 +29,21 @@ public class StructureHelper : MonoBehaviour
                 rotation=Quaternion.Euler(0,180,0);
             
             Instantiate(prefab, freeSpot.Key, rotation, transform);
+        }
+
+        Debug.Log(freeBigBuildingsSpot.Keys.Count);
+        foreach (var bigBuildingFreeSpot in freeBigBuildingsSpot)
+        {
+            var rotation = Quaternion.identity;
+            
+            if(bigBuildingFreeSpot.Value==Direction.Up)
+                rotation=Quaternion.Euler(0,90,0);
+            else if(bigBuildingFreeSpot.Value==Direction.Down)
+                rotation=Quaternion.Euler(0,-90,0);
+            else if(bigBuildingFreeSpot.Value==Direction.Right)
+                rotation=Quaternion.Euler(0,180,0);
+            
+            Instantiate(BigBuilding, bigBuildingFreeSpot.Key, rotation, transform);
         }
     }
 
@@ -53,7 +74,6 @@ public class StructureHelper : MonoBehaviour
         return freeSpaces;
     }
     
-    //I need to find the list with the positions of the buildings
     public Direction FindOrientation(Vector3Int newPosition, List<Vector3Int> roadPositions)
     {
         Direction rotationBatiment = Direction.Up;
@@ -77,8 +97,37 @@ public class StructureHelper : MonoBehaviour
             }
             
         }
-        Debug.Log(rotationBatiment);
         return rotationBatiment;
+    }
+
+    public Dictionary<Vector3, Direction> BigBuildingPositionGetter(Dictionary<Vector3Int, Direction> freeSpaces)
+    {
+        Dictionary<Vector3, Direction> bigBuildingPositions = new Dictionary<Vector3, Direction>();
+        Vector3 currentPositionRight = new Vector3();
+        Vector3 currentPositionUp = new Vector3();
+        foreach (var position in freeSpaces)
+        {
+            
+            if(UnityEngine.Random.value < chanceToSpawnBigBuilding)
+            {
+                currentPositionRight = (position.Key +position.Key+Vector3.right)/2;
+                currentPositionUp = (position.Key + position.Key + new Vector3(0, 0, 1)) / 2;
+                Debug.Log(currentPositionRight);
+                if (freeSpaces.ContainsKey(position.Key+Vector3Int.right))
+                {
+                    bigBuildingPositions.Add(currentPositionRight, position.Value);
+                } 
+                else if (freeSpaces.ContainsKey(position.Key+ new Vector3Int(0,0,1)))
+                {
+                    bigBuildingPositions.Add(currentPositionUp, position.Value);
+                }
+                
+            }
+            
+
+        }
+
+        return bigBuildingPositions;
     }
 
 }
