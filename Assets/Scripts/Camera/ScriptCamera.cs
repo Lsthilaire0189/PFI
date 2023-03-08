@@ -12,7 +12,7 @@ public class ScriptCamera : MonoBehaviour
          var rotationAngley = playerHead.transform.rotation.eulerAngles.y - resetTransform.rotation.eulerAngles.y;
         player.transform.Rotate(0, rotationAngley, 0);
         var distanceDiff =resetTransform.position - playerHead.transform.position;
-        playerHead.transform.position += distanceDiff; 
+        player.transform.position += distanceDiff; 
     }
    
 }

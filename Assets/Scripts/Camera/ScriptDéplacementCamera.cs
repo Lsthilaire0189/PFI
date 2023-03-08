@@ -16,5 +16,6 @@ public class ScriptDéplacementCamera : MonoBehaviour
     void Update()
     {
         transform.position = Voiture.transform.position;
+        transform.rotation = Voiture.transform.rotation;
     }
 }
