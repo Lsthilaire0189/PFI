@@ -2,14 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 public class StructureHelper : MonoBehaviour
 {
     public GameObject prefab;//the prefab we wanna spawn
-    public GameObject BigBuilding;
+    public GameObject bigBuilding;
     [Range(0, 1)]
     public float chanceToSpawnBigBuilding = 0.1f;
+    private List<Vector3Int> smallBuildingsDespawn = new List<Vector3Int>();
     public Dictionary<Vector3Int, GameObject> StructureDictionary = new Dictionary<Vector3Int, GameObject>(); //a dictionary containing the positions of all prefabs and their precise position
 
     public void PlaceStructureAroundRoad(List<Vector3Int> roadPositions)
@@ -17,6 +19,11 @@ public class StructureHelper : MonoBehaviour
         Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions);
         Dictionary<Vector3, Direction> freeBigBuildingsSpot = BigBuildingPositionGetter(freeEstateSpots);
 
+        foreach (var smallBuilding in smallBuildingsDespawn)
+        {
+            freeEstateSpots.Remove(smallBuilding);
+        }
+        
         foreach (var freeSpot in freeEstateSpots)//for each position in freeEstateSpots, we will Instantiate a prefab
         {
             var rotation = Quaternion.identity;
@@ -27,11 +34,10 @@ public class StructureHelper : MonoBehaviour
                 rotation=Quaternion.Euler(0,-90,0);
             else if(freeSpot.Value==Direction.Right)
                 rotation=Quaternion.Euler(0,180,0);
-            
+
             Instantiate(prefab, freeSpot.Key, rotation, transform);
         }
 
-        Debug.Log(freeBigBuildingsSpot.Keys.Count);
         foreach (var bigBuildingFreeSpot in freeBigBuildingsSpot)
         {
             var rotation = Quaternion.identity;
@@ -43,7 +49,7 @@ public class StructureHelper : MonoBehaviour
             else if(bigBuildingFreeSpot.Value==Direction.Right)
                 rotation=Quaternion.Euler(0,180,0);
             
-            Instantiate(BigBuilding, bigBuildingFreeSpot.Key, rotation, transform);
+            Instantiate(bigBuilding, bigBuildingFreeSpot.Key, rotation, transform);
         }
     }
 
@@ -103,30 +109,28 @@ public class StructureHelper : MonoBehaviour
     public Dictionary<Vector3, Direction> BigBuildingPositionGetter(Dictionary<Vector3Int, Direction> freeSpaces)
     {
         Dictionary<Vector3, Direction> bigBuildingPositions = new Dictionary<Vector3, Direction>();
-        Vector3 currentPositionRight = new Vector3();
-        Vector3 currentPositionUp = new Vector3();
         foreach (var position in freeSpaces)
         {
             
             if(UnityEngine.Random.value < chanceToSpawnBigBuilding)
             {
-                currentPositionRight = (position.Key +position.Key+Vector3.right)/2;
-                currentPositionUp = (position.Key + position.Key + new Vector3(0, 0, 1)) / 2;
+                var currentPositionRight = (position.Key +position.Key+Vector3.right)/2;
+                var currentPositionUp = (position.Key + position.Key + new Vector3(0, 0, 1)) / 2;
                 Debug.Log(currentPositionRight);
-                if (freeSpaces.ContainsKey(position.Key+Vector3Int.right))
+                if (freeSpaces.ContainsKey(position.Key+Vector3Int.right) &&!bigBuildingPositions.ContainsKey(currentPositionRight+Vector3.right) && !bigBuildingPositions.ContainsKey(currentPositionRight-Vector3.right))
                 {
                     bigBuildingPositions.Add(currentPositionRight, position.Value);
+                    smallBuildingsDespawn.Add(position.Key);
+                    smallBuildingsDespawn.Add(position.Key+Vector3Int.right);
                 } 
-                else if (freeSpaces.ContainsKey(position.Key+ new Vector3Int(0,0,1)))
+                else if (freeSpaces.ContainsKey(position.Key+ new Vector3Int(0,0,1))&&!bigBuildingPositions.ContainsKey(currentPositionUp+new Vector3(0,0,1)) && !bigBuildingPositions.ContainsKey(currentPositionUp+new Vector3(0,0,-1)))
                 {
                     bigBuildingPositions.Add(currentPositionUp, position.Value);
+                    smallBuildingsDespawn.Add(position.Key);
+                    smallBuildingsDespawn.Add(position.Key+new Vector3Int(0,0,1));
                 }
-                
             }
-            
-
         }
-
         return bigBuildingPositions;
     }
 

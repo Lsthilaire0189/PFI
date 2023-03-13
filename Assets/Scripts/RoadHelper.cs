@@ -41,7 +41,7 @@ using UnityEngine;
 
 		public void FixRoad()
 		{
-			foreach (var position in fixRoadCandidates)//fixRaodCandidates is a hashset, insuring that we do not have duplicates
+			foreach (var position in fixRoadCandidates)//fixRoadCandidates is a hashset, insuring that we do not have duplicates
 			{
 				List<Direction> neighborsDirections = PlacementHelper.findNeighbor(position, roadDictionary.Keys);
 				Quaternion rotation = Quaternion.identity;//Quaternion.identity represents the right of RoadStraight, basically the X axis
