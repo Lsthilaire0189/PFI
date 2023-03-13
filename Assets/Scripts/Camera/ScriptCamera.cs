@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class ScriptCamera : MonoBehaviour
 {
-    [SerializeField] Transform resetTransform;
+    [SerializeField] Transform CaméraEmplacement;
     [SerializeField] GameObject player;
     [SerializeField] Camera playerHead;
     private void Awake()
     {
-         var rotationAngley = playerHead.transform.rotation.eulerAngles.y - resetTransform.rotation.eulerAngles.y;
-        player.transform.Rotate(0, rotationAngley, 0);
-        var distanceDiff =resetTransform.position - playerHead.transform.position;
+        float rotationAngleY = playerHead.transform.rotation.eulerAngles.y - CaméraEmplacement.rotation.eulerAngles.y;
+        player.transform.Rotate(0, rotationAngleY, 0);
+        var distanceDiff =CaméraEmplacement.position - playerHead.transform.position;
         player.transform.position += distanceDiff; 
     }
    

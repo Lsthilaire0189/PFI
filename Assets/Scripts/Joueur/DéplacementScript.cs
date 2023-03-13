@@ -8,39 +8,32 @@ public class DéplacementScript : MonoBehaviour
     [SerializeField] WheelCollider RoueAvantGauche;
     [SerializeField] WheelCollider RoueArrièreDroite;
     [SerializeField] WheelCollider RoueArrièreGauche;
-    public float accélération = 500f;
-    public float ForceFreinage = 300f;
-    public float angleMaximum = 15f;
+    public float ValeurAccélération = 500f;
+    public float ValeurForceFreinage = 300f;
+    public float ValeurAngleMaximum = 15f;
 
-    private float currentAcceleration = 0f;
-    private float currentBreakForce = 0f;
+    private float Accélération = 0f;
+    private float ForceFreinage = 0f;
+    private float Angle = 0f;
 
 
     private void FixedUpdate()
     {
-        currentAcceleration = accélération * Input.GetAxis("Vertical");
+        Accélération = ValeurAccélération * Input.GetAxis("Vertical");
         if (Input.GetKey(KeyCode.Space))
-            currentBreakForce = ForceFreinage;
+            ForceFreinage = ValeurForceFreinage;
         else
-            currentBreakForce = 0f;
-        RoueAvantDroite.motorTorque = currentAcceleration;
-        RoueAvantGauche.motorTorque = currentAcceleration;
-        RoueAvantDroite.brakeTorque = currentBreakForce;
-        RoueAvantGauche.brakeTorque= currentBreakForce;
-        RoueArrièreDroite.brakeTorque = currentBreakForce;
-        RoueArrièreGauche.brakeTorque= currentBreakForce;
-    }
+            ForceFreinage = 0f;
+        RoueAvantDroite.motorTorque = Accélération;
+        RoueAvantGauche.motorTorque = Accélération;
+        RoueAvantDroite.brakeTorque = ForceFreinage;
+        RoueAvantGauche.brakeTorque= ForceFreinage;
+        RoueArrièreDroite.brakeTorque = ForceFreinage;
+        RoueArrièreGauche.brakeTorque= ForceFreinage;
 
-
- //   Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-//    Update is called once per frame
-    void Update()
-    {
+        Angle = ValeurAngleMaximum * Input.GetAxis("Horizontal");
+        RoueAvantDroite.steerAngle = Angle;
+        RoueAvantGauche.steerAngle = Angle;
 
     }
 }

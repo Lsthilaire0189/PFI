@@ -7,7 +7,7 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this);// pour permettre de peser sur escape pour sortir du jeu.
     }
 
     // Update is called once per frame
