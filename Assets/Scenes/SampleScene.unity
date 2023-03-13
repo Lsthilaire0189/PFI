@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fadf230d1919748a9aa21d40f74619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackingType: 1
+  m_TrackingType: 0
   m_UpdateType: 0
   m_PositionInput:
     m_UseReference: 0
@@ -1182,8 +1182,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e068deb0f9a36c842bcc8637dbc44c3c, type: 2}
   rootSentence: '[F]--F'
   iterationLimit: 3
-  randomIgnoreRuleModifier: 0
-  chanceToIgnoreRule: 0.539
+  randomIgnoreRuleModifier: 1
+  chanceToIgnoreRule: 0.761
 --- !u!4 &1099801924
 Transform:
   m_ObjectHideFlags: 0
@@ -1233,67 +1233,6 @@ Transform:
   m_Father: {fileID: 2074261985}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1193438964
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6598815579406187026, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
-      propertyPath: m_CameraTransform
-      value: 
-      objectReference: {fileID: 124571099}
-    - target: {fileID: 6598815579406187027, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
-      propertyPath: m_Name
-      value: XR Device Simulator
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
 --- !u!1 &1373556468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,7 +1262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a4b3a95c8ace5e4194eb1523dae1a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetTransform: {fileID: 2066387064}
+  "Cam\xE9raEmplacement": {fileID: 0}
   player: {fileID: 2074261984}
   playerHead: {fileID: 124571102}
 --- !u!4 &1373556470
@@ -1479,8 +1418,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6611407531028321825, guid: e4e3476b5a3e23a479a803b108d04c9c, type: 3}
-  BigBuilding: {fileID: 5418577439970722738, guid: ec611ae9f609edc4cad3995c701a4072, type: 3}
-  chanceToSpawnBigBuilding: 1
+  bigBuilding: {fileID: 0}
+  chanceToSpawnBigBuilding: 0.1
 --- !u!4 &1526301824
 Transform:
   m_ObjectHideFlags: 0
@@ -1917,7 +1856,7 @@ MonoBehaviour:
       m_Name: Position
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: a7c0f5d3-a4b3-4610-801a-1607b3c68262
+      m_Id: 710c5d6d-e626-44f2-aa64-8680689e68a7
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1929,7 +1868,7 @@ MonoBehaviour:
       m_Name: Rotation
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 8626f51e-89cc-42aa-85b4-db3c674155a0
+      m_Id: d764e44e-d367-4017-a747-681e8056fd80
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1941,7 +1880,7 @@ MonoBehaviour:
       m_Name: Tracking State
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 075f5a9a-9bf3-4e07-a701-54260793ccba
+      m_Id: 7db280a5-76ed-4581-9aca-11481f5cf87f
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1953,7 +1892,7 @@ MonoBehaviour:
       m_Name: Select
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 3c41133f-240e-4d47-a668-345962240a32
+      m_Id: e6be75cc-402b-444d-801d-6e7334344d73
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1965,7 +1904,7 @@ MonoBehaviour:
       m_Name: Select Action Value
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 33f63bbf-3111-43ac-9d9d-fc6fd7b8d47f
+      m_Id: 4ac6d295-2eab-409d-a0cb-4f717107ef45
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1977,7 +1916,7 @@ MonoBehaviour:
       m_Name: Activate
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: b59b11a9-de71-46da-89c1-5bcc85bdace6
+      m_Id: c68056e3-2c07-4adb-8829-5725c0b04063
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -1989,7 +1928,7 @@ MonoBehaviour:
       m_Name: Activate Action Value
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: eb825b5b-9669-4235-8f5b-46d4f9ba5bba
+      m_Id: 02125dab-5b4a-4c60-806c-7e05e462ab9a
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -2001,7 +1940,7 @@ MonoBehaviour:
       m_Name: UI Press
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: ffcb6db6-6666-4d46-b3ca-4b1b79663792
+      m_Id: 0781c416-0f89-4247-882c-846b593d9a02
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -2013,7 +1952,7 @@ MonoBehaviour:
       m_Name: UI Press Action Value
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 8abad59e-516a-4b6f-8a00-b69cf6fdfa3c
+      m_Id: 3e179e43-37ec-440b-a41b-9a2c30fe2139
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -2025,7 +1964,7 @@ MonoBehaviour:
       m_Name: Haptic Device
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 3f5ff69e-0980-490d-98ed-24a7c5990226
+      m_Id: ab17e5ff-0bfd-4a80-824a-7372bcc8b9d1
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -2037,7 +1976,7 @@ MonoBehaviour:
       m_Name: Rotate Anchor
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 307a2e38-f4e7-470b-b89f-f079af986bc2
+      m_Id: 37987750-f64d-48b0-8377-92a1a616ee7c
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -2049,7 +1988,7 @@ MonoBehaviour:
       m_Name: Directional Anchor Rotation
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 062abc81-3ff1-4725-a3ba-bd66cde0a813
+      m_Id: 2ca62c2f-e48d-4660-a453-2b7321d57f47
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -2061,7 +2000,7 @@ MonoBehaviour:
       m_Name: Translate Anchor
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 17889002-a3a8-4af1-98b1-d15007e5ad19
+      m_Id: 8f8666e6-0338-4492-a33d-46fdcd57953b
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -2180,6 +2119,7 @@ GameObject:
   - component: {fileID: 2074261985}
   - component: {fileID: 2074261987}
   - component: {fileID: 2074261986}
+  - component: {fileID: 2074261988}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -2196,7 +2136,7 @@ Transform:
   m_GameObject: {fileID: 2074261984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1151116107}
@@ -2234,6 +2174,21 @@ MonoBehaviour:
   m_CameraFloorOffsetObject: {fileID: 1151116106}
   m_RequestedTrackingOriginMode: 0
   m_CameraYOffset: 1.1176
+--- !u!114 &2074261988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074261984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4b3a95c8ace5e4194eb1523dae1a6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "Cam\xE9raEmplacement": {fileID: 2066387064}
+  player: {fileID: 2074261984}
+  playerHead: {fileID: 124571102}
 --- !u!1001 &2107038942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2304,6 +2259,10 @@ PrefabInstance:
     - target: {fileID: 576900304846021657, guid: c5c77be66559e0141a22b4c3c1ff564d, type: 3}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021281725370136498, guid: c5c77be66559e0141a22b4c3c1ff564d, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5c77be66559e0141a22b4c3c1ff564d, type: 3}
