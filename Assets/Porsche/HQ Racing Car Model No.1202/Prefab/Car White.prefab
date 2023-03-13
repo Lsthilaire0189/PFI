@@ -923,9 +923,9 @@ MonoBehaviour:
   RoueAvantGauche: {fileID: 7518647108432024187}
   "RoueArri\xE8reDroite": {fileID: 5303061791505333738}
   "RoueArri\xE8reGauche": {fileID: 1169666349733410703}
-  "acc\xE9l\xE9ration": 500
-  ForceFreinage: 300
-  angleMaximum: 15
+  "ValeurAcc\xE9l\xE9ration": 500
+  ValeurForceFreinage: 300
+  ValeurAngleMaximum: 15
 --- !u!54 &8130278002186774802
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4114,9 +4114,9 @@ WheelCollider:
     spring: 0
     damper: 0
     targetPosition: 0.5
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.01
   m_ForceAppPointDistance: 0
-  m_Mass: 20
+  m_Mass: 1
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -4207,9 +4207,9 @@ WheelCollider:
     spring: 0
     damper: 0
     targetPosition: 0.5
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.01
   m_ForceAppPointDistance: 0
-  m_Mass: 20
+  m_Mass: 1
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -4269,9 +4269,9 @@ WheelCollider:
     spring: 0
     damper: 0
     targetPosition: 0.5
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.01
   m_ForceAppPointDistance: 0
-  m_Mass: 20
+  m_Mass: 1
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -4331,9 +4331,9 @@ WheelCollider:
     spring: 0
     damper: 0
     targetPosition: 0.5
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.01
   m_ForceAppPointDistance: 0
-  m_Mass: 20
+  m_Mass: 1
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4

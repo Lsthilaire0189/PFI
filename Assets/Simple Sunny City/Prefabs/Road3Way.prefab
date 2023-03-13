@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6971787506745198457
 Transform:
@@ -51,7 +51,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1671989264515217164
 Transform:
@@ -147,7 +147,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2095472127082007412
 Transform:
@@ -243,6 +243,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 94efb8380af0aba4ea4d6a543f971de6, type: 3}
       propertyPath: m_Name
       value: Street_3Way
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 94efb8380af0aba4ea4d6a543f971de6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94efb8380af0aba4ea4d6a543f971de6, type: 3}

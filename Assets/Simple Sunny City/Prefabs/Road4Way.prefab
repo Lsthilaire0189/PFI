@@ -198,6 +198,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_4Way
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9ad6d31628b93264bac85309e80fea57, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ad6d31628b93264bac85309e80fea57, type: 3}
 --- !u!4 &5624763742741058431 stripped
