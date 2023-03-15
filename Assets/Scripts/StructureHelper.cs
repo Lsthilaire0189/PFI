@@ -7,7 +7,9 @@ using UnityEngine.Serialization;
 
 public class StructureHelper : MonoBehaviour
 {
-    public GameObject prefab;//the prefab we wanna spawn
+    public GameObject maison;//the prefab we wanna spawn
+    public GameObject apartementRouge;
+    public GameObject apartementNoir;
     public GameObject bigBuilding;
     [Range(0, 1)]
     public float chanceToSpawnBigBuilding = 0.1f;
@@ -35,7 +37,18 @@ public class StructureHelper : MonoBehaviour
             else if(freeSpot.Value==Direction.Right)
                 rotation=Quaternion.Euler(0,180,0);
 
-            Instantiate(prefab, freeSpot.Key, rotation, transform);
+            if (UnityEngine.Random.value < 0.3f)
+            {
+                Instantiate(maison, freeSpot.Key, rotation, transform);
+            }
+            else if (UnityEngine.Random.value >= 0.3f && UnityEngine.Random.value <= 0.7f)
+            {
+                Instantiate(apartementRouge, freeSpot.Key, rotation, transform);
+            }
+            else
+            {
+                Instantiate(apartementNoir, freeSpot.Key, rotation, transform);
+            }
         }
 
         foreach (var bigBuildingFreeSpot in freeBigBuildingsSpot)
