@@ -24,7 +24,7 @@ public class NavigationBaker : MonoBehaviour
         surfaces = new NavMeshSurface[nbRues];
         for (int i = 0; i < nbRues; i++)
         {
-            surfaces = RoadHelper.transform.GetChild(i).GetComponentsInChildren<NavMeshSurface>();
+            surfaces[i] = RoadHelper.transform.GetChild(i).GetComponent<NavMeshSurface>();
         }
 
     }
