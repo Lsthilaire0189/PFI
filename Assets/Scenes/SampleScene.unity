@@ -1183,7 +1183,7 @@ MonoBehaviour:
   rootSentence: '[F]--F'
   iterationLimit: 3
   randomIgnoreRuleModifier: 1
-  chanceToIgnoreRule: 0.761
+  chanceToIgnoreRule: 0.714
 --- !u!4 &1099801924
 Transform:
   m_ObjectHideFlags: 0
