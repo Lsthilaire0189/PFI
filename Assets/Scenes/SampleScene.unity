@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.013493855, g: 0.010637626, b: 0.007831277, a: 1}
+  m_IndirectSpecularColor: {r: 0.17474282, g: 0.21062924, b: 0.25551447, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -476,7 +476,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 2.6448623e-36, w: 1.147944e-39}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -488,14 +488,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.1599514, y: -0.44280937, z: -0.48223814, w: 0.7387705}
+  m_LocalRotation: {x: 0.39566538, y: -0.2580435, z: -0.60170364, w: 0.6440615}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -10.996, y: -55.453, z: -60.477}
+  m_LocalEulerAnglesHint: {x: 11.486, y: -55.595, z: -92.175}
 --- !u!1 &725843424
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,9 +1262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a4b3a95c8ace5e4194eb1523dae1a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "Cam\xE9raEmplacement": {fileID: 0}
-  player: {fileID: 2074261984}
-  playerHead: {fileID: 124571102}
 --- !u!4 &1373556470
 Transform:
   m_ObjectHideFlags: 0
@@ -2162,11 +2159,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 299cc5f1467e27844bdb38db8e09606d, type: 3}
---- !u!4 &2066387064 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 576900304846021657, guid: c5c77be66559e0141a22b4c3c1ff564d, type: 3}
-  m_PrefabInstance: {fileID: 2107038942}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2074261984
 GameObject:
   m_ObjectHideFlags: 0
@@ -2245,9 +2237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a4b3a95c8ace5e4194eb1523dae1a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "Cam\xE9raEmplacement": {fileID: 2066387064}
-  player: {fileID: 2074261984}
-  playerHead: {fileID: 124571102}
 --- !u!1001 &2107038942
 PrefabInstance:
   m_ObjectHideFlags: 0

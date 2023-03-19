@@ -41,7 +41,7 @@ public class StructureHelper : MonoBehaviour
             {
                 Instantiate(maison, freeSpot.Key, rotation, transform);
             }
-            else if (UnityEngine.Random.value >= 0.3f && UnityEngine.Random.value <= 0.7f)
+            else if (UnityEngine.Random.value is >= 0.3f and <= 0.7f)
             {
                 Instantiate(apartementRouge, freeSpot.Key, rotation, transform);
             }
