@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DéplacementScript : MonoBehaviour
 {
+    LogitechGSDK.LogiControllerPropertiesData properties;
+    
     [SerializeField] WheelCollider RoueAvantDroite;
     [SerializeField] WheelCollider RoueAvantGauche;
     [SerializeField] WheelCollider RoueArrièreDroite;
@@ -15,8 +17,8 @@ public class DéplacementScript : MonoBehaviour
     private float Accélération = 0f;
     private float ForceFreinage = 0f;
     private float Angle = 0f;
-
-
+    
+    
     private void FixedUpdate()
     {
         Accélération = ValeurAccélération * Input.GetAxis("Vertical");
