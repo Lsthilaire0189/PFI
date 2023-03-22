@@ -22,6 +22,7 @@ class Noeud
         y = (int)route.transform.position.z + 50;
     }
 }
+
 public class CréerCarte : MonoBehaviour
 {
     [SerializeField] GameObject roadHelper;
@@ -29,12 +30,17 @@ public class CréerCarte : MonoBehaviour
     List<GameObject> list;
     GameObject Départ;
     GameObject Destination;
-    Stack<Noeud> chemin;
+    public List<Vector3> chemin;
+    [SerializeField] GameObject voiture;
     // Start is called before the first frame update
-
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
+        StartCoroutine(InitierAuto());
+    }
+    // Update is called once per frame
+    IEnumerator InitierAuto ()
+    {
+        yield return new WaitForSeconds(.5f);
         carte = new GameObject[100, 100];
         int Nbrues = roadHelper.transform.childCount;
         list = new List<GameObject>();
@@ -50,7 +56,7 @@ public class CréerCarte : MonoBehaviour
         }
         TrouverDestination();
         AlgoDijkstra();
-
+        GameObject auto = Instantiate(voiture,Vector3.zero, Quaternion.identity,gameObject.transform);
     }
     void TrouverDestination()
     {
@@ -94,13 +100,18 @@ public class CréerCarte : MonoBehaviour
     }
     void ConstructionChemin(Noeud Destination)
     {
-        chemin = new Stack<Noeud>();
+        Stack<Noeud> temp = new Stack<Noeud>();
         Noeud current = Destination;
-        chemin.Push(current);
+        temp.Push(current);
+        chemin = new List<Vector3>();
         while (current.Précédent != null)
         {
-            chemin.Push(current.Précédent);
+            temp.Push(current.Précédent);
             current = current.Précédent;
+        }
+        while (temp.Count > 0)
+        {
+            chemin.Add(temp.Pop().Route.transform.position);
         }
     }
     List<Noeud> TrouverVoisins(Noeud current)
