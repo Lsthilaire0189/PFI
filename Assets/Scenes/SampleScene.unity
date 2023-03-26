@@ -407,7 +407,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1140775109633734, guid: c5c77be66559e0141a22b4c3c1ff564d, type: 3}
   m_PrefabInstance: {fileID: 2107038942}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &667547495
+--- !u!114 &667547496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1198,7 +1198,7 @@ MonoBehaviour:
   rules:
   - {fileID: 11400000, guid: e068deb0f9a36c842bcc8637dbc44c3c, type: 2}
   rootSentence: '[F]--F'
-  iterationLimit: 3
+  iterationLimit: 4
   randomIgnoreRuleModifier: 1
   chanceToIgnoreRule: 0.714
 --- !u!4 &1099801924
@@ -1438,7 +1438,11 @@ MonoBehaviour:
   apartementRouge: {fileID: 2507707691550815495, guid: 59ffc13d9fb598240ac517fe6fb6fd9c, type: 3}
   apartementNoir: {fileID: 3866452111178995711, guid: 62dd89dfe4948b744ac32fe5d0249467, type: 3}
   bigBuilding: {fileID: 5418577439970722738, guid: ec611ae9f609edc4cad3995c701a4072, type: 3}
-  chanceToSpawnBigBuilding: 0.1
+  gasStation: {fileID: 1505934643987248, guid: 01bbe20c855564648b02e0092e511cac, type: 3}
+  Garage: {fileID: 1737964153803582, guid: 9094aa5ae2e324346997aa2ea9ad7930, type: 3}
+  nombreStationEssence: 1
+  nombreGarage: 1
+  chanceToSpawnBigBuilding: 0.2
 --- !u!4 &1526301824
 Transform:
   m_ObjectHideFlags: 0
@@ -2334,6 +2338,10 @@ PrefabInstance:
     - target: {fileID: 3021281725370136498, guid: c5c77be66559e0141a22b4c3c1ff564d, type: 3}
       propertyPath: m_Radius
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544282430296336337, guid: c5c77be66559e0141a22b4c3c1ff564d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8130278002186774802, guid: c5c77be66559e0141a22b4c3c1ff564d, type: 3}
       propertyPath: m_Mass

@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = System.Random;
 
 
 public class StructureHelper : MonoBehaviour
@@ -11,15 +13,27 @@ public class StructureHelper : MonoBehaviour
     public GameObject apartementRouge;
     public GameObject apartementNoir;
     public GameObject bigBuilding;
-    [Range(0, 1)]
-    public float chanceToSpawnBigBuilding = 0.1f;
+    public GameObject gasStation; 
+    public GameObject Garage;
+    [Range(0, 6)] 
+    public int nombreStationEssence;
+    [Range(0, 6)] 
+    public int nombreGarage;
+    
+    [Range(0.2f, 1)]
+    public float chanceToSpawnBigBuilding = 0.2f;
     private List<Vector3Int> smallBuildingsDespawn = new List<Vector3Int>();
     public Dictionary<Vector3Int, GameObject> StructureDictionary = new Dictionary<Vector3Int, GameObject>(); //a dictionary containing the positions of all prefabs and their precise position
 
     public void PlaceStructureAroundRoad(List<Vector3Int> roadPositions)
     {
+
+        int nombreRepetion = 0;
+
         Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions);
-        Dictionary<Vector3, Direction> freeBigBuildingsSpot = BigBuildingPositionGetter(freeEstateSpots);
+        Dictionary<Vector3, Direction> freeBigBuildingsSpots = BigBuildingPositionGetter(freeEstateSpots);
+        Dictionary<Vector3, Direction> freeGasStationEtGarageSpots = GasStationEtGaragePositionGetter(freeBigBuildingsSpots, nombreStationEssence, nombreGarage);
+
 
         foreach (var smallBuilding in smallBuildingsDespawn)
         {
@@ -51,7 +65,7 @@ public class StructureHelper : MonoBehaviour
             }
         }
 
-        foreach (var bigBuildingFreeSpot in freeBigBuildingsSpot)
+        foreach (var bigBuildingFreeSpot in freeBigBuildingsSpots)
         {
             var rotation = Quaternion.identity;
             
@@ -63,6 +77,38 @@ public class StructureHelper : MonoBehaviour
                 rotation=Quaternion.Euler(0,180,0);
             
             Instantiate(bigBuilding, bigBuildingFreeSpot.Key, rotation, transform);
+        }
+
+        foreach (var gasStationEtGarageSpot in freeGasStationEtGarageSpots)
+        {
+            var rotation = Quaternion.identity;
+            
+            
+            if (nombreRepetion < nombreStationEssence)
+            {
+                if(gasStationEtGarageSpot.Value==Direction.Left)
+                    rotation=Quaternion.Euler(0,-90,0);
+                else if(gasStationEtGarageSpot.Value==Direction.Down)
+                    rotation=Quaternion.Euler(0,180,0);
+                else if(gasStationEtGarageSpot.Value==Direction.Right)
+                    rotation=Quaternion.Euler(0,90,0);
+                else if(gasStationEtGarageSpot.Value==Direction.Up)
+                    rotation=Quaternion.Euler(0,0,0);
+                Instantiate(gasStation, gasStationEtGarageSpot.Key, rotation, transform);
+            }
+            else
+            {if(gasStationEtGarageSpot.Value==Direction.Left)
+                    rotation=Quaternion.Euler(0,180,0);
+                else if(gasStationEtGarageSpot.Value==Direction.Down)
+                    rotation=Quaternion.Euler(0,90,0);
+                else if(gasStationEtGarageSpot.Value==Direction.Right)
+                    rotation=Quaternion.Euler(0,0,0);
+                else if(gasStationEtGarageSpot.Value==Direction.Up)
+                    rotation=Quaternion.Euler(0,-90,0);
+                Instantiate(Garage, gasStationEtGarageSpot.Key, rotation, transform);
+            }
+
+            nombreRepetion++;
         }
     }
 
@@ -145,6 +191,50 @@ public class StructureHelper : MonoBehaviour
             }
         }
         return bigBuildingPositions;
+    }
+
+
+    public Dictionary<Vector3, Direction> GasStationEtGaragePositionGetter(
+        Dictionary<Vector3, Direction> freeBigBuildingSpots, int nombreStationEssence, int nombreGarage)
+    {
+        var random = new Random();
+
+        Dictionary<Vector3, Direction> GasStationEtGaragePositions = new Dictionary<Vector3, Direction>();
+
+        int nmbreBigBuilding = freeBigBuildingSpots.Count;
+
+        List<int> listeNombrePossible = new List<int>();
+
+        for (int i = 0; i < nmbreBigBuilding; i++)
+        {
+            listeNombrePossible.Add(i);
+        }
+
+        for (int w = 0; w < nombreStationEssence; w++)
+        {
+            var nmbreHasard = random.Next(listeNombrePossible.Count);
+
+            GasStationEtGaragePositions.Add(freeBigBuildingSpots.ElementAt(nmbreHasard).Key, freeBigBuildingSpots.ElementAt(nmbreHasard).Value);
+
+            freeBigBuildingSpots.Remove(freeBigBuildingSpots.ElementAt(nmbreHasard).Key);
+
+            listeNombrePossible.Remove(nmbreHasard);
+
+        }
+        
+        for (int r = 0; r < nombreGarage; r++)
+        {
+            var nmbreHasard = random.Next(listeNombrePossible.Count);
+
+            GasStationEtGaragePositions.Add(freeBigBuildingSpots.ElementAt(nmbreHasard).Key, freeBigBuildingSpots.ElementAt(nmbreHasard).Value);
+
+            freeBigBuildingSpots.Remove(freeBigBuildingSpots.ElementAt(nmbreHasard).Key);
+
+            listeNombrePossible.Remove(nmbreHasard);
+
+        }
+
+        return GasStationEtGaragePositions;
     }
 
 }
