@@ -32,6 +32,7 @@ public class CréerCarte : MonoBehaviour
     public GameObject Destination;
     public List<Vector3> chemin;
     [SerializeField] GameObject voiture;
+    public GameObject PointSuivant;
     // Start is called before the first frame update
     private void Start()
     {
@@ -55,8 +56,8 @@ public class CréerCarte : MonoBehaviour
             carte[x, y] = item;
         }
         TrouverDestination();
-        AlgoDijkstra();
-        GameObject auto = Instantiate(voiture,Départ.transform.position+Vector3.up, Départ.transform.rotation,gameObject.transform);
+        AlgoDijkstra(); 
+        GameObject auto = Instantiate(voiture,Départ.transform.position+Vector3.up, Quaternion.identity,gameObject.transform);
     }
     void TrouverDestination()
     {

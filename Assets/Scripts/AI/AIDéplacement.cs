@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -16,34 +17,60 @@ public class AIDéplacement : MonoBehaviour
     public float ValeurAccélération = 500f;
     public float ValeurForceFreinage = 300f;
     public float Angle = 15f;
+    public float Rayon = .1f;
     Vector3 PointSuivant;
     int direction;
+    int index;
+    [SerializeField] GameObject o;
     // Start is called before the first frame update
     void Awake()
     {
-
+        index = 1;
         var creerCarte = gameObject.GetComponentInParent<CréerCarte>();
         destination = creerCarte.Destination.transform.position;
         chemins = creerCarte.chemin;
-        PointSuivant = chemins[1];
+        PointSuivant = chemins[index];
+        //Instantiate(o, PointSuivant, Quaternion.identity);
+        VérifierDirection();
     }
     private void FixedUpdate()
-    {
-        int i = 1;
-        Vector3 currentDirection = transform.forward;
-
-        // calculate the angle between current direction and target direction
-        float angle = Vector3.SignedAngle(currentDirection, PointSuivant, transform.up);
-
-        // calculate the steer angle based on the angle and maximum steer angle
-        float steerAngle = Mathf.Clamp(angle, -Angle,+Angle);
-        float Accélération = ValeurAccélération * 0.5f;
-        RoueAvantDroite.motorTorque = Accélération;
-        RoueAvantGauche.motorTorque = Accélération;
-        if (transform.position == PointSuivant)
+    {         
+        float acceleration = ValeurAccélération;
+        RoueAvantDroite.motorTorque= acceleration;
+        RoueAvantGauche.motorTorque = acceleration;
+        Direction();
+        if (Vector3.Distance(transform.position,PointSuivant ) <=0.1f)
         {
-            PointSuivant = chemins[i + 1];
+            index++;
+            //RoueAvantDroite.motorTorque = 0;
+            //RoueAvantGauche.motorTorque = 0;
+            //RoueAvantGauche.brakeTorque = 100f;
+            //RoueAvantDroite.brakeTorque = 100f;
+            PointSuivant = chemins[index];
+            Debug.Log(1);
         }
+    }
+    void Direction()
+    {
+        Vector3 directionPointSuivant = transform.InverseTransformPoint(PointSuivant);
+        directionPointSuivant /= directionPointSuivant.magnitude;
+        float nouvelleDirection = (directionPointSuivant.x / directionPointSuivant.magnitude);
+        if (nouvelleDirection > 0)
+        {
+            RoueAvantGauche.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (Rayon + (1.5f / 2))) * nouvelleDirection;
+            RoueAvantDroite.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (Rayon - (1.5f / 2))) * nouvelleDirection;
+        }
+        else if (nouvelleDirection < 0)
+        {
+            RoueAvantGauche.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (0.5f - (Rayon / 2))) * nouvelleDirection;
+            RoueAvantDroite.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (0.5f + (Rayon / 2))) * nouvelleDirection;
+        }
+        else
+        {
+            RoueAvantDroite.steerAngle = 0;
+            RoueAvantGauche.steerAngle = 0;
+        }
+
     }
     // Update is called once per frame
     //void Update()
@@ -139,18 +166,25 @@ public class AIDéplacement : MonoBehaviour
 
         if (transform.position.z < PointSuivant.z)
         {
+            Debug.Log(0);
             return 0;
         }
         if (transform.position.z > PointSuivant.z)
         {
+            transform.Rotate(0, 180, 0);
+            Debug.Log(1);
             return 1;
         }
         if (transform.position.x <PointSuivant.x)
         {
+            transform.Rotate(0, 90, 0);
+            Debug.Log(2);
             return 2;
         }
         if (transform.position.x > PointSuivant.x)
         {
+            transform.Rotate(0,-90,0);
+            Debug.Log(3);
             return 3;
         }
         return direction;
