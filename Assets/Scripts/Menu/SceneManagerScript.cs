@@ -18,13 +18,13 @@ public class SceneManagerScript : MonoBehaviour
     }
     private void Awake()
     {
-        Joueur = Instantiate(voiture1, gameObject.transform);
+        Joueur = Instantiate(voiture1,Vector3.zero,Quaternion.identity, gameObject.transform);
         Joueur.GetComponent<GénérationJoueur>().AssocierCamera();
     }
     // Update is called once per frame
     void Update()
     {
-        TempsScore = Time.time;
-        Score = pointageScript.RetournerPointage(TempsScore);
+        //TempsScore = Time.time;
+        //Score = pointageScript.RetournerPointage(TempsScore);
     }
 }

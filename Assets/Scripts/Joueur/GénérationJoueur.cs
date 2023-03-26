@@ -25,6 +25,7 @@ public class GénérationJoueur : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        playerHead.transform.position = CaméraEmplacement.transform.position;
+        playerHead.transform.rotation = CaméraEmplacement.transform.rotation;
     }
 }
