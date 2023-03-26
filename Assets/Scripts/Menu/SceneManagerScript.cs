@@ -10,7 +10,7 @@ public class SceneManagerScript : MonoBehaviour
     float TempsScore;
     int Score;
     PointageScript pointageScript;
-    GénérationJoueur générationJoueur;
+    
     // Start is called before the first frame update
     void Start()
     {
