@@ -1291,7 +1291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373556468}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3190357, y: -0.6762005, z: 2.0109086}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1314,6 +1314,7 @@ MonoBehaviour:
   Destination: {fileID: 0}
   chemin: []
   voiture: {fileID: 963847260374479469, guid: fb397a507ec6bea4699cc33654426f29, type: 3}
+  PointSuivant: {fileID: 0}
 --- !u!850595691 &1448736882
 LightingSettings:
   m_ObjectHideFlags: 0

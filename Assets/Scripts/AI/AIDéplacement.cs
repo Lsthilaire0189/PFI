@@ -30,7 +30,7 @@ public class AIDéplacement : MonoBehaviour
         destination = creerCarte.Destination.transform.position;
         chemins = creerCarte.chemin;
         PointSuivant = chemins[index];
-        //Instantiate(o, PointSuivant, Quaternion.identity);
+        Instantiate(o, PointSuivant, Quaternion.identity);
         VérifierDirection();
     }
     private void FixedUpdate()
@@ -62,8 +62,8 @@ public class AIDéplacement : MonoBehaviour
         }
         else if (nouvelleDirection < 0)
         {
-            RoueAvantGauche.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (0.5f - (Rayon / 2))) * nouvelleDirection;
-            RoueAvantDroite.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (0.5f + (Rayon / 2))) * nouvelleDirection;
+            RoueAvantGauche.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (Rayon - (1.5f / 2))) * nouvelleDirection;
+            RoueAvantDroite.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (Rayon + (1.5f / 2))) * nouvelleDirection;
         }
         else
         {
