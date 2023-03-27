@@ -9,7 +9,6 @@ using UnityEngine;
         List<Vector3> positions = new List<Vector3>();
 
         public RoadHelper roadHelper;
-
         public StructureHelper structureHelper;
         
         private int length = 6;
@@ -92,6 +91,7 @@ using UnityEngine;
             }
             roadHelper.FixRoad();
             structureHelper.PlaceStructureAroundRoad(roadHelper.GetRoadPositions());
+            var spline = new Circuit(); 
 
         }
     }
