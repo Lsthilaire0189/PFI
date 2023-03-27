@@ -166,23 +166,27 @@ public class AIDéplacement : MonoBehaviour
 
         if (transform.position.z < PointSuivant.z)
         {
+            transform.position += new Vector3(0.1f, 0, 0);
             Debug.Log(0);
             return 0;
         }
         if (transform.position.z > PointSuivant.z)
         {
+            transform.position -= new Vector3(0.1f, 0, 0);
             transform.Rotate(0, 180, 0);
             Debug.Log(1);
             return 1;
         }
         if (transform.position.x <PointSuivant.x)
         {
+            transform.position -= new Vector3(0, 0, 0.1f);
             transform.Rotate(0, 90, 0);
             Debug.Log(2);
             return 2;
         }
         if (transform.position.x > PointSuivant.x)
         {
+            transform.position += new Vector3(0, 0, 0.1f);
             transform.Rotate(0,-90,0);
             Debug.Log(3);
             return 3;
