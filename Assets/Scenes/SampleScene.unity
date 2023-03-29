@@ -1220,7 +1220,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e068deb0f9a36c842bcc8637dbc44c3c, type: 2}
   rootSentence: '[F]--F'
   iterationLimit: 4
-  randomIgnoreRuleModifier: 1
+  randomIgnoreRuleModifier: 0
   chanceToIgnoreRule: 0.714
 --- !u!4 &1099801924
 Transform:
