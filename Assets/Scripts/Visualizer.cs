@@ -6,6 +6,9 @@ using UnityEngine;
 	public class Visualizer : MonoBehaviour
 	{
         public LSystemGenerator lsystem;
+
+        public EnvironnementScript environnementScript;
+        
         List<Vector3> positions = new List<Vector3>();
 
         public RoadHelper roadHelper;
@@ -91,6 +94,7 @@ using UnityEngine;
             }
             roadHelper.FixRoad();
             structureHelper.PlaceStructureAroundRoad(roadHelper.GetRoadPositions());
+            environnementScript.InstancierEnvironnement();
             var spline = new Circuit(); 
 
         }

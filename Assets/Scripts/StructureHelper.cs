@@ -175,7 +175,7 @@ public class StructureHelper : MonoBehaviour
             {
                 var currentPositionRight = (position.Key +position.Key+Vector3.right)/2;
                 var currentPositionUp = (position.Key + position.Key + new Vector3(0, 0, 1)) / 2;
-                Debug.Log(currentPositionRight);
+                
                 if (freeSpaces.ContainsKey(position.Key+Vector3Int.right) &&!bigBuildingPositions.ContainsKey(currentPositionRight+Vector3.right) && !bigBuildingPositions.ContainsKey(currentPositionRight-Vector3.right))
                 {
                     bigBuildingPositions.Add(currentPositionRight, position.Value);

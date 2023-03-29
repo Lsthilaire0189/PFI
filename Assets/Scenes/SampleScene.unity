@@ -383,6 +383,63 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!1 &455497245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 455497247}
+  - component: {fileID: 455497246}
+  m_Layer: 0
+  m_Name: EnvironnementManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &455497246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455497245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919682bbd83186742826d7735c0980d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flaquesEau:
+  - {fileID: 100000, guid: eec33879b1a0128419602997e7f13a24, type: 3}
+  - {fileID: 100000, guid: b02afec7d4bb7b143a32779793fa6e30, type: 3}
+  - {fileID: 100000, guid: 3f6bade06b57e724982993386af6f94b, type: 3}
+  - {fileID: 100000, guid: f69a882802a748942a6c465c9b6c5f3a, type: 3}
+  boues:
+  - {fileID: 100000, guid: a3934d3eaad22d84690c39eef102400f, type: 3}
+  - {fileID: 100000, guid: 03fa1f517dd413642a642fe54dab06b5, type: 3}
+  - {fileID: 100000, guid: 7f7b06ca50927d44187ef6d72bbfe0e6, type: 3}
+  - {fileID: 100000, guid: 545a6c38cb57f5a42a05d10f9c498379, type: 3}
+  "PourcentageR\xE9sidusEnvironnementaux": 100
+  PourcentageFlaques: 50
+  roadHelper: {fileID: 1592819122}
+--- !u!4 &455497247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455497245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.196336, y: -1.2901038, z: -2.1593869}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,7 +2109,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1592819121}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2090,6 +2147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lsystem: {fileID: 1099801923}
+  environnementScript: {fileID: 455497246}
   roadHelper: {fileID: 1592819122}
   structureHelper: {fileID: 1526301823}
 --- !u!4 &1606614014
