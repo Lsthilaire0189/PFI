@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DéplacementScript : MonoBehaviour
 {
-    LogitechGSDK.LogiControllerPropertiesData properties;
+   // LogitechGSDK.LogiControllerPropertiesData properties;
     
     [SerializeField] WheelCollider RoueAvantDroite;
     [SerializeField] WheelCollider RoueAvantGauche;
