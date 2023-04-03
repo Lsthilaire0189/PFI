@@ -176,13 +176,17 @@ public class StructureHelper : MonoBehaviour
                 var currentPositionRight = (position.Key +position.Key+Vector3.right)/2;
                 var currentPositionUp = (position.Key + position.Key + new Vector3(0, 0, 1)) / 2;
                 
-                if (freeSpaces.ContainsKey(position.Key+Vector3Int.right) &&!bigBuildingPositions.ContainsKey(currentPositionRight+Vector3.right) && !bigBuildingPositions.ContainsKey(currentPositionRight-Vector3.right))
+                if (freeSpaces.ContainsKey(position.Key+Vector3Int.right) &&!bigBuildingPositions.ContainsKey
+                        (currentPositionRight+Vector3.right) && 
+                    !bigBuildingPositions.ContainsKey(currentPositionRight-Vector3.right))
                 {
                     bigBuildingPositions.Add(currentPositionRight, position.Value);
                     smallBuildingsDespawn.Add(position.Key);
                     smallBuildingsDespawn.Add(position.Key+Vector3Int.right);
                 } 
-                else if (freeSpaces.ContainsKey(position.Key+ new Vector3Int(0,0,1))&&!bigBuildingPositions.ContainsKey(currentPositionUp+new Vector3(0,0,1)) && !bigBuildingPositions.ContainsKey(currentPositionUp+new Vector3(0,0,-1)))
+                else if (freeSpaces.ContainsKey(position.Key+ new Vector3Int(0,0,1))
+                         &&!bigBuildingPositions.ContainsKey(currentPositionUp+new Vector3(0,0,1)) && 
+                         !bigBuildingPositions.ContainsKey(currentPositionUp+new Vector3(0,0,-1)))
                 {
                     bigBuildingPositions.Add(currentPositionUp, position.Value);
                     smallBuildingsDespawn.Add(position.Key);
@@ -194,7 +198,7 @@ public class StructureHelper : MonoBehaviour
     }
 
 
-    public Dictionary<Vector3, Direction> GasStationEtGaragePositionGetter(
+    private Dictionary<Vector3, Direction> GasStationEtGaragePositionGetter(
         Dictionary<Vector3, Direction> freeBigBuildingSpots, int nombreStationEssence, int nombreGarage)
     {
         var random = new Random();
@@ -214,7 +218,8 @@ public class StructureHelper : MonoBehaviour
         {
             var nmbreHasard = random.Next(listeNombrePossible.Count);
 
-            GasStationEtGaragePositions.Add(freeBigBuildingSpots.ElementAt(nmbreHasard).Key, freeBigBuildingSpots.ElementAt(nmbreHasard).Value);
+            GasStationEtGaragePositions.Add(freeBigBuildingSpots.ElementAt(nmbreHasard).Key,
+                freeBigBuildingSpots.ElementAt(nmbreHasard).Value);
 
             freeBigBuildingSpots.Remove(freeBigBuildingSpots.ElementAt(nmbreHasard).Key);
 
@@ -226,7 +231,8 @@ public class StructureHelper : MonoBehaviour
         {
             var nmbreHasard = random.Next(listeNombrePossible.Count);
 
-            GasStationEtGaragePositions.Add(freeBigBuildingSpots.ElementAt(nmbreHasard).Key, freeBigBuildingSpots.ElementAt(nmbreHasard).Value);
+            GasStationEtGaragePositions.Add(freeBigBuildingSpots.ElementAt(nmbreHasard).Key, 
+                freeBigBuildingSpots.ElementAt(nmbreHasard).Value);
 
             freeBigBuildingSpots.Remove(freeBigBuildingSpots.ElementAt(nmbreHasard).Key);
 

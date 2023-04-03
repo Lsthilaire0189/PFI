@@ -46,7 +46,7 @@ using UnityEngine;
 
             Vector3 direction = Vector3.forward;
             Vector3 tempPosition = Vector3.zero;
-
+            
             positions.Add(currentPosition);
 
             foreach (var letter in sequence)
@@ -72,7 +72,7 @@ using UnityEngine;
                         }
                         else
                         {
-                            throw new System.Exception("Dont have saved point in our stack");
+                            throw new System.Exception("Don't have saved point in our stack");
                         }
                         break;
                     case SimpleVisualizer.EncodingLetters.draw:
