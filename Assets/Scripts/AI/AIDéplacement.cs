@@ -34,45 +34,36 @@ public class AIDéplacement : MonoBehaviour
         VérifierDirection();
     }
     private void FixedUpdate()
-    {         
-        float acceleration = ValeurAccélération;
-        RoueAvantDroite.motorTorque= acceleration;
-        RoueAvantGauche.motorTorque = acceleration;
-        Direction();
-        if (Vector3.Distance(transform.position,PointSuivant ) <=0.1f)
-        {
-            index++;
-            //RoueAvantDroite.motorTorque = 0;
-            //RoueAvantGauche.motorTorque = 0;
-            //RoueAvantGauche.brakeTorque = 100f;
-            //RoueAvantDroite.brakeTorque = 100f;
-            PointSuivant = chemins[index];
-            Debug.Log(1);
-        }
-    }
-    void Direction()
     {
-        Vector3 directionPointSuivant = transform.InverseTransformPoint(PointSuivant);
-        directionPointSuivant /= directionPointSuivant.magnitude;
-        float nouvelleDirection = (directionPointSuivant.x / directionPointSuivant.magnitude);
-        if (nouvelleDirection > 0)
-        {
-            RoueAvantGauche.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (Rayon + (1.5f / 2))) * nouvelleDirection;
-            RoueAvantDroite.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (Rayon - (1.5f / 2))) * nouvelleDirection;
-        }
-        else if (nouvelleDirection < 0)
-        {
-            RoueAvantGauche.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (Rayon - (1.5f / 2))) * nouvelleDirection;
-            RoueAvantDroite.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (Rayon + (1.5f / 2))) * nouvelleDirection;
-        }
-        else
-        {
-            RoueAvantDroite.steerAngle = 0;
-            RoueAvantGauche.steerAngle = 0;
-        }
-
+        Vector3 mouvement = Vector3.Lerp(transform.position, PointSuivant, 0.1f);
+        //Debug.Log(mouvement);
+        
+            //Debug.Log(1);
+       
     }
-    // Update is called once per frame
+    //void Direction()
+    //{
+    //    Vector3 directionPointSuivant = transform.InverseTransformPoint(PointSuivant);
+    //    directionPointSuivant /= directionPointSuivant.magnitude;
+    //    float nouvelleDirection = (directionPointSuivant.x / directionPointSuivant.magnitude);
+    //    if (nouvelleDirection > 0)
+    //    {
+    //        RoueAvantGauche.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (Rayon + (1.5f / 2))) * nouvelleDirection;
+    //        RoueAvantDroite.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (Rayon - (1.5f / 2))) * nouvelleDirection;
+    //    }
+    //    else if (nouvelleDirection < 0)
+    //    {
+    //        RoueAvantGauche.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (Rayon - (1.5f / 2))) * nouvelleDirection;
+    //        RoueAvantDroite.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (Rayon + (1.5f / 2))) * nouvelleDirection;
+    //    }
+    //    else
+    //    {
+    //        RoueAvantDroite.steerAngle = 0;
+    //        RoueAvantGauche.steerAngle = 0;
+    //    }
+
+    //}
+    //// Update is called once per frame
     //void Update()
     //{
     //    Vector3 Départ = gameObject.transform.position;

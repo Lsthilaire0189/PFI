@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DéplacementScript : MonoBehaviour
 {
-    LogitechGSDK.LogiControllerPropertiesData properties;
+    static LogitechGSDK.DIJOYSTATE2ENGINES rec;
     
     [SerializeField] WheelCollider RoueAvantDroite;
     [SerializeField] WheelCollider RoueAvantGauche;
@@ -20,22 +20,22 @@ public class DéplacementScript : MonoBehaviour
     
     
     private void FixedUpdate()
-    {
-        Accélération = ValeurAccélération * Input.GetAxis("Vertical");
-        if (Input.GetKey(KeyCode.Space))
-            ForceFreinage = ValeurForceFreinage;
-        else
-            ForceFreinage = 0f;
-        RoueAvantDroite.motorTorque = Accélération;
-        RoueAvantGauche.motorTorque = Accélération;
-        RoueAvantDroite.brakeTorque = ForceFreinage;
-        RoueAvantGauche.brakeTorque= ForceFreinage;
-        RoueArrièreDroite.brakeTorque = ForceFreinage;
-        RoueArrièreGauche.brakeTorque= ForceFreinage;
+    { 
+    //{
+    //    rec = LogitechGSDK.LogiGetStateUnity(0);
+        
+    //    Accélération = ValeurAccélération * (rec.lY/32760f);
+    //    ForceFreinage = ValeurForceFreinage * (rec.lRz / 32760f);
+    //    RoueAvantDroite.motorTorque = Accélération;
+    //    RoueAvantGauche.motorTorque = Accélération;
+    //    RoueAvantDroite.brakeTorque = ForceFreinage;
+    //    RoueAvantGauche.brakeTorque= ForceFreinage;
+    //    RoueArrièreDroite.brakeTorque = ForceFreinage;
+    //    RoueArrièreGauche.brakeTorque= ForceFreinage;
 
-        Angle = ValeurAngleMaximum * Input.GetAxis("Horizontal");
-        RoueAvantDroite.steerAngle = Angle;
-        RoueAvantGauche.steerAngle = Angle;
+    //    Angle = ValeurAngleMaximum * Input.GetAxis("Horizontal");
+    //    RoueAvantDroite.steerAngle = Angle;
+    //    RoueAvantGauche.steerAngle = Angle;
 
     }
 }
