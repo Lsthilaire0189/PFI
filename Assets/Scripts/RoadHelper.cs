@@ -66,14 +66,20 @@ using UnityEngine;
 				}
 				else if (neighborsDirections.Count == 2)
 				{
-					if (neighborsDirections.Contains(Direction.Up) && neighborsDirections.Contains(Direction.Down) ||
-					    neighborsDirections.Contains(Direction.Right) && neighborsDirections.Contains(Direction.Left))//checks if the road is straight, meaning that
-					//we do not need to implement a corner
+					Destroy(roadDictionary[position]);
+					
+					if (neighborsDirections.Contains(Direction.Right) && neighborsDirections.Contains(Direction.Left))//checks if the road is straight, meaning that
+						//we do not need to implement a corner
 					{
+						roadDictionary[position] = Instantiate(roadStraight, position, Quaternion.Euler(0, 0, 0), transform);
 						continue;
 					}
 					
-					Destroy(roadDictionary[position]);
+					if (neighborsDirections.Contains(Direction.Up) && neighborsDirections.Contains(Direction.Down))
+					{
+						roadDictionary[position] = Instantiate(roadStraight, position, Quaternion.Euler(0, 90, 0), transform);
+						continue;
+					}
 					if (neighborsDirections.Contains(Direction.Up) &&
 					    neighborsDirections.Contains(Direction.Right))
 					{
