@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class DéplacementScript : MonoBehaviour
@@ -21,21 +22,37 @@ public class DéplacementScript : MonoBehaviour
     
     private void FixedUpdate()
     { 
-    //{
-    //    rec = LogitechGSDK.LogiGetStateUnity(0);
         
-    //    Accélération = ValeurAccélération * (rec.lY/32760f);
-    //    ForceFreinage = ValeurForceFreinage * (rec.lRz / 32760f);
-    //    RoueAvantDroite.motorTorque = Accélération;
-    //    RoueAvantGauche.motorTorque = Accélération;
-    //    RoueAvantDroite.brakeTorque = ForceFreinage;
-    //    RoueAvantGauche.brakeTorque= ForceFreinage;
-    //    RoueArrièreDroite.brakeTorque = ForceFreinage;
-    //    RoueArrièreGauche.brakeTorque= ForceFreinage;
+        
+        Accélération = ValeurAccélération*Input.GetAxis("Fire1"); //ValeurAccélération * (rec.lY/32760f);
+        ForceFreinage = ValeurForceFreinage * Input.GetAxis("Fire1");
+        RoueAvantDroite.motorTorque = Accélération;
+        RoueAvantGauche.motorTorque = Accélération;
+        RoueAvantDroite.brakeTorque = ForceFreinage;
+        RoueAvantGauche.brakeTorque= ForceFreinage;
+        RoueArrièreDroite.brakeTorque = ForceFreinage;
+        RoueArrièreGauche.brakeTorque= ForceFreinage;
 
-    //    Angle = ValeurAngleMaximum * Input.GetAxis("Horizontal");
-    //    RoueAvantDroite.steerAngle = Angle;
-    //    RoueAvantGauche.steerAngle = Angle;
+        Angle = ValeurAngleMaximum * Input.GetAxis("Horizontal");
+        RoueAvantDroite.steerAngle = Angle;
+        RoueAvantGauche.steerAngle = Angle;
+        
 
     }
+
+    public static float GetAxis(string axisName)
+    {
+        rec = LogitechGSDK.LogiGetStateUnity(0);
+        switch (axisName)
+        {
+            case "Steering Horizontal" : return rec.lX / 32760f;
+            case "Gas Vertical": return rec.lY / -32760f;
+            case "Clutch Vertical" : return rec.rglSlider[0] / -32760f;
+            case "Brake Vertical" : return rec.lRz / -32760f;
+        }
+
+        return 0f;
+    }
+    
+    
 }
