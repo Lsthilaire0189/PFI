@@ -19,8 +19,9 @@ public class AIDéplacement : MonoBehaviour
     public float Angle = 15f;
     public float Rayon = .1f;
     Vector3 PointSuivant;
-    int direction;
+    bool Initiation;
     int index;
+    float time = 0;
     [SerializeField] GameObject o;
     // Start is called before the first frame update
     void Awake()
@@ -30,16 +31,28 @@ public class AIDéplacement : MonoBehaviour
         destination = creerCarte.Destination.transform.position;
         chemins = creerCarte.chemin;
         PointSuivant = chemins[index];
-        Instantiate(o, PointSuivant, Quaternion.identity);
+        Initiation = true;
         VérifierDirection();
+        //Instantiate(o, PointSuivant, Quaternion.identity);
+
     }
     private void FixedUpdate()
     {
-        Vector3 mouvement = Vector3.Lerp(transform.position, PointSuivant, 0.1f);
+        time += Time.deltaTime;
+        float t = time / 50;
+        t = t * t * (3f - 2f * t);
+        transform.position = Vector3.Lerp(transform.position, PointSuivant, t);
+        if (Vector3.Magnitude(PointSuivant - transform.position) < 0.01f)
+        {
+            index++;
+            PointSuivant = chemins[index];
+            VérifierDirection();
+            time = 0;
+        }
         //Debug.Log(mouvement);
-        
-            //Debug.Log(1);
-       
+
+        //Debug.Log(1);
+
     }
     //void Direction()
     //{
@@ -152,36 +165,54 @@ public class AIDéplacement : MonoBehaviour
 
 
 
-    int VérifierDirection()
+    void VérifierDirection()
     {
 
         if (transform.position.z < PointSuivant.z)
         {
-            transform.position += new Vector3(0.1f, 0, 0);
+            if (Initiation)
+            {
+                transform.position += new Vector3(0.1f, 0, 0);
+                Initiation = false;
+            }
+
+            PointSuivant += new Vector3(0.1f, 0, 0);
             Debug.Log(0);
-            return 0;
+
         }
         if (transform.position.z > PointSuivant.z)
         {
-            transform.position -= new Vector3(0.1f, 0, 0);
-            transform.Rotate(0, 180, 0);
+            if (Initiation)
+            {
+                transform.position -= new Vector3(0.1f, 0, 0);
+                transform.Rotate(0, 180, 0);
+                Initiation = false;
+            }
+            PointSuivant -= new Vector3(0.1f, 0, 0);
             Debug.Log(1);
-            return 1;
         }
-        if (transform.position.x <PointSuivant.x)
+        if (transform.position.x < PointSuivant.x)
         {
-            transform.position -= new Vector3(0, 0, 0.1f);
-            transform.Rotate(0, 90, 0);
+            if (Initiation)
+            {
+                transform.position -= new Vector3(0, 0, 0.1f);
+                transform.Rotate(0, 90, 0);
+                Initiation = false;
+            }
+            PointSuivant -= new Vector3(0, 0, 0.1f);
             Debug.Log(2);
-            return 2;
+
         }
         if (transform.position.x > PointSuivant.x)
         {
-            transform.position += new Vector3(0, 0, 0.1f);
-            transform.Rotate(0,-90,0);
+            if (Initiation)
+            {
+                transform.position += new Vector3(0, 0, 0.1f);
+                transform.Rotate(0, -90, 0);
+                Initiation = false;
+            }
+            PointSuivant += new Vector3(0, 0, 0.1f);
             Debug.Log(3);
-            return 3;
         }
-        return direction;
     }
 }

@@ -25,6 +25,7 @@ class Noeud
 
 public class CréerCarte : MonoBehaviour
 {
+    [SerializeField] GameObject boule;
     [SerializeField] GameObject roadHelper;
     public GameObject[,] carte;
     List<GameObject> list;
@@ -55,8 +56,9 @@ public class CréerCarte : MonoBehaviour
             int y = (int)item.transform.position.z + 50;
             carte[x, y] = item;
         }
+        
         TrouverDestination();
-        AlgoDijkstra(); 
+        AlgoDijkstra();
         GameObject auto = Instantiate(voiture,Départ.transform.position+Vector3.up, Quaternion.identity,gameObject.transform);
     }
     void TrouverDestination()
