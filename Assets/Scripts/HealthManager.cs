@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-    public int healthPoints = 10;
-    //private BoxCollider 
-    
+    [SerializeField] public int pointsVie = 10;
+    [SerializeField] public GameObject PointFaible;
+
 }

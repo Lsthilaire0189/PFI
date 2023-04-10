@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DéplacementScript : MonoBehaviour
@@ -18,25 +19,34 @@ public class DéplacementScript : MonoBehaviour
     private float Accélération = 0f;
     private float ForceFreinage = 0f;
     private float Angle = 0f;
+
+    public bool peutAvancer;
     
     
     private void FixedUpdate()
-    { 
-        
-        
-        Accélération = ValeurAccélération*Input.GetAxis("Fire1"); //ValeurAccélération * (rec.lY/32760f);
-        ForceFreinage = ValeurForceFreinage * Input.GetAxis("Fire1");
-        RoueAvantDroite.motorTorque = Accélération;
-        RoueAvantGauche.motorTorque = Accélération;
-        RoueAvantDroite.brakeTorque = ForceFreinage;
-        RoueAvantGauche.brakeTorque= ForceFreinage;
-        RoueArrièreDroite.brakeTorque = ForceFreinage;
-        RoueArrièreGauche.brakeTorque= ForceFreinage;
+    {
 
-        Angle = ValeurAngleMaximum * Input.GetAxis("Horizontal");
-        RoueAvantDroite.steerAngle = Angle;
-        RoueAvantGauche.steerAngle = Angle;
-        
+        if (peutAvancer == true)
+        {
+            Accélération = ValeurAccélération * Input.GetAxis("Vertical"); //ValeurAccélération * (rec.lY/32760f);
+            ForceFreinage = ValeurForceFreinage * Input.GetAxis("Fire1");
+            RoueAvantDroite.motorTorque = Accélération;
+            RoueAvantGauche.motorTorque = Accélération;
+            RoueAvantDroite.brakeTorque = ForceFreinage;
+            RoueAvantGauche.brakeTorque = ForceFreinage;
+            RoueArrièreDroite.brakeTorque = ForceFreinage;
+            RoueArrièreGauche.brakeTorque = ForceFreinage;
+
+            Angle = ValeurAngleMaximum * Input.GetAxis("Horizontal");
+            RoueAvantDroite.steerAngle = Angle;
+            RoueAvantGauche.steerAngle = Angle;
+        }
+        else
+        {
+            RoueAvantDroite.motorTorque = 0;
+            RoueAvantGauche.motorTorque = 0;
+        }
+
 
     }
 

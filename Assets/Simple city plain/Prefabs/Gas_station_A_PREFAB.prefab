@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33418271920073916}
   - component: {fileID: 23524285103523870}
   - component: {fileID: 64962537987607460}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gas_station_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4888449184639514}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gas_station_A_PREFAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,6 +158,14 @@ PrefabInstance:
     - target: {fileID: 1256093442512822, guid: adb55fed5a5012b458c398a0b618390c, type: 3}
       propertyPath: m_Name
       value: Street 4 Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256093442512822, guid: adb55fed5a5012b458c398a0b618390c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802244790182692, guid: adb55fed5a5012b458c398a0b618390c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4285674003731666, guid: adb55fed5a5012b458c398a0b618390c, type: 3}
       propertyPath: m_LocalScale.x
@@ -249,9 +257,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4888449184639514}
     m_Modifications:
+    - target: {fileID: 1328731249232616168, guid: 986c3d0d840c193499421d18558ecada, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1335566686338025089, guid: 986c3d0d840c193499421d18558ecada, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742575398038681865, guid: 986c3d0d840c193499421d18558ecada, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7117034815808417400, guid: 986c3d0d840c193499421d18558ecada, type: 3}
       propertyPath: m_Name
       value: Fuel Pump 3D
+      objectReference: {fileID: 0}
+    - target: {fileID: 7117034815808417400, guid: 986c3d0d840c193499421d18558ecada, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7606326717747655874, guid: 986c3d0d840c193499421d18558ecada, type: 3}
       propertyPath: m_RootOrder
@@ -309,6 +333,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7637023708695582098, guid: 986c3d0d840c193499421d18558ecada, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 986c3d0d840c193499421d18558ecada, type: 3}
 --- !u!1 &6097244459555100143 stripped
@@ -328,7 +356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995728559b4f9564385bf24dbce6bf29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTrigFunction: 1
   amplitude: 0.015
   stepPerSecond: 3
 --- !u!114 &3620304656589956515

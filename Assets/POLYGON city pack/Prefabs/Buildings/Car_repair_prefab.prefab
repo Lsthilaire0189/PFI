@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33609946655254684}
   - component: {fileID: 23835673164190702}
   - component: {fileID: 64270791279655906}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wrench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 33345716325036670}
   - component: {fileID: 23607379949995260}
   - component: {fileID: 64310221988388290}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Car_repair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4197068249736730}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Car_repair_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4276166557813674}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wrench prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 5927399041489130140}
   - component: {fileID: 5195617599343287479}
   - component: {fileID: 5621426349836607078}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: double_open_end_wrench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,6 +387,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995728559b4f9564385bf24dbce6bf29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTrigFunction: 1
   amplitude: 0.015
   stepPerSecond: 3
