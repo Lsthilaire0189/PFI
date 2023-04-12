@@ -49,124 +49,12 @@ public class AIDéplacement : MonoBehaviour
             VérifierDirection();
             time = 0;
         }
-        //Debug.Log(mouvement);
-
-        //Debug.Log(1);
-
     }
-    //void Direction()
-    //{
-    //    Vector3 directionPointSuivant = transform.InverseTransformPoint(PointSuivant);
-    //    directionPointSuivant /= directionPointSuivant.magnitude;
-    //    float nouvelleDirection = (directionPointSuivant.x / directionPointSuivant.magnitude);
-    //    if (nouvelleDirection > 0)
-    //    {
-    //        RoueAvantGauche.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (Rayon + (1.5f / 2))) * nouvelleDirection;
-    //        RoueAvantDroite.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (Rayon - (1.5f / 2))) * nouvelleDirection;
-    //    }
-    //    else if (nouvelleDirection < 0)
-    //    {
-    //        RoueAvantGauche.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (Rayon - (1.5f / 2))) * nouvelleDirection;
-    //        RoueAvantDroite.steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (Rayon + (1.5f / 2))) * nouvelleDirection;
-    //    }
-    //    else
-    //    {
-    //        RoueAvantDroite.steerAngle = 0;
-    //        RoueAvantGauche.steerAngle = 0;
-    //    }
-
-    //}
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    Vector3 Départ = gameObject.transform.position;
-    //    int i = 1;
-    //    PointSuivant = chemins[i];
-    //    direction = VérifierDirection(); // 0 nord, 1 sud, 2 est, 3 ouest
-    //    while (transform.position != destination)
-    //    {
-    //        int directionSuivante = VérifierDirection();
-    //        if (direction != directionSuivante)
-    //        {
-    //            if (direction == 0)
-    //            {
-    //                if (directionSuivante == 2)
-    //                {
-    //                    RoueAvantDroite.steerAngle = Angle;
-    //                    RoueAvantGauche.steerAngle = Angle;
-    //                }
-    //                else
-    //                {
-    //                    RoueAvantDroite.steerAngle = -Angle;
-    //                    RoueAvantGauche.steerAngle = -Angle;
-    //                }
-    //            }
-    //            if (direction == 1)
-    //            {
-    //                if (directionSuivante == 3)
-    //                {
-    //                    RoueAvantDroite.steerAngle = Angle;
-    //                    RoueAvantGauche.steerAngle = Angle;
-    //                }
-    //                else
-    //                {
-    //                    RoueAvantDroite.steerAngle = -Angle;
-    //                    RoueAvantGauche.steerAngle = -Angle;
-    //                }
-    //            }
-    //            if (direction == 2)
-    //            {
-    //                if (directionSuivante == 0)
-    //                {
-    //                    RoueAvantDroite.steerAngle = Angle;
-    //                    RoueAvantGauche.steerAngle = Angle;
-    //                }
-    //                else
-    //                {
-    //                    RoueAvantDroite.steerAngle = -Angle;
-    //                    RoueAvantGauche.steerAngle = -Angle;
-    //                }
-    //            }
-    //            if (direction == 3)
-    //            {
-    //                if (directionSuivante == 1)
-    //                {
-    //                    RoueAvantDroite.steerAngle = Angle;
-    //                    RoueAvantGauche.steerAngle = Angle;
-    //                }
-    //                else
-    //                {
-    //                    RoueAvantDroite.steerAngle = -Angle;
-    //                    RoueAvantGauche.steerAngle = -Angle;
-    //                }
-    //            }
-    //        }
-    //        if (transform.position.x == PointSuivant.x || transform.position.z == PointSuivant.z)
-    //        {
-    //            RoueAvantDroite.steerAngle = 0;
-    //            RoueAvantGauche.steerAngle = 0;
-    //        }
-    //        if (transform.position != PointSuivant)
-    //        {
-    //            float Accélération = ValeurAccélération * 0.5f;
-    //            float ForceFreinage = 0;
-    //            RoueAvantDroite.motorTorque = Accélération;
-    //            RoueAvantGauche.motorTorque = Accélération;
-    //            RoueAvantDroite.brakeTorque = ForceFreinage;
-    //            RoueAvantGauche.brakeTorque = ForceFreinage;
-    //            RoueArrièreDroite.brakeTorque = ForceFreinage;
-    //            RoueArrièreGauche.brakeTorque = ForceFreinage;
-    //        }
-    //        else
-    //        {
-    //            PointSuivant = chemins[i + 1];
-    //        }
-    //    }
-
 
 
     void VérifierDirection()
     {
+        Debug.Log(PointSuivant);
 
         if (transform.position.z < PointSuivant.z)
         {
@@ -174,6 +62,10 @@ public class AIDéplacement : MonoBehaviour
             {
                 transform.position += new Vector3(0.1f, 0, 0);
                 Initiation = false;
+            }
+            if (Mathf.Abs(chemins[index + 1].x - PointSuivant.x) > 0.90f)
+            {
+                PointSuivant  -= new Vector3(0, 0, 0.5f);
             }
 
             PointSuivant += new Vector3(0.1f, 0, 0);
@@ -188,6 +80,10 @@ public class AIDéplacement : MonoBehaviour
                 transform.Rotate(0, 180, 0);
                 Initiation = false;
             }
+            if (Mathf.Abs(chemins[index + 1].x - PointSuivant.x)>0.90f)
+            { 
+                PointSuivant += new Vector3(0, 0, 0.5f);
+            }
             PointSuivant -= new Vector3(0.1f, 0, 0);
             Debug.Log(1);
         }
@@ -198,6 +94,10 @@ public class AIDéplacement : MonoBehaviour
                 transform.position -= new Vector3(0, 0, 0.1f);
                 transform.Rotate(0, 90, 0);
                 Initiation = false;
+            }
+            if (Mathf.Abs(chemins[index + 1].z - PointSuivant.z) > 0.90f)
+            {
+                PointSuivant -= new Vector3(0.5f, 0, 0);
             }
             PointSuivant -= new Vector3(0, 0, 0.1f);
             Debug.Log(2);
@@ -210,6 +110,10 @@ public class AIDéplacement : MonoBehaviour
                 transform.position += new Vector3(0, 0, 0.1f);
                 transform.Rotate(0, -90, 0);
                 Initiation = false;
+            }
+            if (Mathf.Abs(chemins[index + 1].z - PointSuivant.z) > 0.90f)
+            {
+                PointSuivant += new Vector3(0.5f, 0, 0);
             }
             PointSuivant += new Vector3(0, 0, 0.1f);
             Debug.Log(3);
