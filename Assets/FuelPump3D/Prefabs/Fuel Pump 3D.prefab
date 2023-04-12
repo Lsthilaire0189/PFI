@@ -190,8 +190,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5742575398038681865}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: 12.2, z: 0}
+  m_LocalScale: {x: -0.06798822, y: -0.06798822, z: -0.06798822}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6742162056217820367}
@@ -211,6 +211,8 @@ GameObject:
   - component: {fileID: 7606326717747655874}
   - component: {fileID: 7927919349423412011}
   - component: {fileID: 7927919349423412010}
+  - component: {fileID: 4458181296305714187}
+  - component: {fileID: 3975021629982627546}
   m_Layer: 8
   m_Name: Fuel Pump 3D
   m_TagString: Untagged
@@ -225,9 +227,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7117034815808417400}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.4717, y: 1.4886, z: 1.1182}
+  m_LocalScale: {x: -0.089789614, y: -0.089789614, z: -0.089789614}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2542495739512837072}
@@ -261,8 +263,36 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.87094, y: 16.515419, z: 6.7748013}
-  m_Center: {x: -0.7827306, y: 7.7577095, z: -0.2783003}
+  m_Size: {x: 0.5434029, y: 1.0819768, z: 0.42779538}
+  m_Center: {x: 0.02380791, y: 11.66623, z: 0.026056115}
+--- !u!114 &4458181296305714187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7117034815808417400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c35c2d0182c29648a26c3d173f147a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationParSeconde: {x: 0, y: 50, z: 0}
+  space: 0
+--- !u!114 &3975021629982627546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7117034815808417400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995728559b4f9564385bf24dbce6bf29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.015
+  stepPerSecond: 3
 --- !u!1 &7637023708695582098
 GameObject:
   m_ObjectHideFlags: 0

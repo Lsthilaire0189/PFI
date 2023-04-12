@@ -25,17 +25,32 @@ public class DéplacementScript : MonoBehaviour
     
     private void FixedUpdate()
     {
-
+        rec = LogitechGSDK.LogiGetStateUnity(0);
         if (peutAvancer == true)
         {
-            Accélération = ValeurAccélération * Input.GetAxis("Vertical"); //ValeurAccélération * (rec.lY/32760f);
-            ForceFreinage = ValeurForceFreinage * Input.GetAxis("Fire1");
-            RoueAvantDroite.motorTorque = Accélération;
-            RoueAvantGauche.motorTorque = Accélération;
-            RoueAvantDroite.brakeTorque = ForceFreinage;
-            RoueAvantGauche.brakeTorque = ForceFreinage;
-            RoueArrièreDroite.brakeTorque = ForceFreinage;
-            RoueArrièreGauche.brakeTorque = ForceFreinage;
+            if (rec.lY <= 0)
+            {
+                Accélération =
+                    ValeurAccélération * rec.lY / -32760f; //Input.GetAxis("Vertical"); //ValeurAccélération * (rec.lY/32760f);
+                
+                RoueArrièreDroite.motorTorque += Accélération;
+                RoueArrièreGauche.motorTorque += Accélération;
+                RoueAvantDroite.motorTorque += Accélération;
+                RoueAvantGauche.motorTorque += Accélération;
+                
+            }
+            else
+            {
+                RoueArrièreDroite.motorTorque -= 0.03f;
+                RoueArrièreGauche.motorTorque -= 0.03f;
+                RoueAvantDroite.motorTorque -= 0.03f;
+                RoueAvantGauche.motorTorque -= 0.03f;
+            }
+            /*ForceFreinage = ValeurForceFreinage * rec.lRz;
+                             RoueAvantDroite.brakeTorque = ForceFreinage;
+                             RoueAvantGauche.brakeTorque = ForceFreinage;
+                             RoueArrièreDroite.brakeTorque = ForceFreinage;
+                             RoueArrièreGauche.brakeTorque = ForceFreinage;*/
 
             Angle = ValeurAngleMaximum * Input.GetAxis("Horizontal");
             RoueAvantDroite.steerAngle = Angle;
@@ -45,12 +60,14 @@ public class DéplacementScript : MonoBehaviour
         {
             RoueAvantDroite.motorTorque = 0;
             RoueAvantGauche.motorTorque = 0;
+            RoueArrièreDroite.motorTorque = 0;
+            RoueArrièreGauche.motorTorque = 0;
         }
 
 
     }
 
-    public static float GetAxis(string axisName)
+   /* public static float GetAxis(string axisName)
     {
         rec = LogitechGSDK.LogiGetStateUnity(0);
         switch (axisName)
@@ -63,6 +80,6 @@ public class DéplacementScript : MonoBehaviour
 
         return 0f;
     }
-    
+    */
     
 }
