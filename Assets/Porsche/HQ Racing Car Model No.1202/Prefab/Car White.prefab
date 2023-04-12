@@ -880,6 +880,10 @@ GameObject:
   - component: {fileID: 783293583558043536}
   - component: {fileID: 9221356562852882615}
   - component: {fileID: 1655626801271144861}
+  - component: {fileID: 6782169483560248213}
+  - component: {fileID: 763853570213764987}
+  - component: {fileID: 9058294899025393823}
+  - component: {fileID: 3918598541990724034}
   - component: {fileID: 5979209894754378154}
   m_Layer: 0
   m_Name: Car White
@@ -969,6 +973,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsVie: 10
   PointFaible: {fileID: 2840792927908224597}
+--- !u!114 &6782169483560248213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140775109633734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba2ba02880cf9104ba60554781acfb43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sonCollisionPolice: {fileID: 0}
+  sonCollisionObjet: {fileID: 0}
+--- !u!114 &763853570213764987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140775109633734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c025399d644a34fb59bb82fe97cca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qtEssence: 100
+--- !u!114 &9058294899025393823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140775109633734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f12efcc2e6931dd478b9f3be4ada7299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3918598541990724034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140775109633734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5028c5847b531e04783917679bb679d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVieRegen: 7
+  essenceRegen: 10
 --- !u!54 &5979209894754378154
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4244,7 +4301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3438145280300912206}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5167, y: 0.623, z: -0.017}
+  m_LocalPosition: {x: 1.5167, y: 1.0312, z: -0.136}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
