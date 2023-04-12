@@ -56,7 +56,7 @@ public class AIDéplacement : MonoBehaviour
     {
         Debug.Log(PointSuivant);
 
-        if (transform.position.z < PointSuivant.z)
+        if ((PointSuivant.z-transform.position.z)>0.7f) // vérifier la direction
         {
             if (Initiation)
             {
@@ -72,7 +72,7 @@ public class AIDéplacement : MonoBehaviour
             Debug.Log(0);
 
         }
-        if (transform.position.z > PointSuivant.z)
+        if ((PointSuivant.z - transform.position.z) < -0.7f)
         {
             if (Initiation)
             {
@@ -87,7 +87,7 @@ public class AIDéplacement : MonoBehaviour
             PointSuivant -= new Vector3(0.1f, 0, 0);
             Debug.Log(1);
         }
-        if (transform.position.x < PointSuivant.x)
+        if ((PointSuivant.x - transform.position.x) > 0.7f)
         {
             if (Initiation)
             {
@@ -103,7 +103,7 @@ public class AIDéplacement : MonoBehaviour
             Debug.Log(2);
 
         }
-        if (transform.position.x > PointSuivant.x)
+        if ((PointSuivant.x - transform.position.x) < - 0.7f)
         {
             if (Initiation)
             {
