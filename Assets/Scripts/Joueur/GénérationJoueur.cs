@@ -1,11 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class GénérationJoueur : MonoBehaviour
 {
     [SerializeField] Transform CaméraEmplacement;
     GameObject Joueur;
+    DéplacementScript déplacementScript;
+    EssenceManager essenceManager;
+    CollisionOutilsManager collisionOutilsManager;
+
+    public void Awake()
+    {
+        déplacementScript = gameObject.GetComponent<DéplacementScript>();
+        essenceManager = gameObject.GetComponent<EssenceManager>();
+        collisionOutilsManager = gameObject.GetComponent<CollisionOutilsManager>(); 
+    }
+    public void InitierSpécifications(int UpgradeAccélération, int UpgradeVie, int UpgradeEssence, int UpgradeVitesseMaximale)
+    {
+        déplacementScript.ValeurAccélération += UpgradeAccélération;
+        déplacementScript.VitesseMaximum += UpgradeVitesseMaximale;
+    }
 
     public void AssocierCamera(GameObject XRorigin)
     {

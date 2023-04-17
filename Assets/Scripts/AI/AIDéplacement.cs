@@ -23,6 +23,7 @@ public class AIDéplacement : MonoBehaviour
     int index;
     float time = 0;
     [SerializeField] GameObject o;
+    float t;
     // Start is called before the first frame update
     void Awake()
     {
@@ -39,7 +40,7 @@ public class AIDéplacement : MonoBehaviour
     private void FixedUpdate()
     {
         time += Time.deltaTime;
-        float t = time / 50;
+        t = time / 300;
         t = t * t * (3f - 2f * t);
         transform.position = Vector3.Lerp(transform.position, PointSuivant, t);
         if (Vector3.Magnitude(PointSuivant - transform.position) < 0.01f)

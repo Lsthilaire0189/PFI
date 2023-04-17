@@ -22,6 +22,11 @@ public class SceneManagerScript : MonoBehaviour
     {
         Joueur = Instantiate(voiture1, Vector3.zero, Quaternion.identity, gameObject.transform);
         Joueur.GetComponent<GénérationJoueur>().AssocierCamera(XrOrigin);
+        Joueur.GetComponent<GénérationJoueur>().InitierSpécifications(2, 2, 2, 2);
+    }
+    public void InstantierNPC()
+    {
+
     }
     // Update is called once per frame
     void Update()
