@@ -2260,7 +2260,7 @@ MonoBehaviour:
   environnementScript: {fileID: 455497246}
   roadHelper: {fileID: 1592819122}
   structureHelper: {fileID: 1526301823}
-  argentManager: {fileID: 219302984}
+  argentInitiateur: {fileID: 219302984}
 --- !u!4 &1606614014
 Transform:
   m_ObjectHideFlags: 0
