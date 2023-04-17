@@ -13,13 +13,21 @@ public class CollisionOutilsManager : MonoBehaviour
     
     private EssenceManager EssenceRestante;
     private HealthManager voitureHP;
-    private static int maxHP;
+    
+    public int maxHP;
+
+    public int maxEssence;
+
+    public AudioSource sonEssence;
+    public AudioSource sonGainHP;
 
     void Awake()
     {
         EssenceRestante = GetComponent<EssenceManager>();
         voitureHP = GetComponent<HealthManager>();
         maxHP = voitureHP.pointsVie;
+        maxEssence = EssenceRestante.qtEssence;
+
     }
     //fix les colliders aussi
 
@@ -35,16 +43,23 @@ public class CollisionOutilsManager : MonoBehaviour
             {
                 voitureHP.pointsVie += maxHP - voitureHP.pointsVie;
             }
+            sonGainHP.Play();
 
             Destroy(other.gameObject);
         }
 
         if (other.gameObject.layer == gasLayer)
         {
-            
-            EssenceRestante.qtEssence += essenceRegen;
-            
-            
+            if (EssenceRestante.qtEssence + essenceRegen <= maxEssence)
+            {
+                EssenceRestante.qtEssence += essenceRegen;
+            }
+            else
+            {
+                EssenceRestante.qtEssence += maxEssence - essenceRegen;
+            }
+
+            sonEssence.Play();
             
             Destroy(other.gameObject);
         }
