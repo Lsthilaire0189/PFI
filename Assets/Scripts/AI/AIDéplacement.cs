@@ -47,7 +47,6 @@ public class AIDéplacement : MonoBehaviour
             index++;
             PointSuivant = chemins[index];
             VérifierDirection();
-            time = 0;
         }
     }
 
@@ -66,6 +65,7 @@ public class AIDéplacement : MonoBehaviour
             if (Mathf.Abs(chemins[index + 1].x - PointSuivant.x) > 0.90f)
             {
                 PointSuivant  -= new Vector3(0, 0, 0.5f);
+                time = 0;
             }
 
             PointSuivant += new Vector3(0.1f, 0, 0);
@@ -83,6 +83,7 @@ public class AIDéplacement : MonoBehaviour
             if (Mathf.Abs(chemins[index + 1].x - PointSuivant.x)>0.90f)
             { 
                 PointSuivant += new Vector3(0, 0, 0.5f);
+                time = 0;
             }
             PointSuivant -= new Vector3(0.1f, 0, 0);
             Debug.Log(1);
@@ -98,6 +99,7 @@ public class AIDéplacement : MonoBehaviour
             if (Mathf.Abs(chemins[index + 1].z - PointSuivant.z) > 0.90f)
             {
                 PointSuivant -= new Vector3(0.5f, 0, 0);
+                time = 0;
             }
             PointSuivant -= new Vector3(0, 0, 0.1f);
             Debug.Log(2);
@@ -114,6 +116,7 @@ public class AIDéplacement : MonoBehaviour
             if (Mathf.Abs(chemins[index + 1].z - PointSuivant.z) > 0.90f)
             {
                 PointSuivant += new Vector3(0.5f, 0, 0);
+                time = 0;
             }
             PointSuivant += new Vector3(0, 0, 0.1f);
             Debug.Log(3);
