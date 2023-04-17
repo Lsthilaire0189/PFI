@@ -15,14 +15,11 @@ public class DegatsManager : MonoBehaviour
     private HealthManager voitureHP;
 
     private int BatimentLayer = 9;
-    
-    private DéplacementScript voitureAvancer;
 
 
     private void Awake()
     {
         voitureHP = GetComponent<HealthManager>();
-        voitureAvancer = GetComponent<DéplacementScript>();
         nombreDegatsMax = nombreDegatsReg + 3;
     }
 

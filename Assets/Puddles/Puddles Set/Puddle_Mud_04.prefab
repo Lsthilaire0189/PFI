@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
+  - component: {fileID: -661716750558392910}
   m_Layer: 0
   m_Name: Puddle_Mud_04
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -0.6600428, y: 0.25366032, z: 0.25366032, w: 0.6600428}
-  m_LocalPosition: {x: 0.005, y: -0.016, z: 0.024}
+  m_LocalPosition: {x: 0.005, y: -0.021, z: 0.024}
   m_LocalScale: {x: 0.04245932, y: 0.07981897, z: 0.043217786}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-661716750558392910
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 13400000, guid: cf7c025b3c6ecdc40b85af6e76af56a1, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 28cf049bfe29c0046bacb7c402d0d2e9, type: 3}

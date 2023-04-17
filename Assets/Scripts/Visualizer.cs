@@ -13,6 +13,8 @@ using UnityEngine;
 
         public RoadHelper roadHelper;
         public StructureHelper structureHelper;
+
+        public ArgentSpawner argentInitiateur;
         
         private int length = 6;
         private float angle = 90;
@@ -95,6 +97,8 @@ using UnityEngine;
             roadHelper.FixRoad();
             structureHelper.PlaceStructureAroundRoad(roadHelper.GetRoadPositions());
             environnementScript.InstancierEnvironnement();
+            argentInitiateur.InstatierMonnaies();
+            
             var spline = new Circuit(); 
 
         }

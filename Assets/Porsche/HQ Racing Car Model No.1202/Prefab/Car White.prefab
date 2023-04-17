@@ -877,6 +877,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4150188024132368}
   - component: {fileID: 4544282430296336337}
+  - component: {fileID: 5979209894754378154}
   - component: {fileID: 783293583558043536}
   - component: {fileID: 9221356562852882615}
   - component: {fileID: 1655626801271144861}
@@ -884,7 +885,6 @@ GameObject:
   - component: {fileID: 763853570213764987}
   - component: {fileID: 9058294899025393823}
   - component: {fileID: 3918598541990724034}
-  - component: {fileID: 5979209894754378154}
   m_Layer: 0
   m_Name: Car White
   m_TagString: Untagged
@@ -900,8 +900,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140775109633734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.047915634, y: 0.047915634, z: 0.047915634}
+  m_LocalPosition: {x: -0.009163, y: -0.0034669, z: -0.00098706}
+  m_LocalScale: {x: 0.05299948, y: 0.05299948, z: 0.05299948}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4671988807695900}
@@ -930,10 +930,26 @@ MonoBehaviour:
   RoueAvantGauche: {fileID: 7518647108432024187}
   "RoueArri\xE8reDroite": {fileID: 5303061791505333738}
   "RoueArri\xE8reGauche": {fileID: 1169666349733410703}
-  "ValeurAcc\xE9l\xE9ration": 0.12
-  ValeurForceFreinage: 2
+  "ValeurAcc\xE9l\xE9ration": 0.05
+  ValeurForceFreinage: 0.2
   ValeurAngleMaximum: 15
   peutAvancer: 1
+--- !u!54 &5979209894754378154
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140775109633734}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &783293583558043536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1026,22 +1042,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxVieRegen: 7
   essenceRegen: 10
---- !u!54 &5979209894754378154
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1140775109633734}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1158161439659554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,7 +1649,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335608644146872}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.8029554, y: 1.4793, z: 0.637}
+  m_LocalPosition: {x: 1.8029554, y: 1.51, z: 0.637}
   m_LocalScale: {x: 1, y: 0.99484754, z: 0.78428996}
   m_ConstrainProportionsScale: 0
   m_Children:
