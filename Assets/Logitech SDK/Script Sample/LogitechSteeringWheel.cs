@@ -86,7 +86,7 @@ public class LogitechSteeringWheel : MonoBehaviour
             actualState += "x-axis rotation :" + rec.lRx + "\n";
             actualState += "y-axis rotation :" + rec.lRy + "\n";
             actualState += "z-axis rotation :" + rec.lRz + "\n";
-            actualState += "extra axes positions 1 :" + rec.rglSlider[0]+ "\n";
+            actualState += "extra axes positions 1 :" + rec.rglSlider[0] + "\n";
             actualState += "extra axes positions 2 :" + rec.rglSlider[1] + "\n";
             switch (rec.rgdwPOV[0])
             {
@@ -147,6 +147,8 @@ public class LogitechSteeringWheel : MonoBehaviour
             else if (shifterTipe == 0) shifterString = "Sequential";
             else shifterString = "Unknown";
             actualState += "\nSHIFTER MODE:" + shifterString;
+
+
 
 
             // FORCES AND EFFECTS 

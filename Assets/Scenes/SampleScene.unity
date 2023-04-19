@@ -1424,12 +1424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a263835ec997a594eb3e0bc708aea051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boule: {fileID: 0}
-  roadHelper: {fileID: 1592819121}
-  Destination: {fileID: 0}
-  chemin: []
-  voiture: {fileID: 963847260374479469, guid: fb397a507ec6bea4699cc33654426f29, type: 3}
-  PointSuivant: {fileID: 0}
+  list: []
 --- !u!114 &1373556473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1445,6 +1440,10 @@ MonoBehaviour:
   voiture1: {fileID: 1140775109633734, guid: c5c77be66559e0141a22b4c3c1ff564d, type: 3}
   voiture2: {fileID: 0}
   XrOrigin: {fileID: 2074261984}
+  RoadHelper: {fileID: 1592819121}
+  NPCVoitures: []
+  ListePoints: []
+  NbAutos: 5
 --- !u!850595691 &1448736882
 LightingSettings:
   m_ObjectHideFlags: 0

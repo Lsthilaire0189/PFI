@@ -19,8 +19,8 @@ public class GestionJoueur : MonoBehaviour
     }
     public void InitierSpécifications(int UpgradeAccélération, int UpgradeVie, int UpgradeEssence, int UpgradeVitesseMaximale)
     {
-        déplacementScript.ValeurAccélération += UpgradeAccélération;
-        déplacementScript.VitesseMaximum += UpgradeVitesseMaximale;
+        //déplacementScript.ValeurAccélération += UpgradeAccélération;
+        //déplacementScript.VitesseMaximum += UpgradeVitesseMaximale;
     }
 
     public void AssocierCamera(GameObject XRorigin)

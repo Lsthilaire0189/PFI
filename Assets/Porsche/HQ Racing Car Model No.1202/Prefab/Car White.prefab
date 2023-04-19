@@ -258,6 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4481277015534938}
+  - component: {fileID: 8025071160818558463}
   m_Layer: 0
   m_Name: Front_Wheel_Right
   m_TagString: Untagged
@@ -286,6 +287,22 @@ Transform:
   m_Father: {fileID: 4150188024132368}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!54 &8025071160818558463
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052776752054656}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1061540344280730
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,12 +895,12 @@ GameObject:
   - component: {fileID: 4150188024132368}
   - component: {fileID: 4544282430296336337}
   - component: {fileID: 783293583558043536}
-  - component: {fileID: 9221356562852882615}
   - component: {fileID: 1655626801271144861}
   - component: {fileID: 6782169483560248213}
   - component: {fileID: 763853570213764987}
   - component: {fileID: 9058294899025393823}
   - component: {fileID: 3918598541990724034}
+  - component: {fileID: 7669336067389017111}
   m_Layer: 0
   m_Name: Car White
   m_TagString: Untagged
@@ -931,6 +948,7 @@ MonoBehaviour:
   "RoueArri\xE8reGauche": {fileID: 1169666349733410703}
   "ValeurAcc\xE9l\xE9ration": 0.6
   ValeurForceFreinage: 8.8
+  VitesseMaximum: 50
   ValeurAngleMaximum: 15
   peutAvancer: 1
 --- !u!114 &783293583558043536
@@ -946,18 +964,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   "Cam\xE9raEmplacement": {fileID: 576900304846021657}
---- !u!114 &9221356562852882615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1140775109633734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3047a8618a80261439a21993d26653a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1655626801271144861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1029,6 +1035,18 @@ MonoBehaviour:
   maxEssence: 15
   sonEssence: {fileID: 0}
   sonGainHP: {fileID: 0}
+--- !u!114 &7669336067389017111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140775109633734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3047a8618a80261439a21993d26653a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1158161439659554
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,6 +3204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4904250320982156}
+  - component: {fileID: 6806675120231848682}
   m_Layer: 0
   m_Name: Rear_Wheel_Right
   m_TagString: Untagged
@@ -3214,6 +3233,22 @@ Transform:
   m_Father: {fileID: 4150188024132368}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!54 &6806675120231848682
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716743216474884}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1718301642403296
 GameObject:
   m_ObjectHideFlags: 0
@@ -4026,6 +4061,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4914440319102924}
+  - component: {fileID: 5580835341749122400}
   m_Layer: 0
   m_Name: Front_Wheel_Left
   m_TagString: Untagged
@@ -4054,6 +4090,22 @@ Transform:
   m_Father: {fileID: 4150188024132368}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &5580835341749122400
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959165647391022}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1970988390404280
 GameObject:
   m_ObjectHideFlags: 0
@@ -4146,6 +4198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4814253354884854}
+  - component: {fileID: 7691307179598748948}
   m_Layer: 0
   m_Name: Rear_Wheel_Left
   m_TagString: Untagged
@@ -4174,6 +4227,22 @@ Transform:
   m_Father: {fileID: 4150188024132368}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &7691307179598748948
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979609251636308}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2840792927908224597
 GameObject:
   m_ObjectHideFlags: 0

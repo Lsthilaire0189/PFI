@@ -5,7 +5,7 @@ using System.Collections.Specialized;
 using System;
 using System.Text;
 
-public class LogitechGSDK : MonoBehaviour
+public class LogitechGSDK
 {
 
     //ARX CONTROL SDK
@@ -708,6 +708,4 @@ public class LogitechGSDK : MonoBehaviour
 
     [DllImport("LogitechSteeringWheelEnginesWrapper", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
     public static extern bool LogiPlayLeds(int index, float currentRPM, float rpmFirstLedTurnsOn, float rpmRedLine);
-    
-
 }
