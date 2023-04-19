@@ -52,7 +52,8 @@ public class AIDéplacement : MonoBehaviour
     }
 
 
-    void VérifierDirection()
+    void VérifierDirection() // utiliser vecteurs 
+
     {
         Debug.Log(PointSuivant);
 
