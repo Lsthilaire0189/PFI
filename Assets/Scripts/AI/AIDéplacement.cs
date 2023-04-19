@@ -5,40 +5,48 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
+// a faire la rotation utiliser les vecteurs utiliser fonction spéciale juste aux intersectiosn
 public class AIDéplacement : MonoBehaviour
 {
-
-    List<Vector3> chemins;
+    GameObject[,] Carte;
+    List<GameObject> ListePoints;
+    AlgoDeRecherche algoDeRecherche;
+    public List<Vector3> chemins;
+    GameObject Départ, Destination;
     Vector3 destination;
-    [SerializeField] WheelCollider RoueAvantDroite;
-    [SerializeField] WheelCollider RoueAvantGauche;
-    [SerializeField] WheelCollider RoueArrièreDroite;
-    [SerializeField] WheelCollider RoueArrièreGauche;
-    public float ValeurAccélération = 500f;
-    public float ValeurForceFreinage = 300f;
-    public float Angle = 15f;
-    public float Rayon = .1f;
     Vector3 PointSuivant;
-    bool Initiation;
-    int index;
+    bool Initiation = true;
+    int index =1;
     float time = 0;
     [SerializeField] GameObject o;
     float t;
     // Start is called before the first frame update
     void Awake()
     {
-        index = 1;
-        var creerCarte = gameObject.GetComponentInParent<CréerCarte>();
-        destination = creerCarte.Destination.transform.position;
-        chemins = creerCarte.chemin;
+
+        algoDeRecherche = gameObject.GetComponent<AlgoDeRecherche>();
+        SceneManagerScript s = gameObject.GetComponentInParent<SceneManagerScript>();
+        Carte = s.Carte;
+        ListePoints = s.ListePoints;
+        TrouverDestination();
+    }
+    void TrouverDestination()
+    {
+        int dp = UnityEngine.Random.Range(0, ListePoints.Count);
+        int ds = UnityEngine.Random.Range(0, ListePoints.Count);
+        Départ = ListePoints[dp];
+        Destination = ListePoints[ds];
+        transform.position = Départ.transform.position+Vector3.up;
+        destination = Destination.transform.position;
+        chemins = algoDeRecherche.AlgoDijkstra(Carte, Départ, Destination);
         PointSuivant = chemins[index];
-        Initiation = true;
         VérifierDirection();
-        //Instantiate(o, PointSuivant, Quaternion.identity);
+
 
     }
     private void FixedUpdate()
     {
+
         time += Time.deltaTime;
         t = time / 300;
         t = t * t * (3f - 2f * t);
@@ -53,7 +61,6 @@ public class AIDéplacement : MonoBehaviour
 
 
     void VérifierDirection() // utiliser vecteurs 
-
     {
         Debug.Log(PointSuivant);
 
