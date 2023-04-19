@@ -438,6 +438,7 @@ GameObject:
   - component: {fileID: 963847260374642253}
   - component: {fileID: 7389685661551165187}
   - component: {fileID: 1364587057396523832}
+  - component: {fileID: 4874295388055799418}
   m_Layer: 0
   m_Name: CompactCar_Black
   m_TagString: Untagged
@@ -478,14 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2fdff3c9012b7a438188add49302fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoueAvantDroite: {fileID: 363776482292808580}
-  RoueAvantGauche: {fileID: 4717511939273365136}
-  "RoueArri\xE8reDroite": {fileID: 8871659551036024671}
-  "RoueArri\xE8reGauche": {fileID: 1536893939338171565}
-  "ValeurAcc\xE9l\xE9ration": 1
-  ValeurForceFreinage: 2
-  Angle: 15
-  Rayon: 0.1
+  chemins: []
   o: {fileID: 6828970525526731769, guid: e2de968a21f21514292529d18e4ec06a, type: 3}
 --- !u!54 &1364587057396523832
 Rigidbody:
@@ -503,6 +497,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4874295388055799418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963847260374479469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34048034f928ec842891ff965468b331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chemin: []
 --- !u!1 &963847260374479471
 GameObject:
   m_ObjectHideFlags: 0
