@@ -9,7 +9,7 @@ public class SceneManagerScript : MonoBehaviour
     [SerializeField] GameObject XrOrigin;
     [SerializeField] GameObject RoadHelper;
     [SerializeField] List<GameObject> NPCVoitures;
-    CréerCarte créerCarte;
+    CrÃ©erCarte crÃ©erCarte;
     public GameObject[,] Carte;
     public List<GameObject> ListePoints;
     public int NbAutos = 5;
@@ -22,8 +22,8 @@ public class SceneManagerScript : MonoBehaviour
     void Start()
     {
         pointageScript = gameObject.GetComponent<PointageScript>();
-        créerCarte = gameObject.GetComponent<CréerCarte>();
-        StartCoroutine(CréerUneCarte());
+        crÃ©erCarte = gameObject.GetComponent<CrÃ©erCarte>();
+        StartCoroutine(CrÃ©erUneCarte());
         InstantierJoueur();
 
     }
@@ -32,18 +32,18 @@ public class SceneManagerScript : MonoBehaviour
     {
         
     }
-    IEnumerator CréerUneCarte()
+    IEnumerator CrÃ©erUneCarte()
     {
         yield return new WaitForSeconds(.5f);
-        Carte = créerCarte.CréerLaCarte(RoadHelper);
-        ListePoints = créerCarte.list;
+        Carte = crÃ©erCarte.CrÃ©erLaCarte(RoadHelper);
+        ListePoints = crÃ©erCarte.list;
         InstantierNPC();
     }
     void InstantierJoueur()
     {
         Joueur = Instantiate(voiture1, Vector3.zero, Quaternion.identity, gameObject.transform);
         Joueur.GetComponent<GestionJoueur>().AssocierCamera(XrOrigin);
-        Joueur.GetComponent<GestionJoueur>().InitierSpécifications(2, 2, 2, 2);
+        Joueur.GetComponent<GestionJoueur>().InitierSpÃ©cifications(2, 2, 2, 2);
     }
     public void InstantierNPC()
     {
