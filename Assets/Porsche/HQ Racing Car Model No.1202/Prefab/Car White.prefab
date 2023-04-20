@@ -900,7 +900,7 @@ GameObject:
   - component: {fileID: 763853570213764987}
   - component: {fileID: 9058294899025393823}
   - component: {fileID: 3918598541990724034}
-  - component: {fileID: 7669336067389017111}
+  - component: {fileID: 7008134854689267306}
   m_Layer: 0
   m_Name: Car White
   m_TagString: Untagged
@@ -1035,7 +1035,7 @@ MonoBehaviour:
   maxEssence: 15
   sonEssence: {fileID: 0}
   sonGainHP: {fileID: 0}
---- !u!114 &7669336067389017111
+--- !u!114 &7008134854689267306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

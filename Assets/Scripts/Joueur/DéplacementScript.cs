@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DéplacementScript : MonoBehaviour
 {
-    static LogitechGSDK.DIJOYSTATE2ENGINES rec;
+    //static LogitechGSDK.DIJOYSTATE2ENGINES ret;
 
     [SerializeField] WheelCollider RoueAvantDroite;
     [SerializeField] WheelCollider RoueAvantGauche;
@@ -35,7 +31,7 @@ public class DéplacementScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rec = LogitechGSDK
+        LogitechGSDK.DIJOYSTATE2ENGINES ret = LogitechGSDK
             .LogiGetStateUnity(
                 0); //qd on augmente l'acceleration la base du log diminue, puis en meme temps on peut upgrade la vitesse maximale qu'on met dans le if statement
 
@@ -53,10 +49,10 @@ public class DéplacementScript : MonoBehaviour
         
         if (peutAvancer)
         {
-            if (rec.lY is < 32760 and > 0)
+            if (ret.lY is < 32760 and > 0)
             {
                 Accélération =
-                    Mathf.Log(ValeurAccélération * (32760f - rec.lY) / 32760f + 1,
+                    Mathf.Log(ValeurAccélération * (32760f - ret.lY) / 32760f + 1,
                         2); //chercher une fonction qui permet de faire en sorte l'acceleration se fasse graduellement 
 
                 RoueArrièreDroite.motorTorque += Accélération;
@@ -66,9 +62,9 @@ public class DéplacementScript : MonoBehaviour
                 print("case 1 true");
 
             }
-            else if (rec.lY < 0)
+            else if (ret.lY < 0)
             {
-                Accélération = Mathf.Log(ValeurAccélération * (-rec.lY + 32760) / 32760f + 1, 2);
+                Accélération = Mathf.Log(ValeurAccélération * (-ret.lY + 32760) / 32760f + 1, 2);
 
 
                     RoueArrièreDroite.motorTorque += Accélération;
@@ -79,7 +75,7 @@ public class DéplacementScript : MonoBehaviour
             }
                 
             if (RoueArrièreDroite.motorTorque > 0 && RoueArrièreGauche.motorTorque > 0 &&
-                RoueAvantDroite.motorTorque > 0 && RoueAvantGauche.motorTorque > 0 && rec.lY>32760)
+                RoueAvantDroite.motorTorque > 0 && RoueAvantGauche.motorTorque > 0 && ret.lY>32760)
             {
                 RoueArrièreDroite.motorTorque -= 0.03f;
                 RoueArrièreGauche.motorTorque -= 0.03f;
