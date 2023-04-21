@@ -28,13 +28,14 @@ public class CollisionOutilsManager : MonoBehaviour
         maxHP = voitureHP.pointsVie;
         maxEssence = EssenceRestante.qtEssence;
 
+
     }
-    //fix les colliders aussi
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == wrenchLayer)
         {
+            Destroy(other.gameObject);
             if (voitureHP.pointsVie + maxVieRegen <= maxHP)
             {
                 voitureHP.pointsVie += maxVieRegen;
@@ -45,11 +46,12 @@ public class CollisionOutilsManager : MonoBehaviour
             }
             sonGainHP.Play();
 
-            Destroy(other.gameObject);
+            
         }
 
         if (other.gameObject.layer == gasLayer)
         {
+            Destroy(other.gameObject);
             if (EssenceRestante.qtEssence + essenceRegen <= maxEssence)
             {
                 EssenceRestante.qtEssence += essenceRegen;
@@ -61,7 +63,7 @@ public class CollisionOutilsManager : MonoBehaviour
 
             sonEssence.Play();
             
-            Destroy(other.gameObject);
+            
         }
     }
 }
