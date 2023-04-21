@@ -24,13 +24,13 @@ public class SceneManagerScript : MonoBehaviour
         pointageScript = gameObject.GetComponent<PointageScript>();
         créerCarte = gameObject.GetComponent<CréerCarte>();
         StartCoroutine(CréerUneCarte());
-        InstantierJoueur();
+        
 
     }
     
     private void Awake()
     {
-        
+        InstantierJoueur();
     }
     IEnumerator CréerUneCarte()
     {
