@@ -35,6 +35,7 @@ public class DéplacementScript : MonoBehaviour
     private void Awake()
     {
         rec = new LogitechGSDK.DIJOYSTATE2ENGINES();
+
     }
 
     private void FixedUpdate()
