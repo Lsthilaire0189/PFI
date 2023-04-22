@@ -24,8 +24,6 @@ public class SceneManagerScript : MonoBehaviour
         pointageScript = gameObject.GetComponent<PointageScript>();
         créerCarte = gameObject.GetComponent<CréerCarte>();
         StartCoroutine(CréerUneCarte());
-        
-
     }
     
     private void Awake()

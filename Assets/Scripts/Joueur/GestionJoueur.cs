@@ -5,17 +5,31 @@ using UnityEngine;
 
 public class GestionJoueur : MonoBehaviour
 {
-    [SerializeField] Transform CaméraEmplacement;
     GameObject Joueur;
+
+    [SerializeField] Transform CaméraEmplacement;
+    [SerializeField] public GameObject PointFaible;
+
     DéplacementScript déplacementScript;
-    EssenceManager essenceManager;
-    CollisionOutilsManager collisionOutilsManager;
+    GestionEssence gestionEssence;
+    GestionVieJoueur gestionVieJoueur;
+
+
+    public int JoueurEssence;
+    public int JoueurHP = 5;
+    public int JoueurArgent;
+
+
+    public int VieMaximaleJoueur;
+    public int CapacitéEssenceMaximale;
+
+    public bool FinPartie = true;
 
     public void Awake()
     {
         déplacementScript = gameObject.GetComponent<DéplacementScript>();
-        essenceManager = gameObject.GetComponent<EssenceManager>();
-        collisionOutilsManager = gameObject.GetComponent<CollisionOutilsManager>(); 
+        gestionVieJoueur = gameObject.GetComponent<GestionVieJoueur>();
+        gestionEssence = gameObject.GetComponent<GestionEssence>();
     }
     public void InitierSpécifications(int UpgradeAccélération, int UpgradeVie, int UpgradeEssence, int UpgradeVitesseMaximale)
     {
@@ -36,10 +50,6 @@ public class GestionJoueur : MonoBehaviour
     {
         Joueur.transform.position = CaméraEmplacement.transform.position;
         Joueur.transform.rotation = CaméraEmplacement.transform.rotation;
-
-    }
-    void VérifierJoueurPeutAvancer()
-    {
-
+        gestionVieJoueur.VérifierVieJoueur();
     }
 }

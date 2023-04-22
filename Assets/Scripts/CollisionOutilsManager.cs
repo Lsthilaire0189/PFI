@@ -5,65 +5,34 @@ using UnityEngine;
 
 public class CollisionOutilsManager : MonoBehaviour
 {
-    private int wrenchLayer = 7;
-    private int gasLayer = 8;
-
     public int maxVieRegen = 2;
     public int essenceRegen = 10;
     
-    private EssenceManager EssenceRestante;
-    private HealthManager voitureHP;
-    
+    GestionJoueur gestionJoueur;
     public int maxHP;
-
     public int maxEssence;
-
+    
     public AudioSource sonEssence;
     public AudioSource sonGainHP;
 
     void Awake()
     {
-        EssenceRestante = GetComponent<EssenceManager>();
-        voitureHP = GetComponent<HealthManager>();
-        maxHP = voitureHP.pointsVie;
-        maxEssence = EssenceRestante.qtEssence;
-
-
+        gestionJoueur = GetComponent<GestionJoueur>();
+        maxEssence = gestionJoueur.CapacitéEssenceMaximale;
+        maxHP = gestionJoueur.VieMaximaleJoueur;
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    public void AugmenterEssence()
     {
-        if (other.gameObject.layer == wrenchLayer)
+        if (gestionJoueur.JoueurEssence + essenceRegen <= maxEssence)
         {
-            Destroy(other.gameObject);
-            if (voitureHP.pointsVie + maxVieRegen <= maxHP)
-            {
-                voitureHP.pointsVie += maxVieRegen;
-            }
-            else
-            {
-                voitureHP.pointsVie += maxHP - voitureHP.pointsVie;
-            }
-            sonGainHP.Play();
-
-            
+            gestionJoueur.JoueurEssence += essenceRegen;
         }
-
-        if (other.gameObject.layer == gasLayer)
+        else
         {
-            Destroy(other.gameObject);
-            if (EssenceRestante.qtEssence + essenceRegen <= maxEssence)
-            {
-                EssenceRestante.qtEssence += essenceRegen;
-            }
-            else
-            {
-                EssenceRestante.qtEssence += maxEssence - essenceRegen;
-            }
-
-            sonEssence.Play();
-            
-            
+            gestionJoueur.JoueurEssence += maxEssence - essenceRegen;
         }
+        sonEssence.Play();
     }
 }
