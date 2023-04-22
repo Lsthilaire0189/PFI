@@ -50,7 +50,7 @@ public class DéplacementScript : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.Joystick1Button4))
         {
             direction = 1;
-            print("front");
+            //print("front");
         }
         
         
@@ -66,7 +66,7 @@ public class DéplacementScript : MonoBehaviour
                 RoueArrièreGauche.motorTorque += Accélération;
                 RoueAvantDroite.motorTorque += Accélération;
                 RoueAvantGauche.motorTorque += Accélération;
-                print("case 1 true");
+                //print("case 1 true");
 
             }
             else if (rec.lY < 0)
@@ -78,7 +78,7 @@ public class DéplacementScript : MonoBehaviour
                 RoueArrièreGauche.motorTorque += Accélération;
                 RoueAvantDroite.motorTorque += Accélération;
                 RoueAvantGauche.motorTorque += Accélération;
-                print("case 2 true");
+                //print("case 2 true");
             }
                 
             
@@ -90,7 +90,7 @@ public class DéplacementScript : MonoBehaviour
                 RoueAvantGauche.motorTorque -= ForceFreinage;
                 RoueArrièreDroite.motorTorque -= ForceFreinage;
                 RoueArrièreGauche.motorTorque -= ForceFreinage;
-                print("case 3 true");
+                //print("case 3 true");
             }
             else if (rec.lRz < 0 && RoueArrièreDroite.motorTorque > 0)
             {
@@ -109,7 +109,7 @@ public class DéplacementScript : MonoBehaviour
                 RoueArrièreGauche.motorTorque -= 0.03f;
                 RoueAvantDroite.motorTorque -= 0.03f;
                 RoueAvantGauche.motorTorque -= 0.03f;
-                print("case 4 true");
+                //print("case 4 true");
             }
             
             Angle = ValeurAngleMaximum * Input.GetAxis("Horizontal");
