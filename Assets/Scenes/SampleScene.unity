@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rH: {fileID: 1592819122}
-  chanceInstantierArgent: 25
+  chanceInstantierArgent: 100
   monnaiePrefab: {fileID: 1950871307682000, guid: 01348926c7cbb3347a006c37204131c3, type: 3}
 --- !u!4 &219302985
 Transform:
@@ -531,7 +531,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 7f7b06ca50927d44187ef6d72bbfe0e6, type: 3}
   - {fileID: 100000, guid: 545a6c38cb57f5a42a05d10f9c498379, type: 3}
   "PourcentageR\xE9sidusEnvironnementaux": 100
-  PourcentageFlaques: 50
+  PourcentageFlaques: 0
   roadHelper: {fileID: 1592819122}
 --- !u!4 &455497247
 Transform:

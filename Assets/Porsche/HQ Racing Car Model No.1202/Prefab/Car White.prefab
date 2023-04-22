@@ -4324,6 +4324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 892087235853478453}
   - component: {fileID: 7518647108432024187}
+  - component: {fileID: 2862006835621598779}
   m_Layer: 0
   m_Name: WheelCollider
   m_TagString: Untagged
@@ -4376,6 +4377,18 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
+--- !u!114 &2862006835621598779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2990965288567124879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6397ce334578ec429b8598e098c1256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3438145280300912206
 GameObject:
   m_ObjectHideFlags: 0
@@ -4417,6 +4430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 974374390415929241}
   - component: {fileID: 1169666349733410703}
+  - component: {fileID: 5273832763014492760}
   m_Layer: 0
   m_Name: WheelCollider
   m_TagString: Untagged
@@ -4469,6 +4483,18 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
+--- !u!114 &5273832763014492760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3447714876586925285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6397ce334578ec429b8598e098c1256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3553901447994677597
 GameObject:
   m_ObjectHideFlags: 0
@@ -4479,6 +4505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6188630327408873794}
   - component: {fileID: 5292095221039699474}
+  - component: {fileID: 4965347000236883098}
   m_Layer: 0
   m_Name: WheelCollider
   m_TagString: Untagged
@@ -4531,6 +4558,18 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
+--- !u!114 &4965347000236883098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3553901447994677597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6397ce334578ec429b8598e098c1256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5034014179233221966
 GameObject:
   m_ObjectHideFlags: 0
@@ -4669,6 +4708,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3988350775948204697}
   - component: {fileID: 5303061791505333738}
+  - component: {fileID: 8246326881303436959}
   m_Layer: 0
   m_Name: WheelCollider
   m_TagString: Untagged
@@ -4721,6 +4761,18 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
+--- !u!114 &8246326881303436959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5893535163237769275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6397ce334578ec429b8598e098c1256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6506866941764246648
 GameObject:
   m_ObjectHideFlags: 0
