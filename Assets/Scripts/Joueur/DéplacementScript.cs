@@ -25,16 +25,13 @@ public class DéplacementScript : MonoBehaviour
 
 
     private int direction=1;
-    
 
-
-
-    public bool peutAvancer;
-
+    GestionEssence gestionEssence;
 
     private void Awake()
     {
         rec = new LogitechGSDK.DIJOYSTATE2ENGINES();
+        gestionEssence =gameObject.GetComponent<GestionEssence>();
     }
 
     private void FixedUpdate()
@@ -54,7 +51,7 @@ public class DéplacementScript : MonoBehaviour
         }
         
         
-        if (peutAvancer)
+        if (gestionEssence.VérifierEssence())
         {
             if (rec.lY is < 32760 and > 0)
             {

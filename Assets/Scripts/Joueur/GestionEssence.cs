@@ -7,8 +7,6 @@ using UnityEngine;
 
 public class GestionEssence: MonoBehaviour
 {
-    [SerializeField] public int qtEssence = 10;
-
     DéplacementScript voitureAvancer;
     GestionJoueur gestionJoueur;
 

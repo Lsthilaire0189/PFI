@@ -11,17 +11,16 @@ public class GestionJoueur : MonoBehaviour
     [SerializeField] public GameObject PointFaible;
 
     DéplacementScript déplacementScript;
-    GestionEssence gestionEssence;
     GestionVieJoueur gestionVieJoueur;
 
 
     public int JoueurEssence;
-    public int JoueurHP = 5;
+    public int JoueurHP;
     public int JoueurArgent;
 
 
-    public int VieMaximaleJoueur;
-    public int CapacitéEssenceMaximale;
+    public int VieMaximaleJoueur =10;
+    public int CapacitéEssenceMaximale = 100;
 
     public bool FinPartie = true;
 
@@ -29,12 +28,14 @@ public class GestionJoueur : MonoBehaviour
     {
         déplacementScript = gameObject.GetComponent<DéplacementScript>();
         gestionVieJoueur = gameObject.GetComponent<GestionVieJoueur>();
-        gestionEssence = gameObject.GetComponent<GestionEssence>();
     }
-    public void InitierSpécifications(int UpgradeAccélération, int UpgradeVie, int UpgradeEssence, int UpgradeVitesseMaximale)
+    public void InitierSpécifications(int UpgradeAccélération,int UpgradeVitesseMaximale, float UpgradeForceFreinage, int UpgradeEssence, int UpgradeVie)
     {
-        //déplacementScript.ValeurAccélération += UpgradeAccélération;
-        //déplacementScript.VitesseMaximum += UpgradeVitesseMaximale;
+        déplacementScript.ValeurAccélération += UpgradeAccélération;
+        déplacementScript.VitesseMaximum += UpgradeVitesseMaximale;
+        déplacementScript.ValeurForceFreinage += UpgradeForceFreinage;
+        JoueurHP = VieMaximaleJoueur + UpgradeVie;
+        JoueurEssence = CapacitéEssenceMaximale + UpgradeEssence;
     }
 
     public void AssocierCamera(GameObject XRorigin)
