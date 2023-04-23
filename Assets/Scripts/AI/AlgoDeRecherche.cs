@@ -9,7 +9,6 @@ class Noeud
     public int x { get; set; }
     public int y { get; set; }
     public bool visité { get; set; }
-    public int coût { get; set; }
 
     public Noeud(GameObject route)
     {
@@ -30,7 +29,6 @@ public class AlgoDeRecherche : MonoBehaviour
         Carte = carte;
         Queue<Noeud> frontière = new Queue<Noeud>();
         Noeud Départ = new Noeud(départ);
-        Départ.coût = 0;
         Noeud Destination = new Noeud(destination);
         Noeud current;
         List<GameObject> NoeudVisités = new List<GameObject>();
