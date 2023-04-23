@@ -36,7 +36,7 @@ public class EnvironnementScript : MonoBehaviour
 
                 var point = random.Next(0, positionsPossibles.Count);
                 var pointPossible = positionsPossibles[point];
-                Vector3 positionPrefab = new Vector3(positionsRoutes[pointPossible].x, 0, positionsRoutes[pointPossible].z);//-0.01007f
+                Vector3 positionPrefab = new Vector3(positionsRoutes[pointPossible].x, -0.01007f, positionsRoutes[pointPossible].z);//-0.01007f
                 
                 
                 if (random.Next(100)<= PourcentageFlaques)

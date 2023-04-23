@@ -5,22 +5,37 @@ using UnityEngine;
 
 public class GestionJoueur : MonoBehaviour
 {
-    [SerializeField] Transform CaméraEmplacement;
     GameObject Joueur;
+
+    [SerializeField] Transform CaméraEmplacement;
+    [SerializeField] public GameObject PointFaible;
+
     DéplacementScript déplacementScript;
-    EssenceManager essenceManager;
-    CollisionOutilsManager collisionOutilsManager;
+    GestionVieJoueur gestionVieJoueur;
+
+
+    public int JoueurEssence;
+    public int JoueurHP;
+    public int JoueurArgent;
+
+
+    public int VieMaximaleJoueur =10;
+    public int CapacitéEssenceMaximale = 100;
+
+    public bool FinPartie = true;
 
     public void Awake()
     {
         déplacementScript = gameObject.GetComponent<DéplacementScript>();
-        essenceManager = gameObject.GetComponent<EssenceManager>();
-        collisionOutilsManager = gameObject.GetComponent<CollisionOutilsManager>(); 
+        gestionVieJoueur = gameObject.GetComponent<GestionVieJoueur>();
     }
-    public void InitierSpécifications(int UpgradeAccélération, int UpgradeVie, int UpgradeEssence, int UpgradeVitesseMaximale)
+    public void InitierSpécifications(int UpgradeAccélération,int UpgradeVitesseMaximale, float UpgradeForceFreinage, int UpgradeEssence, int UpgradeVie)
     {
-        //déplacementScript.ValeurAccélération += UpgradeAccélération;
-        //déplacementScript.VitesseMaximum += UpgradeVitesseMaximale;
+        déplacementScript.ValeurAccélération += UpgradeAccélération;
+        déplacementScript.VitesseMaximum += UpgradeVitesseMaximale;
+        déplacementScript.ValeurForceFreinage += UpgradeForceFreinage;
+        JoueurHP = VieMaximaleJoueur + UpgradeVie;
+        JoueurEssence = CapacitéEssenceMaximale + UpgradeEssence;
     }
 
     public void AssocierCamera(GameObject XRorigin)
@@ -36,10 +51,6 @@ public class GestionJoueur : MonoBehaviour
     {
         Joueur.transform.position = CaméraEmplacement.transform.position;
         Joueur.transform.rotation = CaméraEmplacement.transform.rotation;
-
-    }
-    void VérifierJoueurPeutAvancer()
-    {
-
+        gestionVieJoueur.VérifierVieJoueur();
     }
 }

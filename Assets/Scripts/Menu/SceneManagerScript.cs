@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class SceneManagerScript : MonoBehaviour
 {
+    GameObject GameManager;
+    GameManagerScript gameManagerScript;
+
     [SerializeField] GameObject voiture1;
     [SerializeField] GameObject voiture2;
     [SerializeField] GameObject XrOrigin;
     [SerializeField] GameObject RoadHelper;
     [SerializeField] List<GameObject> NPCVoitures;
+
     CréerCarte créerCarte;
     public GameObject[,] Carte;
     public List<GameObject> ListePoints;
+
     public int NbAutos = 5;
     GameObject Joueur;
+
     float TempsScore;
     int Score;
     PointageScript pointageScript;
@@ -24,12 +30,12 @@ public class SceneManagerScript : MonoBehaviour
         pointageScript = gameObject.GetComponent<PointageScript>();
         créerCarte = gameObject.GetComponent<CréerCarte>();
         StartCoroutine(CréerUneCarte());
-        
-
     }
     
     private void Awake()
     {
+        //GameManager = GameObject.Find("GameManager");
+        //gameManagerScript = GameManager.GetComponent<GameManagerScript>();
         InstantierJoueur();
     }
     IEnumerator CréerUneCarte()
@@ -43,7 +49,7 @@ public class SceneManagerScript : MonoBehaviour
     {
         Joueur = Instantiate(voiture1, Vector3.zero, Quaternion.identity, gameObject.transform);
         Joueur.GetComponent<GestionJoueur>().AssocierCamera(XrOrigin);
-        Joueur.GetComponent<GestionJoueur>().InitierSpécifications(2, 2, 2, 2);
+        //Joueur.GetComponent<GestionJoueur>().InitierSpécifications(gameManagerScript.upgradeAccélération, gameManagerScript.upgradeVitesseMaximale, gameManagerScript.upgradeForceFreinage, gameManagerScript.upgradeCapacitéEssence, gameManagerScript.upgradeVieMaximale );
     }
     public void InstantierNPC()
     {
