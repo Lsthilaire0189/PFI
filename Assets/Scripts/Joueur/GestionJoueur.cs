@@ -12,14 +12,15 @@ public class GestionJoueur : MonoBehaviour
 
     DéplacementScript déplacementScript;
     GestionVieJoueur gestionVieJoueur;
-
+    GestionPointage gestionPointage;
+    SceneManagerScript sceneManagerScript;
 
     public int JoueurEssence;
     public int JoueurHP;
     public int JoueurArgent;
+    public int JoueurPointage;
 
-
-    public int VieMaximaleJoueur =10;
+    public int VieMaximaleJoueur = 10;
     public int CapacitéEssenceMaximale = 100;
 
     public bool FinPartie = true;
@@ -28,8 +29,11 @@ public class GestionJoueur : MonoBehaviour
     {
         déplacementScript = gameObject.GetComponent<DéplacementScript>();
         gestionVieJoueur = gameObject.GetComponent<GestionVieJoueur>();
+        gestionPointage = gameObject.GetComponent<GestionPointage>();
+        sceneManagerScript= gameObject.GetComponentInParent<SceneManagerScript>();
+
     }
-    public void InitierSpécifications(int UpgradeAccélération,int UpgradeVitesseMaximale, float UpgradeForceFreinage, int UpgradeEssence, int UpgradeVie)
+    public void InitierSpécifications(int UpgradeAccélération, int UpgradeVitesseMaximale, float UpgradeForceFreinage, int UpgradeEssence, int UpgradeVie)
     {
         déplacementScript.ValeurAccélération += UpgradeAccélération;
         déplacementScript.VitesseMaximum += UpgradeVitesseMaximale;
@@ -49,8 +53,17 @@ public class GestionJoueur : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Joueur.transform.position = CaméraEmplacement.transform.position;
-        Joueur.transform.rotation = CaméraEmplacement.transform.rotation;
-        gestionVieJoueur.VérifierVieJoueur();
+        if (gestionVieJoueur.VérifierVieJoueur())
+        {
+            Joueur.transform.position = CaméraEmplacement.transform.position;
+            Joueur.transform.rotation = CaméraEmplacement.transform.rotation;
+            //gestionPointage.ModifierPointage(1);
+            Debug.Log(JoueurPointage);
+        }
+        else
+        {
+            sceneManagerScript.PartieEstTerminée(JoueurPointage,JoueurArgent);
+        }
+
     }
 }

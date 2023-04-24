@@ -12,8 +12,8 @@ public class GameManagerScript : MonoBehaviour
     public int upgradeVieMaximale;
     public int upgradeWrench;
 
-
     public int ArgentDisponible;
+    public int NbPoints;
     // Start is called before the first frame update
     void Awake()
     {
