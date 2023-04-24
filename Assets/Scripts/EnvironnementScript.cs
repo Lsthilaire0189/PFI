@@ -12,7 +12,7 @@ public class EnvironnementScript : MonoBehaviour
 
     [Range(0, 100)] public int PourcentageRésidusEnvironnementaux;
 
-    [Range(0,100)] public int PourcentageFlaques;
+    [Range(0,100)] public int PourcentageFlaquesEau;
 
 
     public RoadHelper roadHelper;
@@ -39,7 +39,7 @@ public class EnvironnementScript : MonoBehaviour
                 Vector3 positionPrefab = new Vector3(positionsRoutes[pointPossible].x, -0.01007f, positionsRoutes[pointPossible].z);//-0.01007f
                 
                 
-                if (random.Next(100)<= PourcentageFlaques)
+                if (random.Next(100)<= PourcentageFlaquesEau)
                 {
                     var typeDeFlaque = random.Next(0,flaquesEau.Count);
                     Instantiate(flaquesEau[typeDeFlaque], positionPrefab, Quaternion.Euler(-90, 0, random.Next(0,360)), transform);
