@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1339218940367749276}
   - component: {fileID: 207872293072870788}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HospitalBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,6 +112,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 5b7878efac017af44ad5de95f1bda60b, type: 3}
       propertyPath: m_Name
       value: Building2_Large
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 5b7878efac017af44ad5de95f1bda60b, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b7878efac017af44ad5de95f1bda60b, type: 3}

@@ -6,7 +6,7 @@ using UnityEngine;
 	public class RoadHelper : MonoBehaviour
 	{
 		public GameObject roadStraight, roadCorner, road3way, road4way, roadEnd;
-		Dictionary<Vector3Int, GameObject> roadDictionary = new Dictionary<Vector3Int, GameObject>();
+		public Dictionary<Vector3Int, GameObject> roadDictionary = new Dictionary<Vector3Int, GameObject>();
 		HashSet<Vector3Int> fixRoadCandidates = new HashSet<Vector3Int>();
 
 
@@ -66,14 +66,20 @@ using UnityEngine;
 				}
 				else if (neighborsDirections.Count == 2)
 				{
-					if (neighborsDirections.Contains(Direction.Up) && neighborsDirections.Contains(Direction.Down) ||
-					    neighborsDirections.Contains(Direction.Right) && neighborsDirections.Contains(Direction.Left))//checks if the road is straight, meaning that
-					//we do not need to implement a corner
+					Destroy(roadDictionary[position]);
+					
+					if (neighborsDirections.Contains(Direction.Right) && neighborsDirections.Contains(Direction.Left))//checks if the road is straight, meaning that
+						//we do not need to implement a corner
 					{
+						roadDictionary[position] = Instantiate(roadStraight, position, Quaternion.Euler(0, 0, 0), transform);
 						continue;
 					}
 					
-					Destroy(roadDictionary[position]);
+					if (neighborsDirections.Contains(Direction.Up) && neighborsDirections.Contains(Direction.Down))
+					{
+						roadDictionary[position] = Instantiate(roadStraight, position, Quaternion.Euler(0, 90, 0), transform);
+						continue;
+					}
 					if (neighborsDirections.Contains(Direction.Up) &&
 					    neighborsDirections.Contains(Direction.Right))
 					{
