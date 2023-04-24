@@ -1556,9 +1556,10 @@ MonoBehaviour:
   voiture2: {fileID: 0}
   XrOrigin: {fileID: 2074261984}
   RoadHelper: {fileID: 1592819121}
-  NPCVoitures: []
+  NPCVoitures:
+  - {fileID: 963847260374479469, guid: fb397a507ec6bea4699cc33654426f29, type: 3}
   ListePoints: []
-  NbAutos: 5
+  NbAutos: 1
 --- !u!114 &1373556474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2382,6 +2383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790e2c45e0318ac4797223b8504486d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Arbre: {fileID: 2906499288724287655, guid: 81bfe059d50b91d4697432147ebf4d1a, type: 3}
   lsystem: {fileID: 1099801923}
   environnementScript: {fileID: 455497246}
   roadHelper: {fileID: 1592819122}

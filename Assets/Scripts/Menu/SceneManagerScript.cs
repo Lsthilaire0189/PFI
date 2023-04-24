@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneManagerScript : MonoBehaviour
 {
@@ -20,14 +21,9 @@ public class SceneManagerScript : MonoBehaviour
     public int NbAutos = 5;
     GameObject Joueur;
 
-    float TempsScore;
-    int Score;
-    PointageScript pointageScript;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
-        pointageScript = gameObject.GetComponent<PointageScript>();
         créerCarte = gameObject.GetComponent<CréerCarte>();
         StartCoroutine(CréerUneCarte());
     }
@@ -59,11 +55,9 @@ public class SceneManagerScript : MonoBehaviour
             GameObject voiture = Instantiate(NPCVoitures[NoVoiture], Vector3.zero, Quaternion.identity, gameObject.transform);
         }
     }
-    // Update is called once per frame
-    void Update()
+    public void PartieEstTerminée(int NbPoints, int argent)
     {
-
-        //TempsScore = Time.time;
-        //Score = pointageScript.RetournerPointage(TempsScore);
+        gameManagerScript.ArgentDisponible = argent;
+        gameManagerScript.NbPoints = NbPoints;
     }
 }

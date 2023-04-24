@@ -50,7 +50,7 @@ public class DéplacementScript : MonoBehaviour
     private void FixedUpdate()
     {
 
-        rec = LogitechGSDK.LogiGetStateUnity(0);
+        //rec = LogitechGSDK.LogiGetStateUnity(0);
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button5))
         {
@@ -70,14 +70,14 @@ public class DéplacementScript : MonoBehaviour
         goRoueAvantGauche.transform.Rotate(vRotation,Angle,0);
         goRoueArrGauche.transform.Rotate(vRotation,0,0);
         goRoueArrDroite.transform.Rotate(-vRotation,0,0);
-                
-                
+
+
         if (gestionEssence.VérifierEssence())
         {
             if (rec.lY is < 32760 and > 0)
             {
                 Accélération =
-                    direction*Mathf.Log(ValeurAccélération * (32760f - rec.lY) / 32760f + 1,
+                    direction * Mathf.Log(ValeurAccélération * (32760f - rec.lY) / 32760f + 1,
                         2);
 
                 RoueArrièreDroite.motorTorque += Accélération;
@@ -89,7 +89,7 @@ public class DéplacementScript : MonoBehaviour
             }
             else if (rec.lY < 0)
             {
-                Accélération = direction*Mathf.Log(ValeurAccélération * (-rec.lY + 32760) / 32760f + 1, 2);
+                Accélération = direction * Mathf.Log(ValeurAccélération * (-rec.lY + 32760) / 32760f + 1, 2);
 
 
                 RoueArrièreDroite.motorTorque += Accélération;
@@ -98,12 +98,12 @@ public class DéplacementScript : MonoBehaviour
                 RoueAvantGauche.motorTorque += Accélération;
                 //print("case 2 true");
             }
-                
-            
-                
+
+
+
             if (rec.lRz is < 32760 and > 0 && RoueArrièreDroite.motorTorque > 0)
             {
-                ForceFreinage = ValeurForceFreinage * (32760-rec.lRz)/32760f;
+                ForceFreinage = ValeurForceFreinage * (32760 - rec.lRz) / 32760f;
                 RoueAvantDroite.motorTorque -= ForceFreinage;
                 RoueAvantGauche.motorTorque -= ForceFreinage;
                 RoueArrièreDroite.motorTorque -= ForceFreinage;
@@ -112,16 +112,16 @@ public class DéplacementScript : MonoBehaviour
             }
             else if (rec.lRz < 0 && RoueArrièreDroite.motorTorque > 0)
             {
-                ForceFreinage = ValeurForceFreinage * (rec.lY + 32760)/32760f;
+                ForceFreinage = ValeurForceFreinage * (rec.lY + 32760) / 32760f;
                 RoueAvantDroite.motorTorque -= ForceFreinage;
                 RoueAvantGauche.motorTorque -= ForceFreinage;
                 RoueArrièreDroite.motorTorque -= ForceFreinage;
                 RoueArrièreGauche.motorTorque -= ForceFreinage;
-            } 
-            
-            
+            }
+
+
             if (RoueArrièreDroite.motorTorque > 0 && RoueArrièreGauche.motorTorque > 0 &&
-                  RoueAvantDroite.motorTorque > 0 && RoueAvantGauche.motorTorque > 0 && rec.lY>32760 && rec.lRz>32760)
+                  RoueAvantDroite.motorTorque > 0 && RoueAvantGauche.motorTorque > 0 && rec.lY > 32760 && rec.lRz > 32760)
             {
                 RoueArrièreDroite.motorTorque -= 0.03f;
                 RoueArrièreGauche.motorTorque -= 0.03f;
@@ -129,7 +129,7 @@ public class DéplacementScript : MonoBehaviour
                 RoueAvantGauche.motorTorque -= 0.03f;
                 //print("case 4 true");
             }
-            
+
         }
         else
         {
