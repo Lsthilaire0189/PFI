@@ -24,6 +24,7 @@ public class GestionJoueur : MonoBehaviour
 
     public bool FinPartie = true;
 
+
     public void Awake()
     {
         déplacementScript = gameObject.GetComponent<DéplacementScript>();

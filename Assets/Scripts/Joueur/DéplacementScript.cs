@@ -1,10 +1,10 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DéplacementScript : MonoBehaviour
 {
     
-
     private LogitechGSDK.DIJOYSTATE2ENGINES rec;
 
     [SerializeField] WheelCollider RoueAvantDroite;
@@ -23,13 +23,22 @@ public class DéplacementScript : MonoBehaviour
     private float ForceFreinage;
     private float Angle;
 
+    private float vRotation;
 
     private int direction=1;
 
     GestionEssence gestionEssence;
 
+    private List<WheelCollider> listeRoues;
+
+    public GameObject goRoueAvantDroite;
+    public GameObject goRoueAvantGauche;
+    public GameObject goRoueArrGauche;
+    public GameObject goRoueArrDroite;
+
     private void Awake()
     {
+
         rec = new LogitechGSDK.DIJOYSTATE2ENGINES();
         gestionEssence =gameObject.GetComponent<GestionEssence>();
         RoueAvantDroite.ConfigureVehicleSubsteps(5,12,15);
@@ -46,15 +55,23 @@ public class DéplacementScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Joystick1Button5))
         {
             direction = -1;
-            print("back");
         }
         else if(Input.GetKeyDown(KeyCode.Joystick1Button4))
         {
             direction = 1;
-            //print("front");
         }
+
+        Angle = ValeurAngleMaximum * Input.GetAxis("Horizontal");
+        RoueAvantDroite.steerAngle = Angle;
+        RoueAvantGauche.steerAngle = Angle;
         
-        
+        vRotation = RoueArrièreDroite.rpm * (360f / 60) * Time.deltaTime;
+        goRoueAvantDroite.transform.Rotate(-vRotation,Angle,0);
+        goRoueAvantGauche.transform.Rotate(vRotation,Angle,0);
+        goRoueArrGauche.transform.Rotate(vRotation,0,0);
+        goRoueArrDroite.transform.Rotate(-vRotation,0,0);
+                
+                
         if (gestionEssence.VérifierEssence())
         {
             if (rec.lY is < 32760 and > 0)
@@ -113,9 +130,6 @@ public class DéplacementScript : MonoBehaviour
                 //print("case 4 true");
             }
             
-            Angle = ValeurAngleMaximum * Input.GetAxis("Horizontal");
-            RoueAvantDroite.steerAngle = Angle;
-            RoueAvantGauche.steerAngle = Angle;
         }
         else
         {
