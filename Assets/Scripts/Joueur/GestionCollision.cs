@@ -7,7 +7,6 @@ public class GestionCollision : MonoBehaviour
 {
     [SerializeField] public GameObject PointFaible;
 
-    GestionJoueur gestionJoueur;
     GestionVieJoueur gestionVieJoueur;
     GestionEssence gestionEssence;
     GestionArgent gestionArgent;
@@ -25,7 +24,6 @@ public class GestionCollision : MonoBehaviour
 
     private void Awake()
     {
-        gestionJoueur = GetComponent<GestionJoueur>();
         gestionVieJoueur = GetComponent<GestionVieJoueur>();
         gestionEssence = GetComponent<GestionEssence>();
         gestionArgent = GetComponent<GestionArgent>();

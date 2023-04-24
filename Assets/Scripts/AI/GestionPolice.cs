@@ -10,11 +10,9 @@ public class GestionPolice : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ray=new Ray(transform.position, transform.forward);
-
-        
+        ray=new Ray(transform.position, transform.forward);       
     }
-    void RegarderColliders()
+    void CheckForColliders()
     {
         if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, layer))
         {
@@ -25,6 +23,6 @@ public class GestionPolice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CheckForColliders();
     }
 }

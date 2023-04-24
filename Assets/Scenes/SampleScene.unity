@@ -531,7 +531,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 7f7b06ca50927d44187ef6d72bbfe0e6, type: 3}
   - {fileID: 100000, guid: 545a6c38cb57f5a42a05d10f9c498379, type: 3}
   "PourcentageR\xE9sidusEnvironnementaux": 100
-  PourcentageFlaques: 0
+  PourcentageFlaquesEau: 0
   roadHelper: {fileID: 1592819122}
 --- !u!4 &455497247
 Transform:
@@ -1558,6 +1558,7 @@ MonoBehaviour:
   RoadHelper: {fileID: 1592819121}
   NPCVoitures:
   - {fileID: 963847260374479469, guid: fb397a507ec6bea4699cc33654426f29, type: 3}
+  Police: {fileID: 115512, guid: 7be733fca5977484eab72a8eca73b1b2, type: 3}
   ListePoints: []
   NbAutos: 1
 --- !u!114 &1373556474
@@ -2383,12 +2384,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790e2c45e0318ac4797223b8504486d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Arbre: {fileID: 2906499288724287655, guid: 81bfe059d50b91d4697432147ebf4d1a, type: 3}
+  Tree: {fileID: 0}
   lsystem: {fileID: 1099801923}
-  environnementScript: {fileID: 455497246}
   roadHelper: {fileID: 1592819122}
   structureHelper: {fileID: 1526301823}
-  argentInitiateur: {fileID: 219302984}
+  instancierEnvironnement: {fileID: 455497246}
 --- !u!4 &1606614014
 Transform:
   m_ObjectHideFlags: 0
