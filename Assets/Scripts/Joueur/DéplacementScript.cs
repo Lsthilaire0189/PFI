@@ -50,7 +50,7 @@ public class DéplacementScript : MonoBehaviour
     private void FixedUpdate()
     {
 
-        //rec = LogitechGSDK.LogiGetStateUnity(0);
+        rec = LogitechGSDK.LogiGetStateUnity(0);
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button5))
         {
