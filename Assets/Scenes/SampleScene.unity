@@ -1719,6 +1719,7 @@ MonoBehaviour:
   RoadHelper: {fileID: 1592819121}
   NPCVoitures:
   - {fileID: 963847260374479469, guid: fb397a507ec6bea4699cc33654426f29, type: 3}
+  Police: {fileID: 115512, guid: 7be733fca5977484eab72a8eca73b1b2, type: 3}
   ListePoints: []
   NbAutos: 1
 --- !u!114 &1373556474
