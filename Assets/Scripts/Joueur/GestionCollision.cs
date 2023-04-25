@@ -23,6 +23,9 @@ public class GestionCollision : MonoBehaviour
     int BatimentLayer = 9;
     int ArgentLayer = 13;
 
+    public int gainHP;
+    public int gainEssence;
+
     private void Awake()
     {
         gestionJoueur = GetComponent<GestionJoueur>();
@@ -40,31 +43,30 @@ public class GestionCollision : MonoBehaviour
         }
         if (other.gameObject.layer == wrenchLayer)
         {
-            gestionVieJoueur.ModifierVie(2);
+            gestionVieJoueur.ModifierVie(gainHP);
             sonGainHP.Play();
             Destroy(other.gameObject);
         }
         if (other.gameObject.layer == gasLayer)
         {
-            gestionEssence.ModifierEssence(10);
+            gestionEssence.ModifierEssence(gainEssence);
             sonEssence.Play();
             Destroy(other.gameObject);
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        int collisionDommage = 0;
+        int collisionDommage;
         ContactPoint c = collision.GetContact(0);
-        if (collision.gameObject.layer == BatimentLayer)
-        {
+        if (collision.gameObject.layer == BatimentLayer && gestionVieJoueur.VérifierVieJoueur())
+        { 
             collisionDommage = 5;
+           if (c.thisCollider.gameObject == PointFaible)
+           {
+               collisionDommage += 3;
+           }
+            gestionVieJoueur.ModifierVie(-collisionDommage);
         }
-        if (c.thisCollider.gameObject == PointFaible)
-        {
-            collisionDommage += 3;
-        }
-        gestionVieJoueur.ModifierVie(-collisionDommage);
-
-
+        
     }
 }

@@ -12,7 +12,7 @@ public class GestionVieJoueur : MonoBehaviour
     public void ModifierVie(int pointsVie)
     {
         gestionJoueur.JoueurHP += pointsVie;
-        Debug.Log(gestionJoueur.JoueurHP);
+        print($"{gestionJoueur.JoueurHP} vie joueur");
     }
     public bool VérifierVieJoueur()
     {

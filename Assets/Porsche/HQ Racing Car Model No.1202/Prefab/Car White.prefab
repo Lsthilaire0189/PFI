@@ -681,7 +681,7 @@ MonoBehaviour:
   "RoueArri\xE8reGauche": {fileID: 1169666349733410703}
   "ValeurAcc\xE9l\xE9ration": 0.03
   ValeurForceFreinage: 0.1
-  VitesseMaximum: 50
+  VitesseMaximale: 50
   ValeurAngleMaximum: 15
   goRoueAvantDroite: {fileID: 5533095950334554444, guid: 6f1970b1fd31ee64796d40690d666720, type: 3}
   goRoueAvantGauche: {fileID: 5533095950334554444, guid: 65461bfa16a5d934a99f02ad87f2d08a, type: 3}
@@ -716,10 +716,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   "Cam\xE9raEmplacement": {fileID: 576900304846021657}
-  PointFaible: {fileID: 0}
   JoueurEssence: 100
   JoueurHP: 10
   JoueurArgent: 0
+  JoueurPointage: 0
   VieMaximaleJoueur: 10
   "Capacit\xE9EssenceMaximale": 100
   FinPartie: 1
@@ -777,6 +777,8 @@ MonoBehaviour:
   sonCollisionObjet: {fileID: 0}
   sonEssence: {fileID: 1738542308025180324}
   sonGainHP: {fileID: 587258505262064520}
+  gainHP: 0
+  gainEssence: 0
 --- !u!114 &3463090263255048252
 MonoBehaviour:
   m_ObjectHideFlags: 0
