@@ -8,12 +8,12 @@ public class GestionJoueur : MonoBehaviour
     GameObject Joueur;
 
     [SerializeField] Transform CaméraEmplacement;
-    [SerializeField] public GameObject PointFaible;
 
     DéplacementScript déplacementScript;
     GestionVieJoueur gestionVieJoueur;
     GestionPointage gestionPointage;
     SceneManagerScript sceneManagerScript;
+    GestionCollision gestionCollision;
 
     public int JoueurEssence;
     public int JoueurHP;
@@ -32,15 +32,18 @@ public class GestionJoueur : MonoBehaviour
         gestionVieJoueur = gameObject.GetComponent<GestionVieJoueur>();
         gestionPointage = gameObject.GetComponent<GestionPointage>();
         sceneManagerScript= gameObject.GetComponentInParent<SceneManagerScript>();
+        gestionCollision = gameObject.GetComponent<GestionCollision>();
 
     }
-    public void InitierSpécifications(int UpgradeAccélération, int UpgradeVitesseMaximale, float UpgradeForceFreinage, int UpgradeEssence, int UpgradeVie)
+    public void InitierSpécifications(int UpgradeAccélération, int UpgradeVitesseMaximale, float UpgradeForceFreinage, int UpgradeEssence, int UpgradeVie, int UpgradeGainEssence, int UpgradeGainVie)
     {
         déplacementScript.ValeurAccélération += UpgradeAccélération;
-        déplacementScript.VitesseMaximum += UpgradeVitesseMaximale;
+        déplacementScript.VitesseMaximale += UpgradeVitesseMaximale;
         déplacementScript.ValeurForceFreinage += UpgradeForceFreinage;
         JoueurHP = VieMaximaleJoueur + UpgradeVie;
         JoueurEssence = CapacitéEssenceMaximale + UpgradeEssence;
+        gestionCollision.gainEssence += UpgradeGainEssence;
+        gestionCollision.gainHP += UpgradeGainVie;
     }
 
     public void AssocierCamera(GameObject XRorigin)

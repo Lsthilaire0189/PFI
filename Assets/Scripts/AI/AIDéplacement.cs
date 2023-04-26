@@ -72,7 +72,7 @@ public class AIDéplacement : MonoBehaviour
             PointPrécédent = chemins[index];
             PointSuivant = chemins[index + 1];
             Vector3 v = PointSuivant - PointPrécédent;
-            angle = Vector3.Angle(v, transform.forward);
+            angle = Vector3.Angle(v, Vector3.forward);
             time = 0;
             index++;
             PointSuivant = chemins[index];

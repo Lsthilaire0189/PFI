@@ -15,7 +15,7 @@ public class DéplacementScript : MonoBehaviour
     public float ValeurAccélération = 0.05f;// Est modifié par Génération joueur
     public float ValeurForceFreinage = 0.2f;// Est modifiée par Génération joueur
 
-    public float VitesseMaximum = 50f; // Est modifiée par Génération joueur
+    public float VitesseMaximale = 50f; // Est modifiée par Génération joueur
 
     public float ValeurAngleMaximum = 15f;
 
@@ -29,6 +29,10 @@ public class DéplacementScript : MonoBehaviour
 
     GestionEssence gestionEssence;
 
+    private GestionVieJoueur gestionVieJoueur;
+
+    private Rigidbody rbVoiture;
+
     //private List<WheelCollider> listeRoues;
 
     public GameObject goRoueAvantDroite;
@@ -38,9 +42,10 @@ public class DéplacementScript : MonoBehaviour
 
     private void Awake()
     {
-
         rec = new LogitechGSDK.DIJOYSTATE2ENGINES();
         gestionEssence =gameObject.GetComponent<GestionEssence>();
+        gestionVieJoueur = gameObject.GetComponent<GestionVieJoueur>();
+        rbVoiture = gameObject.GetComponent<Rigidbody>();
         RoueAvantDroite.ConfigureVehicleSubsteps(5,12,15);
         RoueAvantGauche.ConfigureVehicleSubsteps(5,12,15);
         RoueArrièreDroite.ConfigureVehicleSubsteps(5,12,15);
@@ -50,7 +55,7 @@ public class DéplacementScript : MonoBehaviour
     private void FixedUpdate()
     {
 
-        //rec = LogitechGSDK.LogiGetStateUnity(0);
+        rec = LogitechGSDK.LogiGetStateUnity(0);
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button5))
         {
@@ -71,8 +76,9 @@ public class DéplacementScript : MonoBehaviour
         goRoueArrGauche.transform.Rotate(vRotation,0,0);
         goRoueArrDroite.transform.Rotate(-vRotation,0,0);
 
+        print(rbVoiture.velocity.magnitude < VitesseMaximale);
 
-        if (gestionEssence.VérifierEssence())
+        if (gestionEssence.VérifierEssence() && gestionVieJoueur.VérifierVieJoueur() && rbVoiture.velocity.magnitude <= VitesseMaximale)
         {
             if (rec.lY is < 32760 and > 0)
             {

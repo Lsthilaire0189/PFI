@@ -13,7 +13,7 @@ public class SceneManagerScript : MonoBehaviour
     [SerializeField] GameObject XrOrigin;
     [SerializeField] GameObject RoadHelper;
     [SerializeField] List<GameObject> NPCVoitures;
-
+    [SerializeField] GameObject Police;
     CréerCarte créerCarte;
     public GameObject[,] Carte;
     public List<GameObject> ListePoints;
@@ -54,10 +54,11 @@ public class SceneManagerScript : MonoBehaviour
             int NoVoiture = Random.Range(0, NPCVoitures.Count);
             GameObject voiture = Instantiate(NPCVoitures[NoVoiture], Vector3.zero, Quaternion.identity, gameObject.transform);
         }
+        Instantiate(Police,new Vector3(0,0.01f,0), Quaternion.identity, gameObject.transform);
     }
     public void PartieEstTerminée(int NbPoints, int argent)
     {
-        gameManagerScript.ArgentDisponible = argent;
-        gameManagerScript.NbPoints = NbPoints;
+        //gameManagerScript.ArgentDisponible = argent;
+        //gameManagerScript.NbPoints = NbPoints;
     }
 }

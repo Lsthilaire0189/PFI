@@ -14,10 +14,6 @@ public class GestionNPC : MonoBehaviour
     
     public void CréerNpc(int NbAutos)
     {
-        for (int i = 0; i < NbAutos; i++)
-        {
-            int NoVoiture = Random.Range(0, NPCVoitures.Count);
-            GameObject voiture = Instantiate(NPCVoitures[NoVoiture], Vector3.zero, Quaternion.identity, gameObject.transform);
-        }
+
     }
 }

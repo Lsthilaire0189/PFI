@@ -16,6 +16,8 @@ public class Visualizer : MonoBehaviour
 
     public EnvironnementScript instancierEnvironnement;
 
+    public ArgentSpawner instancierMonnaies;
+
     private int length = 6;
     private float angle = 90;
 
@@ -103,6 +105,7 @@ public class Visualizer : MonoBehaviour
         //circuit.InstancierObjets();
         instancierEnvironnement.InstancierEnvironnement();
         structureHelper.PlaceStructureAroundRoad(roadHelper.GetRoadPositions());
+        instancierMonnaies.InstatierMonnaies();
 
 
     }

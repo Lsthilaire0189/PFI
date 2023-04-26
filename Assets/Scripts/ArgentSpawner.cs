@@ -8,6 +8,7 @@ public class ArgentSpawner : MonoBehaviour
 {
     public RoadHelper rH;
 
+    [Range(0,100)]
     public int chanceInstantierArgent;
 
     private List<Vector3Int> positionsRoutes;
