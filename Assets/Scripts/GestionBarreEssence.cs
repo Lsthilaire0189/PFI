@@ -4,9 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GestionBarreVie : MonoBehaviour
+public class GestionBarreEssence : MonoBehaviour
 {
-    
     private Slider slider;
     
     [SerializeField]
@@ -16,18 +15,16 @@ public class GestionBarreVie : MonoBehaviour
     private void Awake()
     {
         slider = GameObject.Find("Canvas").GetComponentInChildren<Slider>();
-
     }
 
     private void Start()
     {
-        slider.maxValue = gestionJoueur.VieMaximaleJoueur;
+        slider.maxValue = gestionJoueur.CapacitéEssenceMaximale;
     }
 
     // Update is called once per frame
     void Update()
     {
-        slider.value =gestionJoueur.JoueurHP;
+        slider.value =gestionJoueur.JoueurEssence;
     }
-    
 }
