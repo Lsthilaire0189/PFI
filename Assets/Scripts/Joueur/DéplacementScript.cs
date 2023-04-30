@@ -12,6 +12,9 @@ public class DéplacementScript : MonoBehaviour
     [SerializeField] WheelCollider RoueArrièreDroite;
     [SerializeField] WheelCollider RoueArrièreGauche;
 
+    public AudioSource sonAcceleration;
+    public AudioSource sonStatique;
+
     public float ValeurAccélération = 0.05f;// Est modifié par Génération joueur
     public float ValeurForceFreinage = 0.2f;// Est modifiée par Génération joueur
 
@@ -25,7 +28,7 @@ public class DéplacementScript : MonoBehaviour
 
     private float vRotation;
 
-    private int direction=1;
+    private int sens=1;
 
     GestionEssence gestionEssence;
 
@@ -59,11 +62,11 @@ public class DéplacementScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button5))
         {
-            direction = -1;
+            sens = -1;
         }
         else if(Input.GetKeyDown(KeyCode.Joystick1Button4))
         {
-            direction = 1;
+            sens = 1;
         }
 
         Angle = ValeurAngleMaximum * Input.GetAxis("Horizontal");
@@ -78,31 +81,38 @@ public class DéplacementScript : MonoBehaviour
 
         print(rbVoiture.velocity.magnitude < VitesseMaximale);
 
-        if (gestionEssence.VérifierEssence() && gestionVieJoueur.VérifierVieJoueur() && rbVoiture.velocity.magnitude <= VitesseMaximale)
+        if (gestionEssence.VérifierEssence() && gestionVieJoueur.VérifierVieJoueur())
         {
-            if (rec.lY is < 32760 and > 0)
+            if (rbVoiture.velocity.magnitude <= VitesseMaximale)
             {
-                Accélération =
-                    direction * Mathf.Log(ValeurAccélération * (32760f - rec.lY) / 32760f + 1,
-                        2);
+                if (rec.lY is < 32760 and > 0)
+                {
+                    Accélération =
+                        sens * Mathf.Log(ValeurAccélération * (32760f - rec.lY) / 32760f + 1,
+                            2);
 
-                RoueArrièreDroite.motorTorque += Accélération;
-                RoueArrièreGauche.motorTorque += Accélération;
-                RoueAvantDroite.motorTorque += Accélération;
-                RoueAvantGauche.motorTorque += Accélération;
-                //print("case 1 true");
+                    RoueArrièreDroite.motorTorque += Accélération;
+                    RoueArrièreGauche.motorTorque += Accélération;
+                    RoueAvantDroite.motorTorque += Accélération;
+                    RoueAvantGauche.motorTorque += Accélération;
+                    sonStatique.Pause();
+                    sonAcceleration.PlayDelayed(1);
+                    //print("case 1 true");
 
-            }
-            else if (rec.lY < 0)
-            {
-                Accélération = direction * Mathf.Log(ValeurAccélération * (-rec.lY + 32760) / 32760f + 1, 2);
+                }
+                else if (rec.lY < 0)
+                {
+                    Accélération = sens * Mathf.Log(ValeurAccélération * (-rec.lY + 32760) / 32760f + 1, 2);
 
 
-                RoueArrièreDroite.motorTorque += Accélération;
-                RoueArrièreGauche.motorTorque += Accélération;
-                RoueAvantDroite.motorTorque += Accélération;
-                RoueAvantGauche.motorTorque += Accélération;
-                //print("case 2 true");
+                    RoueArrièreDroite.motorTorque += Accélération;
+                    RoueArrièreGauche.motorTorque += Accélération;
+                    RoueAvantDroite.motorTorque += Accélération;
+                    RoueAvantGauche.motorTorque += Accélération;
+                    sonAcceleration.Pause();
+                    sonAcceleration.PlayDelayed(1);
+                    //print("case 2 true");
+                }
             }
 
 
@@ -115,6 +125,8 @@ public class DéplacementScript : MonoBehaviour
                 RoueArrièreDroite.motorTorque -= ForceFreinage;
                 RoueArrièreGauche.motorTorque -= ForceFreinage;
                 //print("case 3 true");
+                sonAcceleration.Pause();
+                sonStatique.Play();
             }
             else if (rec.lRz < 0 && RoueArrièreDroite.motorTorque > 0)
             {
@@ -123,17 +135,22 @@ public class DéplacementScript : MonoBehaviour
                 RoueAvantGauche.motorTorque -= ForceFreinage;
                 RoueArrièreDroite.motorTorque -= ForceFreinage;
                 RoueArrièreGauche.motorTorque -= ForceFreinage;
+                sonAcceleration.Pause();
+                sonStatique.Play();
             }
 
 
             if (RoueArrièreDroite.motorTorque > 0 && RoueArrièreGauche.motorTorque > 0 &&
                   RoueAvantDroite.motorTorque > 0 && RoueAvantGauche.motorTorque > 0 && rec.lY > 32760 && rec.lRz > 32760)
             {
-                RoueArrièreDroite.motorTorque -= 0.03f;
-                RoueArrièreGauche.motorTorque -= 0.03f;
-                RoueAvantDroite.motorTorque -= 0.03f;
-                RoueAvantGauche.motorTorque -= 0.03f;
+                RoueArrièreDroite.motorTorque -= sens*0.03f;
+                RoueArrièreGauche.motorTorque -= sens*0.03f;
+                RoueAvantDroite.motorTorque -= sens*0.03f;
+                RoueAvantGauche.motorTorque -= sens*0.03f;
                 //print("case 4 true");
+                sonAcceleration.Pause();
+                sonStatique.Play();
+
             }
 
         }
