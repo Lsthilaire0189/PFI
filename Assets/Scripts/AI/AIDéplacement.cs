@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
@@ -23,8 +24,10 @@ public class AIDéplacement : MonoBehaviour
     float angle;
     Vector3 PointSuivant1, Pointsuivant2;
 
+    bool intersection;
     bool Initiation = true;
     int index;
+    int direction = 0;
     float time = 0;
     float t;
     // Start is called before the first frame update
@@ -61,101 +64,205 @@ public class AIDéplacement : MonoBehaviour
         time += Time.deltaTime;
         t = time / 50;
         t = t * t * (3f - 2f * t);
-        transform.position = Vector3.Lerp(transform.position, PointSuivant, t);
-        if (Mathf.Abs(angle - transform.rotation.eulerAngles.y) <175|| Mathf.Abs(angle - transform.rotation.eulerAngles.y)>3)
+        if (intersection)
+        {
+            transform.position = Vector3.Lerp(transform.position, PointSuivant, t);
+        }
+        else
+        {
+            transform.position = Vector3.Lerp(transform.position, PointSuivant, 0.5f);
+        }
+        if (Mathf.Abs(angle - transform.rotation.eulerAngles.y) <170|| Mathf.Abs(angle - transform.rotation.eulerAngles.y)>8)
         {
             transform.Rotate(new Vector3(0, (angle-transform.rotation.eulerAngles.y) * 0.01f, 0));
         }
         if (Vector3.Magnitude(PointSuivant - transform.position) < 0.01f)
         {
-            angle = 0;
-            PointPrécédent = chemins[index];
-            PointSuivant = chemins[index + 1];
-            Vector3 v = PointSuivant - PointPrécédent;
-            angle = Vector3.Angle(v, Vector3.forward);
-            time = 0;
-            index++;
-            PointSuivant = chemins[index];
-
-            VérifierDirection();
+            if (index ==chemins.Count-1)
+            {
+                TrouverDestination();
+                Initiation = true;
+            }
+            else
+            {
+                angle = 0;
+                PointPrécédent = chemins[index];
+                PointSuivant = chemins[index + 1];
+                Vector3 v = PointSuivant - PointPrécédent;
+                angle = Vector3.Angle(v, Vector3.forward);
+                time = 0;
+                index++;
+                PointSuivant = chemins[index];
+                VérifierDirection();
+            }
         }
     }
 
 
     void VérifierDirection() // utiliser vecteurs 
     {
+        intersection = false;
+        Vector3 vecteur = PointSuivant - transform.position;
+        float directionx = MathF.Abs(vecteur.x);
+        float directionz = MathF.Abs(vecteur.z);
+         direction=0;
+        int ndirection;
+        if (directionx > directionz)
+        {
+            PointSuivant += new Vector3(0,0,0.1f) * MathF.Sign(directionx);
+            ndirection = 0;
+        }
+        else
+        {
+            PointSuivant += new Vector3(0.1f,0,0)* MathF.Sign(directionz);
+            ndirection = 1;
+        }
+        if (ndirection != direction)
+        {
+            intersection = true;
+        }
         Debug.Log(PointSuivant);
-        if ((PointSuivant.z - transform.position.z) > 0.7f) // vérifier la direction
-        {
-            if (Initiation)
-            {
-                transform.position += new Vector3(0.1f, 0, 0);
-                Initiation = false;
-            }
-            //if (Mathf.Abs(chemins[index + 1].x - PointSuivant.x) > 0.90f)
-            //{
+        //if ((PointSuivant.z - transform.position.z) > 0.7f) // vérifier la direction
+        //{
+        //    if (Initiation)
+        //    {
+        //        transform.position += new Vector3(0.1f, 0, 0);
+        //        Initiation = false;
+        //    }
+        //    //if (Mathf.Abs(chemins[index + 1].x - PointSuivant.x) > 0.90f)
+        //    //{
 
-            //    //PointSuivant -= new Vector3(0, 0, 0.5f);
+        //    //    //PointSuivant -= new Vector3(0, 0, 0.5f);
 
-            //}
+        //    //}
 
-            PointSuivant += new Vector3(0.1f, 0, 0);
-            Debug.Log(0);
+        //    PointSuivant += new Vector3(0.1f, 0, 0);
+        //    Debug.Log(0);
 
-        }
-        if ((PointSuivant.z - transform.position.z) < -0.7f)
-        {
-            if (Initiation)
-            {
-                transform.position -= new Vector3(0.1f, 0, 0);
-                transform.Rotate(0, 180, 0);
-                Initiation = false;
-            }
-            //if (Mathf.Abs(chemins[index + 1].x - PointSuivant.x) > 0.90f)
-            //{
-            //    PointSuivant += new Vector3(0, 0, 0.5f);
+        //}
+        //if ((PointSuivant.z - transform.position.z) < -0.7f)
+        //{
+        //    if (Initiation)
+        //    {
+        //        transform.position -= new Vector3(0.1f, 0, 0);
+        //        transform.Rotate(0, 180, 0);
+        //        Initiation = false;
+        //    }
+        //    //if (Mathf.Abs(chemins[index + 1].x - PointSuivant.x) > 0.90f)
+        //    //{
+        //    //    PointSuivant += new Vector3(0, 0, 0.5f);
 
-            //}
-            PointSuivant -= new Vector3(0.1f, 0, 0);
-            Debug.Log(1);
-        }
-        if ((PointSuivant.x - transform.position.x) > 0.7f)
-        {
-            if (Initiation)
-            {
-                transform.position -= new Vector3(0, 0, 0.1f);
-                transform.Rotate(0, 90, 0);
-                Initiation = false;
-            }
-            //if (Mathf.Abs(chemins[index + 1].z - PointSuivant.z) > 0.90f)
-            //{
-            //    PointSuivant -= new Vector3(0.5f, 0, 0);
+        //    //}
+        //    PointSuivant -= new Vector3(0.1f, 0, 0);
+        //    Debug.Log(1);
+        //}
+        //if ((PointSuivant.x - transform.position.x) > 0.7f)
+        //{
+        //    if (Initiation)
+        //    {
+        //        transform.position -= new Vector3(0, 0, 0.1f);
+        //        transform.Rotate(0, 90, 0);
+        //        Initiation = false;
+        //    }
+        //    //if (Mathf.Abs(chemins[index + 1].z - PointSuivant.z) > 0.90f)
+        //    //{
+        //    //    PointSuivant -= new Vector3(0.5f, 0, 0);
 
-            //}
-            PointSuivant -= new Vector3(0, 0, 0.1f);
-            Debug.Log(2);
+        //    //}
+        //    PointSuivant -= new Vector3(0, 0, 0.1f);
+        //    Debug.Log(2);
 
-        }
-        if ((PointSuivant.x - transform.position.x) < -0.7f)
-        {
-            if (Initiation)
-            {
-                transform.position += new Vector3(0, 0, 0.1f);
-                transform.Rotate(0, -90, 0);
-                Initiation = false;
-            }
-            //if (Mathf.Abs(chemins[index + 1].z - PointSuivant.z) > 0.90f)
-            //{
-            //    PointSuivant += new Vector3(0.5f, 0, 0);
+        //}
+        //if ((PointSuivant.x - transform.position.x) < -0.7f)
+        //{
+        //    if (Initiation)
+        //    {
+        //        transform.position += new Vector3(0, 0, 0.1f);
+        //        transform.Rotate(0, -90, 0);
+        //        Initiation = false;
+        //    }
+        //    //if (Mathf.Abs(chemins[index + 1].z - PointSuivant.z) > 0.90f)
+        //    //{
+        //    //    PointSuivant += new Vector3(0.5f, 0, 0);
 
-            //}
-            PointSuivant += new Vector3(0, 0, 0.1f);
-            Debug.Log(3);
-        }
-        if (Initiation)
-        {
-            angle = transform.rotation.eulerAngles.y;
-        }
+        //    //}
+        //    PointSuivant += new Vector3(0, 0, 0.1f);
+        //    Debug.Log(3);
+        //}
+        //if (Initiation)
+        //{
+        //    angle = transform.rotation.eulerAngles.y;
+        //}        //if ((PointSuivant.z - transform.position.z) > 0.7f) // vérifier la direction
+        //{
+        //    if (Initiation)
+        //    {
+        //        transform.position += new Vector3(0.1f, 0, 0);
+        //        Initiation = false;
+        //    }
+        //    //if (Mathf.Abs(chemins[index + 1].x - PointSuivant.x) > 0.90f)
+        //    //{
+
+        //    //    //PointSuivant -= new Vector3(0, 0, 0.5f);
+
+        //    //}
+
+        //    PointSuivant += new Vector3(0.1f, 0, 0);
+        //    Debug.Log(0);
+
+        //}
+        //if ((PointSuivant.z - transform.position.z) < -0.7f)
+        //{
+        //    if (Initiation)
+        //    {
+        //        transform.position -= new Vector3(0.1f, 0, 0);
+        //        transform.Rotate(0, 180, 0);
+        //        Initiation = false;
+        //    }
+        //    //if (Mathf.Abs(chemins[index + 1].x - PointSuivant.x) > 0.90f)
+        //    //{
+        //    //    PointSuivant += new Vector3(0, 0, 0.5f);
+
+        //    //}
+        //    PointSuivant -= new Vector3(0.1f, 0, 0);
+        //    Debug.Log(1);
+        //}
+        //if ((PointSuivant.x - transform.position.x) > 0.7f)
+        //{
+        //    if (Initiation)
+        //    {
+        //        transform.position -= new Vector3(0, 0, 0.1f);
+        //        transform.Rotate(0, 90, 0);
+        //        Initiation = false;
+        //    }
+        //    //if (Mathf.Abs(chemins[index + 1].z - PointSuivant.z) > 0.90f)
+        //    //{
+        //    //    PointSuivant -= new Vector3(0.5f, 0, 0);
+
+        //    //}
+        //    PointSuivant -= new Vector3(0, 0, 0.1f);
+        //    Debug.Log(2);
+
+        //}
+        //if ((PointSuivant.x - transform.position.x) < -0.7f)
+        //{
+        //    if (Initiation)
+        //    {
+        //        transform.position += new Vector3(0, 0, 0.1f);
+        //        transform.Rotate(0, -90, 0);
+        //        Initiation = false;
+        //    }
+        //    //if (Mathf.Abs(chemins[index + 1].z - PointSuivant.z) > 0.90f)
+        //    //{
+        //    //    PointSuivant += new Vector3(0.5f, 0, 0);
+
+        //    //}
+        //    PointSuivant += new Vector3(0, 0, 0.1f);
+        //    Debug.Log(3);
+        //}
+        //if (Initiation)
+        //{
+        //    angle = transform.rotation.eulerAngles.y;
+        //}
     }
     //Vector3 PointSuivantSuivant = chemins[index + 1];
     //Vector3 v1 = PointSuivant - PointActuel;
