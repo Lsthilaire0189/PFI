@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 162226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.32301545, y: 0.24910401, z: 1}
+  m_LocalScale: {x: 0.27699545, y: 0.24910401, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7540862003324803745}
@@ -109,7 +109,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8646367953225747889, guid: 617289380408f5545ad1e01c126cdc04, type: 3}
       propertyPath: m_Mass
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8646367953225747889, guid: 617289380408f5545ad1e01c126cdc04, type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 8646367953225747889, guid: 617289380408f5545ad1e01c126cdc04, type: 3}
       propertyPath: m_IsKinematic
@@ -137,7 +141,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!4 &7540862003324803745 stripped
 Transform:

@@ -83,7 +83,7 @@ public class DéplacementScript : MonoBehaviour
 
         if (gestionEssence.VérifierEssence() && gestionVieJoueur.VérifierVieJoueur())
         {
-            if (rbVoiture.velocity.magnitude <= VitesseMaximale)
+            if (rbVoiture.velocity.magnitude*100 <= VitesseMaximale)
             {
                 if (rec.lY is < 32760 and > 0)
                 {

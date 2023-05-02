@@ -21,6 +21,6 @@ public class AffichageVitesse : MonoBehaviour
 
     private void FixedUpdate()
     {
-        texte.text = ((int)rb.velocity.magnitude).ToString();
+        texte.text =  ((int)(rb.velocity.magnitude*100)).ToString();
     }
 }
