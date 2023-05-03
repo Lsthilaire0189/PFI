@@ -5,12 +5,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManagerScript : MonoBehaviour
 {
-    public int upgradeAccÈlÈration;
+    public float upgradeAcc√©l√©ration;
     public int upgradeVitesseMaximale;
     public float upgradeForceFreinage;
-    public int upgradeCapacitÈEssence;
+    public int upgradeCapacit√©Essence;
     public int upgradeVieMaximale;
     public int upgradeWrench;
+    public int upgradePompe;
 
     public int ArgentDisponible;
     public int NbPoints;
@@ -20,33 +21,38 @@ public class GameManagerScript : MonoBehaviour
         DontDestroyOnLoad(this);// pour permettre de peser sur escape pour sortir du jeu.
     }
 
-    public void AmÈliorerAccÈlÈration()
+    public void Am√©liorerAcc√©l√©ration()
     {
-        upgradeAccÈlÈration -=1;
+        upgradeAcc√©l√©ration +=0.007f;
     }
-    public void AmÈliorerForceFreinage()
+    public void Am√©liorerForceFreinage()
     {
         upgradeForceFreinage +=0.05f;
     }
-    public void AmÈliorerVitesseMaximale()
+    public void Am√©liorerVitesseMaximale()
     {
-        upgradeVitesseMaximale +=2;
+        upgradeVitesseMaximale +=10;
     }
-    public void AmÈliorerCapacitÈEssenceMaximum()
+    public void Am√©liorerCapacit√©EssenceMaximum()
     {
-        upgradeCapacitÈEssence+=5;
+        upgradeCapacit√©Essence+=5;
     }
-    public void AmÈliorerVieMaximaleJoueur()
+    public void Am√©liorerVieMaximaleJoueur()
     {
         upgradeVieMaximale+=3;
     }
     public void BonifierWrench()
     {
-        upgradeWrench+=3;
+        upgradeWrench += 2;
     }
-    public void ChangerDeScËne(int NoScËne)
+
+    public void BonifierPompe()
     {
-        SceneManager.LoadScene(NoScËne);
+        upgradePompe += 5;
+    }
+    public void ChangerDeSc√©ne(int NoSc√©ne)
+    {
+        SceneManager.LoadScene(NoSc√©ne);
        
     }
 

@@ -38,7 +38,7 @@ public class GestionJoueur : MonoBehaviour
         gestionSurfaceCollision = gameObject.GetComponent<GestionSurfaceCollision>();
 
     }
-    public void InitierSpécifications(int UpgradeAccélération, int UpgradeVitesseMaximale, float UpgradeForceFreinage, int UpgradeEssence, int UpgradeVie, int UpgradeGainEssence, int UpgradeGainVie)
+    public void InitierSpécifications(float UpgradeAccélération, int UpgradeVitesseMaximale, float UpgradeForceFreinage, int UpgradeEssence, int UpgradeVie, int UpgradeGainEssence, int UpgradeGainVie)
     {
         déplacementScript.ValeurAccélération += UpgradeAccélération;
         déplacementScript.VitesseMaximale += UpgradeVitesseMaximale;
