@@ -32,7 +32,7 @@ public class SceneManagerScript : MonoBehaviour
     {
         //GameManager = GameObject.Find("GameManager");
         //gameManagerScript = GameManager.GetComponent<GameManagerScript>();
-        InstantierJoueur();
+        //InstantierJoueur();
     }
     IEnumerator CréerUneCarte()
     {

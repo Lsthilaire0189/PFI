@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Toolbars;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,13 +8,16 @@ public class GameManagerScript : MonoBehaviour
 {
     public int upgradeAccélération;
     public int upgradeVitesseMaximale;
-    public float upgradeForceFreinage;
+    public int upgradeForceFreinage;
     public int upgradeCapacitéEssence;
     public int upgradeVieMaximale;
     public int upgradeWrench;
 
     public int ArgentDisponible;
     public int NbPoints;
+    [SerializeField] TextMeshProUGUI MessageErreur;
+    [SerializeField] TextMeshProUGUI NBargent, AccélérationText, VitesseText, FreinageText, EssenceText, VieText, WrenchText;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -22,32 +26,94 @@ public class GameManagerScript : MonoBehaviour
 
     public void AméliorerAccélération()
     {
-        upgradeAccélération -=1;
+        if (ArgentDisponible >= 3&& upgradeAccélération<3)
+        {
+            upgradeAccélération++;
+            AccélérationText.text = $"Niveau d'amélioration: {upgradeAccélération}";
+            ArgentDisponible -= 3;
+            NBargent.text = $"Argent disponible {ArgentDisponible} ";
+        }
+        else
+        {
+            MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+        }
     }
     public void AméliorerForceFreinage()
     {
-        upgradeForceFreinage +=0.05f;
+        if (ArgentDisponible >= 3&& upgradeForceFreinage<3)
+        {
+            upgradeForceFreinage++;
+            FreinageText.text = $"Niveau d'amélioration: {upgradeForceFreinage}";
+            ArgentDisponible -= 3;
+            NBargent.text = $"Argent disponible {ArgentDisponible} ";
+        }
+        else
+        {
+            MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+        }
     }
     public void AméliorerVitesseMaximale()
     {
-        upgradeVitesseMaximale +=2;
+        if (ArgentDisponible >= 3&& upgradeVitesseMaximale<3)
+        {
+            upgradeVitesseMaximale++;
+            VitesseText.text = $"Niveau d'amélioration: {upgradeVitesseMaximale}";
+            ArgentDisponible -= 3;
+            NBargent.text = $"Argent disponible {ArgentDisponible} ";
+        }
+        else
+        {
+            MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+        }
     }
     public void AméliorerCapacitéEssenceMaximum()
     {
-        upgradeCapacitéEssence+=5;
+        if (ArgentDisponible >= 3&& upgradeCapacitéEssence<3)
+        {
+            upgradeCapacitéEssence++;
+            EssenceText.text = $"Niveau d'amélioration: {upgradeCapacitéEssence}";
+            ArgentDisponible -= 3;
+            NBargent.text = $"Argent disponible {ArgentDisponible} ";
+        }
+        else
+        {
+            MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+        }
+
     }
     public void AméliorerVieMaximaleJoueur()
     {
-        upgradeVieMaximale+=3;
+        if (ArgentDisponible >= 3&& upgradeVieMaximale<3)
+        {
+            upgradeVieMaximale++;
+            VieText.text = $"Niveau d'amélioration: {upgradeVieMaximale}";
+            ArgentDisponible -= 3;
+            NBargent.text = $"Argent disponible {ArgentDisponible} ";
+        }
+        else
+        {
+            MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+        }
     }
     public void BonifierWrench()
     {
-        upgradeWrench+=3;
+        if (ArgentDisponible >= 3&& upgradeWrench<3)
+        {
+            upgradeWrench ++;
+            WrenchText.text = $"Niveau d'amélioration: {upgradeWrench}";
+            ArgentDisponible -= 3;
+            NBargent.text = $"Argent disponible {ArgentDisponible} ";
+        }
+        else
+        {
+            MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+        }
+
     }
     public void ChangerDeScène(int NoScène)
     {
         SceneManager.LoadScene(NoScène);
-       
+
     }
 
 }

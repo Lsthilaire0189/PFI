@@ -22,6 +22,7 @@ public class AIDéplacement : MonoBehaviour
     Vector3 PointPrécédent;
     Vector3 PointSuivant;
     float angle;
+    float angleModifié;
     Vector3 PointSuivant1, Pointsuivant2;
 
     bool intersection;
@@ -53,10 +54,32 @@ public class AIDéplacement : MonoBehaviour
         index = 0;
         PointPrécédent = chemins[index];
         PointSuivant = chemins[++index];
-
+        InitiationNPC();
         VérifierDirection();
 
 
+
+    }
+    void InitiationNPC()
+    {
+        if ((PointSuivant.z - transform.position.z) < -0.7f)
+        {
+            transform.Rotate(0, 180, 0);
+            angle = 0;
+            direction = 1;
+        }
+        if ((PointSuivant.x - transform.position.x) > 0.7f)
+        {
+            transform.Rotate(0, 90, 0);
+            angle = 90;
+            direction = 0;
+        }
+        if ((PointSuivant.x - transform.position.x) < -0.7f)
+        {
+            transform.Rotate(0, -90, 0);
+            angle = 90;
+            direction = 0;
+        }
     }
     private void FixedUpdate()
     {
@@ -64,35 +87,33 @@ public class AIDéplacement : MonoBehaviour
         time += Time.deltaTime;
         t = time / 50;
         t = t * t * (3f - 2f * t);
-        if (intersection)
+        //if (intersection)
+        //{
+        transform.position = Vector3.Lerp(transform.position, PointSuivant, t);
+        //transform.position = Vector3.MoveTowards(transform.position, PointSuivant, 0.005f);
+        //}
+        //else
+        //{
+        //transform.position = Vector3.Lerp(transform.position, PointSuivant, 0.5f);
+
+        if (Mathf.Abs(angle - Mathf.Abs(transform.rotation.eulerAngles.y)) < 87 || Mathf.Abs(angle - Mathf.Abs(transform.rotation.eulerAngles.y)) > 5)
         {
-            transform.position = Vector3.Lerp(transform.position, PointSuivant, t);
-        }
-        else
-        {
-            transform.position = Vector3.Lerp(transform.position, PointSuivant, 0.5f);
-        }
-        if (Mathf.Abs(angle - transform.rotation.eulerAngles.y) <170|| Mathf.Abs(angle - transform.rotation.eulerAngles.y)>8)
-        {
-            transform.Rotate(new Vector3(0, (angle-transform.rotation.eulerAngles.y) * 0.01f, 0));
+            transform.Rotate(new Vector3(0, (angle-transform.rotation.eulerAngles.y ) * 0.01f, 0));
         }
         if (Vector3.Magnitude(PointSuivant - transform.position) < 0.01f)
         {
-            if (index ==chemins.Count-1)
+            if (index == chemins.Count - 1)
             {
                 TrouverDestination();
                 Initiation = true;
             }
             else
             {
-                angle = 0;
-                PointPrécédent = chemins[index];
-                PointSuivant = chemins[index + 1];
-                Vector3 v = PointSuivant - PointPrécédent;
-                angle = Vector3.Angle(v, Vector3.forward);
-                time = 0;
                 index++;
                 PointSuivant = chemins[index];
+                Vector3 vecteur = PointSuivant - transform.position;
+               // angle = Vector3.SignedAngle(transform.position,PointSuivant Vector3.forward);
+                time = 0;
                 VérifierDirection();
             }
         }
@@ -102,26 +123,39 @@ public class AIDéplacement : MonoBehaviour
     void VérifierDirection() // utiliser vecteurs 
     {
         intersection = false;
-        Vector3 vecteur = PointSuivant - transform.position;
-        float directionx = MathF.Abs(vecteur.x);
-        float directionz = MathF.Abs(vecteur.z);
-         direction=0;
+        Vector3 vecteur1 = PointSuivant - transform.position;
+        float directionx = MathF.Abs(vecteur1.x);
+        float directionz = MathF.Abs(vecteur1.z);
         int ndirection;
+
         if (directionx > directionz)
         {
-            PointSuivant += new Vector3(0,0,0.1f) * MathF.Sign(directionx);
+            PointSuivant -= new Vector3(0, 0, 0.1f) * MathF.Sign(vecteur1.x);
+
             ndirection = 0;
         }
         else
         {
-            PointSuivant += new Vector3(0.1f,0,0)* MathF.Sign(directionz);
+            PointSuivant += new Vector3(0.1f, 0, 0) * MathF.Sign(vecteur1.z);
+
             ndirection = 1;
         }
         if (ndirection != direction)
         {
-            intersection = true;
+            //if (directionx > directionz)
+            //{
+            //    angle = angle * MathF.Sign(vecteur1.x);
+            //}
+            //else
+            //{
+            //    angle = angle * MathF.Sign(vecteur1.z);
+            //}
+
+            Debug.Log("Intersection");
+            direction = ndirection;
         }
         Debug.Log(PointSuivant);
+
         //if ((PointSuivant.z - transform.position.z) > 0.7f) // vérifier la direction
         //{
         //    if (Initiation)
