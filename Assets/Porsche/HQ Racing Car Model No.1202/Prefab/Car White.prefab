@@ -783,6 +783,7 @@ MonoBehaviour:
   sonCollisionObjet: {fileID: 0}
   sonEssence: {fileID: 1738542308025180324}
   sonGainHP: {fileID: 587258505262064520}
+  explosion: {fileID: 400000, guid: 15ca5b8fa431dc04291a79cadcd19874, type: 3}
   gainHP: 2
   gainEssence: 5
 --- !u!114 &3463090263255048252

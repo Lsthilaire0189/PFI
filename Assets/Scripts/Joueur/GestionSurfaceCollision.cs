@@ -48,12 +48,12 @@ public class GestionSurfaceCollision : MonoBehaviour
         {
             if(roueCollider.GetGroundHit(out hit))
             {
-                if (hit.collider.gameObject.layer == 11)
+                if (hit.collider.gameObject.layer == boueLayer)
                 {
                     print("hit mud");
                     roueCollider.motorTorque /=1.0075f;
                 }
-                else if (hit.collider.gameObject.layer == 12)
+                else if (hit.collider.gameObject.layer == eauLayer)
                 {
                     print("hit water");
 

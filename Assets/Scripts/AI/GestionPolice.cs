@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GestionPolice : MonoBehaviour
 {
+    public Transform explosion;
+    int BatimentLayer = 9;
+    int JoueurLayer = 14;
     Ray ray;
     float maxDistance = 2;
     public LayerMask layer = 14;
@@ -38,5 +41,14 @@ public class GestionPolice : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, position, 0.005f);
         }
 
+    }
+    
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.layer == BatimentLayer)
+        {
+            Instantiate(explosion, gameObject.transform.position, Quaternion.identity, transform);
+            Destroy(gameObject);
+        }
     }
 }

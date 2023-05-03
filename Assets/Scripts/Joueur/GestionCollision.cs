@@ -17,10 +17,13 @@ public class GestionCollision : MonoBehaviour
     public AudioSource sonEssence;
     public AudioSource sonGainHP;
 
+    public Transform explosion;
+
     int wrenchLayer = 7;
     int gasLayer = 8;
     int BatimentLayer = 9;
-    private int policeLayer = 10;
+    int policeLayer = 10;
+    int NPCLayer = 16;
     int ArgentLayer = 13;
 
     public int gainHP;
@@ -53,17 +56,25 @@ public class GestionCollision : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         int collisionDommage;
         ContactPoint c = collision.GetContact(0);
-        if (collision.gameObject.layer == BatimentLayer)
-        { 
+        if (collision.gameObject.layer == BatimentLayer || collision.gameObject.layer == NPCLayer)
+        {
             collisionDommage = 5;
-           if (c.thisCollider.gameObject == PointFaible)
-           {
-               collisionDommage += 3;
-           }
+            if (c.thisCollider.gameObject == PointFaible)
+            {
+                collisionDommage += 3;
+            }
+
+            if (collision.gameObject.layer == NPCLayer)
+            {
+                Instantiate(explosion, collision.gameObject.transform.position, Quaternion.identity, transform);
+                Destroy(collision.gameObject);
+            }
+
             gestionVieJoueur.ModifierVie(-collisionDommage);
         }
         else if (collision.gameObject.layer == policeLayer)
@@ -73,8 +84,14 @@ public class GestionCollision : MonoBehaviour
             {
                 collisionDommage += 3;
             }
+
+            Instantiate(explosion, collision.gameObject.transform.position, Quaternion.identity, transform);
+            Destroy(collision.gameObject);
+            
+
             gestionVieJoueur.ModifierVie(-collisionDommage);
+
+
         }
-        
     }
 }
