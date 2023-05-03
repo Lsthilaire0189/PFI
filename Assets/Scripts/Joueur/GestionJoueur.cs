@@ -13,7 +13,8 @@ public class GestionJoueur : MonoBehaviour
     GestionVieJoueur gestionVieJoueur;
     GestionPointage gestionPointage;
     SceneManagerScript sceneManagerScript;
-    GestionCollision gestionCollision;
+    GestionCollision gestionCollision; 
+    GestionSurfaceCollision gestionSurfaceCollision;
 
     public int JoueurEssence;
     public int JoueurHP;
@@ -33,17 +34,19 @@ public class GestionJoueur : MonoBehaviour
         gestionPointage = gameObject.GetComponent<GestionPointage>();
         sceneManagerScript= gameObject.GetComponentInParent<SceneManagerScript>();
         gestionCollision = gameObject.GetComponent<GestionCollision>();
+        gestionCollision = gameObject.GetComponent<GestionCollision>();
+        gestionSurfaceCollision = gameObject.GetComponent<GestionSurfaceCollision>();
 
     }
-    public void InitierSpécifications(int UpgradeAccélération, int UpgradeVitesseMaximale, float UpgradeForceFreinage, int UpgradeEssence, int UpgradeVie, int UpgradeGainEssence, int UpgradeGainVie)
+    public void InitierSpécifications(float UpgradeAccélération, int UpgradeVitesseMaximale, float UpgradeForceFreinage, int UpgradeEssence, int UpgradeVie, int UpgradeGainEssence, int UpgradeGainVie)
     {
-        déplacementScript.ValeurAccélération += UpgradeAccélération;
-        déplacementScript.VitesseMaximale += UpgradeVitesseMaximale;
-        déplacementScript.ValeurForceFreinage += UpgradeForceFreinage;
-        JoueurHP = VieMaximaleJoueur + UpgradeVie;
-        JoueurEssence = CapacitéEssenceMaximale + UpgradeEssence;
-        gestionCollision.gainEssence += UpgradeGainEssence;
-        gestionCollision.gainHP += UpgradeGainVie;
+        déplacementScript.ValeurAccélération += UpgradeAccélération*0.007f;
+        déplacementScript.VitesseMaximale += UpgradeVitesseMaximale*10;
+        déplacementScript.ValeurForceFreinage += UpgradeForceFreinage*0.05f;
+        JoueurHP = VieMaximaleJoueur + UpgradeVie*3;
+        JoueurEssence = CapacitéEssenceMaximale + UpgradeEssence*5;
+        gestionCollision.gainEssence += UpgradeGainEssence*5;
+        gestionCollision.gainHP += UpgradeGainVie*2;
     }
 
     public void AssocierCamera(GameObject XRorigin)

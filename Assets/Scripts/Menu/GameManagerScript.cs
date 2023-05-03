@@ -6,17 +6,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManagerScript : MonoBehaviour
 {
-    public int upgradeAccélération;
+    public float upgradeAccÃ©lÃ©ration;
     public int upgradeVitesseMaximale;
     public int upgradeForceFreinage;
-    public int upgradeCapacitéEssence;
+    public int upgradeCapacitÃ©Essence;
     public int upgradeVieMaximale;
     public int upgradeWrench;
+    public int upgradePompe;
 
     public int ArgentDisponible;
     public int NbPoints;
     [SerializeField] TextMeshProUGUI MessageErreur;
-    [SerializeField] TextMeshProUGUI NBargent, AccélérationText, VitesseText, FreinageText, EssenceText, VieText, WrenchText;
+    [SerializeField] TextMeshProUGUI NBargent, AccÃ©lÃ©rationText, VitesseText, FreinageText, EssenceText, VieText, WrenchText;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,12 +25,12 @@ public class GameManagerScript : MonoBehaviour
         DontDestroyOnLoad(this);// pour permettre de peser sur escape pour sortir du jeu.
     }
 
-    public void AméliorerAccélération()
+    public void AmÃ©liorerAccÃ©lÃ©ration()
     {
-        if (ArgentDisponible >= 3&& upgradeAccélération<3)
+        if (ArgentDisponible >= 3&& upgradeAccÃ©lÃ©ration<3)
         {
-            upgradeAccélération++;
-            AccélérationText.text = $"Niveau d'amélioration: {upgradeAccélération}";
+            upgradeAccÃ©lÃ©ration++;
+            AccÃ©lÃ©rationText.text = $"Niveau d'amÃ©lioration: {upgradeAccÃ©lÃ©ration}";
             ArgentDisponible -= 3;
             NBargent.text = $"Argent disponible {ArgentDisponible} ";
         }
@@ -38,12 +39,12 @@ public class GameManagerScript : MonoBehaviour
             MessageErreur.text = "Il n'y a pas assez d'argent disponible";
         }
     }
-    public void AméliorerForceFreinage()
+    public void AmÃ©liorerForceFreinage()
     {
         if (ArgentDisponible >= 3&& upgradeForceFreinage<3)
         {
             upgradeForceFreinage++;
-            FreinageText.text = $"Niveau d'amélioration: {upgradeForceFreinage}";
+            FreinageText.text = $"Niveau d'amÃ©lioration: {upgradeForceFreinage}";
             ArgentDisponible -= 3;
             NBargent.text = $"Argent disponible {ArgentDisponible} ";
         }
@@ -52,12 +53,12 @@ public class GameManagerScript : MonoBehaviour
             MessageErreur.text = "Il n'y a pas assez d'argent disponible";
         }
     }
-    public void AméliorerVitesseMaximale()
+    public void AmÃ©liorerVitesseMaximale()
     {
         if (ArgentDisponible >= 3&& upgradeVitesseMaximale<3)
         {
             upgradeVitesseMaximale++;
-            VitesseText.text = $"Niveau d'amélioration: {upgradeVitesseMaximale}";
+            VitesseText.text = $"Niveau d'amÃ©lioration: {upgradeVitesseMaximale}";
             ArgentDisponible -= 3;
             NBargent.text = $"Argent disponible {ArgentDisponible} ";
         }
@@ -66,12 +67,12 @@ public class GameManagerScript : MonoBehaviour
             MessageErreur.text = "Il n'y a pas assez d'argent disponible";
         }
     }
-    public void AméliorerCapacitéEssenceMaximum()
+    public void AmÃ©liorerCapacitÃ©EssenceMaximum()
     {
-        if (ArgentDisponible >= 3&& upgradeCapacitéEssence<3)
+        if (ArgentDisponible >= 3&& upgradeCapacitÃ©Essence<3)
         {
-            upgradeCapacitéEssence++;
-            EssenceText.text = $"Niveau d'amélioration: {upgradeCapacitéEssence}";
+            upgradeCapacitÃ©Essence++;
+            EssenceText.text = $"Niveau d'amÃ©lioration: {upgradeCapacitÃ©Essence}";
             ArgentDisponible -= 3;
             NBargent.text = $"Argent disponible {ArgentDisponible} ";
         }
@@ -81,12 +82,12 @@ public class GameManagerScript : MonoBehaviour
         }
 
     }
-    public void AméliorerVieMaximaleJoueur()
+    public void AmÃ©liorerVieMaximaleJoueur()
     {
         if (ArgentDisponible >= 3&& upgradeVieMaximale<3)
         {
             upgradeVieMaximale++;
-            VieText.text = $"Niveau d'amélioration: {upgradeVieMaximale}";
+            VieText.text = $"Niveau d'amÃ©lioration: {upgradeVieMaximale}";
             ArgentDisponible -= 3;
             NBargent.text = $"Argent disponible {ArgentDisponible} ";
         }
@@ -100,7 +101,7 @@ public class GameManagerScript : MonoBehaviour
         if (ArgentDisponible >= 3&& upgradeWrench<3)
         {
             upgradeWrench ++;
-            WrenchText.text = $"Niveau d'amélioration: {upgradeWrench}";
+            WrenchText.text = $"Niveau d'amÃ©lioration: {upgradeWrench}";
             ArgentDisponible -= 3;
             NBargent.text = $"Argent disponible {ArgentDisponible} ";
         }
@@ -110,9 +111,14 @@ public class GameManagerScript : MonoBehaviour
         }
 
     }
-    public void ChangerDeScène(int NoScène)
+
+    public void BonifierPompe()
     {
-        SceneManager.LoadScene(NoScène);
+        upgradePompe += 5;
+    }
+    public void ChangerDeScÃ©ne(int NoScÃ©ne)
+    {
+        SceneManager.LoadScene(NoScÃ©ne);
 
     }
 
