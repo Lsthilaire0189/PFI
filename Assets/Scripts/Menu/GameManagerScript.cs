@@ -116,7 +116,7 @@ public class GameManagerScript : MonoBehaviour
     {
         upgradePompe += 5;
     }
-    public void ChangerDeScéne(int NoScéne)
+    public void ChangerDeScène(int NoScéne)
     {
         SceneManager.LoadScene(NoScéne);
 

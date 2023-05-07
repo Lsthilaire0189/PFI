@@ -63,7 +63,6 @@ public class AlgoDeRecherche : MonoBehaviour
         Noeud current = Destination;
         temp.Push(current);
         chemin = new List<Vector3>();
-        Vector3 Pr;
         while (current.Précédent != null)
         {
             temp.Push(current.Précédent);

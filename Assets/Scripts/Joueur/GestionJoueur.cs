@@ -65,7 +65,7 @@ public class GestionJoueur : MonoBehaviour
             Joueur.transform.position = CaméraEmplacement.transform.position;
             Joueur.transform.rotation = CaméraEmplacement.transform.rotation;
             //gestionPointage.ModifierPointage(1);
-            Debug.Log(JoueurPointage);
+            //Debug.Log(JoueurPointage);
         }
         else
         {

@@ -1087,6 +1087,7 @@ MonoBehaviour:
   "upgradeCapacit\xE9Essence": 0
   upgradeVieMaximale: 0
   upgradeWrench: 0
+  upgradePompe: 0
   ArgentDisponible: 0
   NbPoints: 0
   MessageErreur: {fileID: 666000940}
