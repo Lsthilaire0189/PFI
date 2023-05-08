@@ -6,7 +6,6 @@ using static ScoreManager;
 using static UnityEngine.EventSystems.EventTrigger;
 using TMPro;
 
-
 public class EntréesManager : MonoBehaviour
 {
     public GameObject prefabEntree;

@@ -6,8 +6,8 @@ using static UnityEditor.PlayerSettings;
 
 public class CircuitCarte : MonoBehaviour 
 {
-    const int Ã©loignement = 6;
-    const int Ã©loignementMaison = 3;
+    const int Éloignement = 6;
+    const int ÉloignementMaison = 3;
     public RoadHelper RRoadHelper;
 
     public GameObject Arbre;
@@ -34,18 +34,18 @@ public class CircuitCarte : MonoBehaviour
 
         float deltaX = xMax - xMin;
         float delatZ = zMax - zMin;
-        // La spline cubique avec les mathÃ©matiques que j'ai utilisÃ© peut seulement interpoler entre des points qui ont une diffÃ©rence de marche positive entre les deux, je dois alors faire deux splines
+        // La spline cubique avec les mathématiques que j'ai utilisé peut seulement interpoler entre des points qui ont une différence de marche positive entre les deux, je dois alors faire deux splines
 
-        var p1Spline1 = new Vector3(xMin - Ã©loignement, 0, zMin + delatZ/2);
-        var p2Spline1 = new Vector3(xMin, 0, zMax+ Ã©loignementMaison);
-        var p3Spline1 = new Vector3(xMin + deltaX / 2, 0, zMax + Ã©loignement);
-        var p4Spline1 = new Vector3(xMax, 0, zMax+ Ã©loignementMaison);
-        var p5Spline1 = new Vector3(xMax + Ã©loignement, 0, zMin + delatZ / 2);
+        var p1Spline1 = new Vector3(xMin - Éloignement, 0, zMin + delatZ/2);
+        var p2Spline1 = new Vector3(xMin, 0, zMax+ ÉloignementMaison);
+        var p3Spline1 = new Vector3(xMin + deltaX / 2, 0, zMax + Éloignement);
+        var p4Spline1 = new Vector3(xMax, 0, zMax+ ÉloignementMaison);
+        var p5Spline1 = new Vector3(xMax + Éloignement, 0, zMin + delatZ / 2);
 
         var p1Spline2 = new Vector3(p1Spline1.x, 0, p1Spline1.z);
-        var p2Spline2 = new Vector3(xMin, 0, zMin- Ã©loignementMaison);
-        var p3Spline2 = new Vector3(xMin + deltaX / 2, 0,zMin-Ã©loignement);
-        var p4Spline2 = new Vector3(xMax, 0, zMin - Ã©loignementMaison);
+        var p2Spline2 = new Vector3(xMin, 0, zMin- ÉloignementMaison);
+        var p3Spline2 = new Vector3(xMin + deltaX / 2, 0,zMin-Éloignement);
+        var p4Spline2 = new Vector3(xMax, 0, zMin - ÉloignementMaison);
         var p5Spline2 = new Vector3(p5Spline1.x, 0, p5Spline1.z);
 
         //

@@ -51,7 +51,7 @@ public class Spline : MonoBehaviour
     {
         ListePoints = listePoints;
         //TrouverPointsInitiaux();
-        // var matA = CrÃ©erMatriceA();
+        // var matA = CréerMatriceA();
         //var coefficients = TrouverMatriceX(ListePoints);
     }
     public Spline(List<Vector3> listePoints, GameObject thing)
@@ -59,12 +59,12 @@ public class Spline : MonoBehaviour
         ListePoints = listePoints;
         Thing = thing;
         //TrouverPointsInitiaux();
-        // var matA = CrÃ©erMatriceA();
+        // var matA = CréerMatriceA();
         //var coefficients = TrouverMatriceX(ListePoints);
     }
 
   
-    private double[,] CrÃ©erMatriceA()
+    private double[,] CréerMatriceA()
     {
         int nbSx = (ListePoints.Count - 1);             //nb fonctions piecewise
         int bornesExclues = (ListePoints.Count - 2);    // nb de points sans le premier et dernier point
@@ -79,9 +79,9 @@ public class Spline : MonoBehaviour
 
         for (int i = 0; i < nbSx * 2; ++i)
         {
-            var t1 = Formertest1(columnCount, i); // on vÃ©rifie la ligne pour choisir le bon test et le bon point des pointsInitiauxTries, on remplace le point dans le tes
+            var t1 = Formertest1(columnCount, i); // on vérifie la ligne pour choisir le bon test et le bon point des pointsInitiauxTries, on remplace le point dans le tes
             for (int j = 0; j < t1.Count; ++j)
-                matA[i, j] = t1[j]; // on recopie ce qu'on a trouvÃ©
+                matA[i, j] = t1[j]; // on recopie ce qu'on a trouvé
         }
 
 
@@ -116,7 +116,7 @@ public class Spline : MonoBehaviour
 
 
         var a = new List<double>(columnLenght);
-        if (row % 2 == 0) // vÃ©rifie le test 
+        if (row % 2 == 0) // vérifie le test 
         {
 
 
@@ -344,7 +344,7 @@ public class Spline : MonoBehaviour
         }
         return a;
     }
-    private Matrix<double> CrÃ©erMatriceB()
+    private Matrix<double> CréerMatriceB()
     {
         int nbSx = (ListePoints.Count - 1);
         int bornesExclues = (ListePoints.Count - 2);
@@ -382,8 +382,8 @@ public class Spline : MonoBehaviour
     {
         //var listv = new List<Vector3>() { new Vector3(0, 1, 0), new Vector3(1, 3, 0), new Vector3(2, 2, 0) };
         var c = Matrix<double>.Build;
-        var M = CrÃ©erMatriceA();
-        var b = CrÃ©erMatriceB();
+        var M = CréerMatriceA();
+        var b = CréerMatriceB();
         var a = c.DenseOfArray(M);
         Matrix<double> x = a.Inverse() * b;
         var SxCoefficients = ArrangerCoefficients(x, listePoints);

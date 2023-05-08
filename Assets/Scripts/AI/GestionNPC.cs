@@ -27,15 +27,15 @@ public class GestionNPC : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        //if (other.gameObject.layer == BatimentLayer)
-        //{
-        //    Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
-        //    Destroy(gameObject);
-        //}
-        //if (other.gameObject.layer == NPCLayer)
-        //{
-        //    Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
-        //    Destroy(gameObject);
-        //}
+        if (other.gameObject.layer == BatimentLayer)
+        {
+
+            Destroy(gameObject);
+        }
+        if (other.gameObject.layer == NPCLayer)
+        {
+
+            Destroy(gameObject);
+        }
     }
 }

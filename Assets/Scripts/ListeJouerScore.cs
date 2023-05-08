@@ -38,18 +38,18 @@ public class ListeJouerScore : MonoBehaviour
 
         }
 
-        List<ScoreManager.EntrÃ©eEnter> entrÃ©s = ScoreManager.GetNoms(); // on recoit les noms tries selon leur score
+        List<ScoreManager.EntréeEnter> entrés = ScoreManager.GetNoms(); // on recoit les noms tries selon leur score
         
-        for (int i=0; i<entrÃ©s.Count;i++)
+        for (int i=0; i<entrés.Count;i++)
         {
-            GameObject copiePrefabEntrÃ© = (GameObject)Instantiate(prefabEntree);
-            copiePrefabEntrÃ©.transform.SetParent(this.transform); // on veut que listeJoueurScore soit notre parent
+            GameObject copiePrefabEntré = (GameObject)Instantiate(prefabEntree);
+            copiePrefabEntré.transform.SetParent(this.transform); // on veut que listeJoueurScore soit notre parent
 
             // On cherche ses enfants et on rajoute leur modification a chacun
-            copiePrefabEntrÃ©.transform.Find("Nom").GetComponent<TMP_Text>().text = entrÃ©s[i].Nom;
-            copiePrefabEntrÃ©.transform.Find("Rang").GetComponent<TMP_Text>().text = (i+1).ToString();
-            copiePrefabEntrÃ©.transform.Find("Score").GetComponent<TMP_Text>().text = ScoreManager.GetTypeScore(entrÃ©s[i],"Score").ToString();
-            copiePrefabEntrÃ©.transform.Find("Argent CollectÃ©").GetComponent<TMP_Text>().text = ScoreManager.GetTypeScore(entrÃ©s[i], "Argent CollectÃ©").ToString();
+            copiePrefabEntré.transform.Find("Nom").GetComponent<TMP_Text>().text = entrés[i].Nom;
+            copiePrefabEntré.transform.Find("Rang").GetComponent<TMP_Text>().text = (i+1).ToString();
+            copiePrefabEntré.transform.Find("Score").GetComponent<TMP_Text>().text = ScoreManager.GetTypeScore(entrés[i],"Score").ToString();
+            copiePrefabEntré.transform.Find("Argent Collecté").GetComponent<TMP_Text>().text = ScoreManager.GetTypeScore(entrés[i], "Argent Collecté").ToString();
 
         }
        

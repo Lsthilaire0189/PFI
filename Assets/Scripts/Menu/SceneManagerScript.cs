@@ -18,6 +18,7 @@ public class SceneManagerScript : MonoBehaviour
     public List<GameObject> ListePoints;
 
     public int NbAutos = 5;
+    public int NbAutosActuel;
     GameObject Joueur;
 
     
@@ -29,8 +30,8 @@ public class SceneManagerScript : MonoBehaviour
     
     private void Awake()
     {
-        GameManager = GameObject.Find("GameManager");
-        gameManagerScript = GameManager.GetComponent<GameManagerScript>();
+        //GameManager = GameObject.Find("GameManager");
+        //gameManagerScript = GameManager.GetComponent<GameManagerScript>();
         InstantierJoueur();
     }
     IEnumerator CréerUneCarte()
@@ -44,7 +45,7 @@ public class SceneManagerScript : MonoBehaviour
     {
         Joueur = Instantiate(voiture1, Vector3.zero, Quaternion.identity, gameObject.transform);
         Joueur.GetComponent<GestionJoueur>().AssocierCamera(XrOrigin);
-        Joueur.GetComponent<GestionJoueur>().InitierSpécifications(gameManagerScript.upgradeAccélération, gameManagerScript.upgradeVitesseMaximale, gameManagerScript.upgradeForceFreinage, gameManagerScript.upgradeCapacitéEssence, gameManagerScript.upgradeVieMaximale, gameManagerScript.upgradePompe, gameManagerScript.upgradeWrench);
+        //Joueur.GetComponent<GestionJoueur>().InitierSpécifications(gameManagerScript.upgradeAccélération, gameManagerScript.upgradeVitesseMaximale, gameManagerScript.upgradeForceFreinage, gameManagerScript.upgradeCapacitéEssence, gameManagerScript.upgradeVieMaximale, gameManagerScript.upgradePompe, gameManagerScript.upgradeWrench);
     }
     
     public void InstantierNPC()
@@ -54,15 +55,12 @@ public class SceneManagerScript : MonoBehaviour
             int NoVoiture = Random.Range(0, NPCVoitures.Count);
             GameObject voiture = Instantiate(NPCVoitures[NoVoiture], Vector3.zero, Quaternion.identity, gameObject.transform);
         }
-        Instantiate(Police,new Vector3(0,0.01f,0), Quaternion.identity, gameObject.transform);
+        //Instantiate(Police,new Vector3(0,0.01f,0), Quaternion.identity, gameObject.transform);
     }
     public void PartieEstTerminée(int NbPoints, int argent)
     {
-
-       
         gameManagerScript.ArgentDisponible = argent;
         gameManagerScript.NbPoints = NbPoints;
-        
-        gameManagerScript.ChangerDeScène(0);
+        SceneManager.LoadScene(0);
     }
 }

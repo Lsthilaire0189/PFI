@@ -10,18 +10,15 @@ public class FenetreManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        scoreBoard.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Joystick1Button2))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             scoreBoard.SetActive(!scoreBoard.activeSelf);
         }
-
+       
     }
-
 }

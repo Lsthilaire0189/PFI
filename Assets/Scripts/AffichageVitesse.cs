@@ -8,14 +8,14 @@ using UnityEngine.UI;
 
 public class AffichageVitesse : MonoBehaviour
 {
-
+    [SerializeField] GameObject VitesseTexte;
     private TextMeshProUGUI texte;
 
     private Rigidbody rb;
 
     private void Awake()
     {
-        texte = GameObject.Find("Vitesse").GetComponent<TextMeshProUGUI>();
+        texte = VitesseTexte.GetComponent<TextMeshProUGUI>();
         rb =GetComponent<Rigidbody>();
     }
 

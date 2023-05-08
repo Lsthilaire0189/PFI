@@ -28,7 +28,7 @@ public class GameManagerScript : MonoBehaviour
 
     public void AméliorerAccélération()
     {
-        if (ArgentDisponible >= 3&& upgradeAccélération<3)
+        if (ArgentDisponible >= 3 && upgradeAccélération < 3)
         {
             upgradeAccélération++;
             AccélérationText.text = $"Niveau d'amélioration: {upgradeAccélération}";
@@ -42,7 +42,7 @@ public class GameManagerScript : MonoBehaviour
     }
     public void AméliorerForceFreinage()
     {
-        if (ArgentDisponible >= 3&& upgradeForceFreinage<3)
+        if (ArgentDisponible >= 3 && upgradeForceFreinage < 3)
         {
             upgradeForceFreinage++;
             FreinageText.text = $"Niveau d'amélioration: {upgradeForceFreinage}";
@@ -56,7 +56,7 @@ public class GameManagerScript : MonoBehaviour
     }
     public void AméliorerVitesseMaximale()
     {
-        if (ArgentDisponible >= 3&& upgradeVitesseMaximale<3)
+        if (ArgentDisponible >= 3 && upgradeVitesseMaximale < 3)
         {
             upgradeVitesseMaximale++;
             VitesseText.text = $"Niveau d'amélioration: {upgradeVitesseMaximale}";
@@ -70,7 +70,7 @@ public class GameManagerScript : MonoBehaviour
     }
     public void AméliorerCapacitéEssenceMaximum()
     {
-        if (ArgentDisponible >= 3&& upgradeCapacitéEssence<3)
+        if (ArgentDisponible >= 3 && upgradeCapacitéEssence < 3)
         {
             upgradeCapacitéEssence++;
             EssenceText.text = $"Niveau d'amélioration: {upgradeCapacitéEssence}";
@@ -85,7 +85,7 @@ public class GameManagerScript : MonoBehaviour
     }
     public void AméliorerVieMaximaleJoueur()
     {
-        if (ArgentDisponible >= 3&& upgradeVieMaximale<3)
+        if (ArgentDisponible >= 3 && upgradeVieMaximale < 3)
         {
             upgradeVieMaximale++;
             VieText.text = $"Niveau d'amélioration: {upgradeVieMaximale}";
@@ -99,9 +99,9 @@ public class GameManagerScript : MonoBehaviour
     }
     public void BonifierWrench()
     {
-        if (ArgentDisponible >= 3&& upgradeWrench<3)
+        if (ArgentDisponible >= 3 && upgradeWrench < 3)
         {
-            upgradeWrench ++;
+            upgradeWrench++;
             WrenchText.text = $"Niveau d'amélioration: {upgradeWrench}";
             ArgentDisponible -= 3;
             NBargent.text = $"Argent disponible {ArgentDisponible} ";
@@ -119,6 +119,7 @@ public class GameManagerScript : MonoBehaviour
     }
     public void ChangerDeScène(int NoScéne)
     {
+        SceneManager.LoadScene(NoScéne);
 
         SceneManager.LoadScene(NoScéne);
 
