@@ -4,6 +4,7 @@ using TMPro;
 using UnityEditor.Toolbars;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class GameManagerScript : MonoBehaviour
 {
     public float upgradeAccélération;
@@ -118,7 +119,8 @@ public class GameManagerScript : MonoBehaviour
     }
     public void ChangerDeScène(int NoScéne)
     {
-        SceneManager.LoadScene(NoScéne);
+
+        SceneManager.LoadScene(NoScéne,LoadSceneMode.Additive);
 
     }
 
