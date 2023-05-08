@@ -26,6 +26,7 @@ public class TypeScoreIntrouvableException : Exception
 }
 public static class ScoreManager
 {
+    [Serializable]
     public class EntréeEnter
     {
         public string Nom { get; private set; }
@@ -81,23 +82,6 @@ public static class ScoreManager
 
     }
 
-    //public static int GetArgentCollecté(EntréeEnter entrée)
-    //{
-    //    InitialisationScoreJoueurs();
-    //    int index;
-
-    //    if (!scoreJoueurs.Contains(entrée))
-    //    {
-    //        return 0;
-    //    }
-    //    else
-    //    {
-    //        index = scoreJoueurs.FindIndex(x => (x.ArgentCollecté == entrée.ArgentCollecté) && (x.Nom == entrée.Nom) && (x.Score == entrée.Score));
-    //    }
-
-
-    //    return scoreJoueurs[index].ArgentCollecté;
-    //}
     public static void SetTypeScore(EntréeEnter entrée, int valeur,string typeScore)
     {
         InitialisationScoreJoueurs();
@@ -114,17 +98,8 @@ public static class ScoreManager
                 entrée.Score = valeur;
                 break;
         }
-
-
-   
     }
-    //public static void SetArgentCollecté(EntréeEnter entrée, int valeur)
-    //{
-    //    InitialisationScoreJoueurs();
-
-    //    changementScore++;
-    //    entrée.ArgentCollecté = valeur;
-    //}
+    
     public static void SetJoueur(string nom, int score, int arentCollecte) // Sert a instancier
     {
         InitialisationScoreJoueurs();
@@ -141,18 +116,8 @@ public static class ScoreManager
 
         int scoreCourrant = GetTypeScore(entrée, $"{typeScore}");
         SetTypeScore(entrée, scoreCourrant + addition, typeScore);
-
-
     }
-    //public static void ChangerArgentCollecté(EntréeEnter entrée, int addition)
-    //{
-
-    //    InitialisationScoreJoueurs();
-
-    //    int scoreCourrant = GetArgentCollecté(entrée);
-    //    SetArgentCollecté(entrée, scoreCourrant + addition);
-
-    //}
+   
 
     public static List<EntréeEnter> GetNoms() // on recoit les noms tries selon leur score
     {
@@ -161,7 +126,5 @@ public static class ScoreManager
     }
 
     public static int GetchangementScore() => changementScore;
-
-
 
 }
