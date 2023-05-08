@@ -5,16 +5,16 @@ class Noeud
 {
     public GameObject Route { get; set; }
     public Noeud Suivant { get; set; }
-    public Noeud Précédent { get; set; }
+    public Noeud PrÃ©cÃ©dent { get; set; }
     public int x { get; set; }
     public int y { get; set; }
-    public bool visité { get; set; }
+    public bool visitÃ© { get; set; }
 
     public Noeud(GameObject route)
     {
         Route = route;
-        Suivant = null; // Pas nécessaire, mais plus clair
-        Précédent = null; // Pas nécessaire, mais plus clair
+        Suivant = null; // Pas nÃ©cessaire, mais plus clair
+        PrÃ©cÃ©dent = null; // Pas nÃ©cessaire, mais plus clair
         x = (int)route.transform.position.x + 50;
         y = (int)route.transform.position.z + 50;
     }
@@ -24,31 +24,31 @@ public class AlgoDeRecherche : MonoBehaviour
 {
     public GameObject[,] Carte;
     public List<Vector3> chemin;
-    public List<Vector3> AlgoDijkstra(GameObject[,] carte, GameObject départ, GameObject destination)
+    public List<Vector3> AlgoDijkstra(GameObject[,] carte, GameObject dÃ©part, GameObject destination)
     {
         Carte = carte;
-        Queue<Noeud> frontière = new Queue<Noeud>();
-        Noeud Départ = new Noeud(départ);
+        Queue<Noeud> frontiÃ©re = new Queue<Noeud>();
+        Noeud DÃ©part = new Noeud(dÃ©part);
         Noeud Destination = new Noeud(destination);
         Noeud current;
-        List<GameObject> NoeudVisités = new List<GameObject>();
-        frontière.Enqueue(Départ);
-        while (frontière.Count > 0)
+        List<GameObject> NoeudVisitÃ©s = new List<GameObject>();
+        frontiÃ©re.Enqueue(DÃ©part);
+        while (frontiÃ©re.Count > 0)
         {
-            current = frontière.Dequeue();
-            NoeudVisités.Add(current.Route);
+            current = frontiÃ©re.Dequeue();
+            NoeudVisitÃ©s.Add(current.Route);
             if (current.Route.transform.position == Destination.Route.transform.position)
             {
-                Destination.Précédent = current.Précédent;
+                Destination.PrÃ©cÃ©dent = current.PrÃ©cÃ©dent;
                 break;
             }
             var voisin = TrouverVoisins(current);
             for (int i = 0; i < voisin.Count; i++)
             {
-                if (!NoeudVisités.Contains(voisin[i].Route))
+                if (!NoeudVisitÃ©s.Contains(voisin[i].Route))
                 {
-                    voisin[i].Précédent = current;
-                    frontière.Enqueue(voisin[i]);
+                    voisin[i].PrÃ©cÃ©dent = current;
+                    frontiÃ©re.Enqueue(voisin[i]);
                 }
             }
 
@@ -63,10 +63,10 @@ public class AlgoDeRecherche : MonoBehaviour
         Noeud current = Destination;
         temp.Push(current);
         chemin = new List<Vector3>();
-        while (current.Précédent != null)
+        while (current.PrÃ©cÃ©dent != null)
         {
-            temp.Push(current.Précédent);
-            current = current.Précédent;
+            temp.Push(current.PrÃ©cÃ©dent);
+            current = current.PrÃ©cÃ©dent;
         }
         while (temp.Count > 0)
         {

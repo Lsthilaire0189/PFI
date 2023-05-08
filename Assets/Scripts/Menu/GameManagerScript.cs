@@ -121,6 +121,7 @@ public class GameManagerScript : MonoBehaviour
     {
         SceneManager.LoadScene(NoScéne);
 
+        SceneManager.LoadScene(NoScéne);
 
     }
 
