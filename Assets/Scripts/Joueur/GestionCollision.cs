@@ -12,7 +12,6 @@ public class GestionCollision : MonoBehaviour
     GestionArgent gestionArgent;
 
     public AudioSource sonCollection;
-    public AudioSource sonCollisionPolice;
     public AudioSource sonCollisionObjet;
     public AudioSource sonEssence;
     public AudioSource sonGainHP;
