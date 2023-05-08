@@ -14,7 +14,8 @@ public class GestionJoueur : MonoBehaviour
     GestionPointage gestionPointage;
     SceneManagerScript sceneManagerScript;
     GestionCollision gestionCollision; 
-    GestionSurfaceCollision gestionSurfaceCollision;
+    GestionSurfaceCollision gestionSurfaceCollision; 
+    GestionEssence gestionEssence;
 
     public int JoueurEssence;
     public int JoueurHP;
@@ -34,8 +35,8 @@ public class GestionJoueur : MonoBehaviour
         gestionPointage = gameObject.GetComponent<GestionPointage>();
         sceneManagerScript= gameObject.GetComponentInParent<SceneManagerScript>();
         gestionCollision = gameObject.GetComponent<GestionCollision>();
-        gestionCollision = gameObject.GetComponent<GestionCollision>();
         gestionSurfaceCollision = gameObject.GetComponent<GestionSurfaceCollision>();
+        gestionEssence = gameObject.GetComponent<GestionEssence>();
 
     }
     public void InitierSpécifications(float UpgradeAccélération, int UpgradeVitesseMaximale, float UpgradeForceFreinage, int UpgradeEssence, int UpgradeVie, int UpgradeGainEssence, int UpgradeGainVie)
@@ -60,7 +61,7 @@ public class GestionJoueur : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gestionVieJoueur.VérifierVieJoueur())
+        if (gestionVieJoueur.VérifierVieJoueur() && gestionEssence.VérifierEssence())
         {
             Joueur.transform.position = CaméraEmplacement.transform.position;
             Joueur.transform.rotation = CaméraEmplacement.transform.rotation;

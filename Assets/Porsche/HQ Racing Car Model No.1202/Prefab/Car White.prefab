@@ -723,7 +723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   "Cam\xE9raEmplacement": {fileID: 576900304846021657}
-  JoueurEssence: 20
+  JoueurEssence: 50
   JoueurHP: 10
   JoueurArgent: 0
   JoueurPointage: 0
@@ -865,7 +865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bddcb8d98aecd468a5e54e72d7cd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roue: {fileID: 7518647108432024187}
 --- !u!1 &1197291943319550
 GameObject:
   m_ObjectHideFlags: 0
