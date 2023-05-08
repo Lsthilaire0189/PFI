@@ -46,6 +46,7 @@ public class AIDéplacement : MonoBehaviour
     }
     void TrouverDestination()
     {
+        transform.rotation = Quaternion.Euler(0, 0, 0);   
         int dp = UnityEngine.Random.Range(0, ListePoints.Count);
         int ds = UnityEngine.Random.Range(0, ListePoints.Count);
         Départ = ListePoints[dp];
@@ -53,31 +54,31 @@ public class AIDéplacement : MonoBehaviour
 
         transform.position = Départ.transform.position + Vector3.up;
         chemins = algoDeRecherche.AlgoDijkstra(Carte, Départ, Destination);
-        index = 0;
-        PointSuivant = chemins[++index];
+        index = 0; 
         if (chemins.Count < 2)
         {
             TrouverDestination();
         }
+        PointSuivant = chemins[++index];
         InitiationNPC();
     }
     void InitiationNPC()
     {
         if ((PointSuivant.z - transform.position.z) < -0.7f)
         {
-            transform.Rotate(0, 180, 0);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
             directionActuelle = 1;
             PointSuivant -= new Vector3(Largeurvoie, 0, 0);
         }
         if ((PointSuivant.x - transform.position.x) > 0.7f)
         {
-            transform.Rotate(0, 90, 0);
+            transform.rotation = Quaternion.Euler(0, 90, 0);
             directionActuelle = 0;
             PointSuivant -= new Vector3(0, 0, Largeurvoie);
         }
         if ((PointSuivant.x - transform.position.x) < -0.7f)
         {
-            transform.Rotate(0, -90, 0);
+            transform.rotation = Quaternion.Euler(0, -90, 0);
             directionActuelle = 0;
             PointSuivant += new Vector3(0, 0, Largeurvoie);
         }
@@ -107,7 +108,7 @@ public class AIDéplacement : MonoBehaviour
 
         if (Vector3.Magnitude(PointSuivant - transform.position) < 0.01f)
         {
-            if (index == chemins.Count - 2)
+            if (++index >= chemins.Count - 2)
             {
                 TrouverDestination();
             }
@@ -119,7 +120,7 @@ public class AIDéplacement : MonoBehaviour
                     intersection = false;
                     intersectionp2 = true;
                 }
-                index++;
+                print(index);
                 PointSuivant = chemins[index];
                 Vector3 vecteur = PointSuivant - transform.position;
                 angletarget = Vector3.SignedAngle(transform.forward, vecteur, Vector3.up);

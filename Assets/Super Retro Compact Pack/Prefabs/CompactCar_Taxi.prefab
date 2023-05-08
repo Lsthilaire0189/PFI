@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -3403837059830253655}
   - component: {fileID: 9140514393640492231}
   - component: {fileID: -9104928939434633722}
+  - component: {fileID: 215899580926136518}
   m_Layer: 16
   m_Name: CompactCar_Taxi
   m_TagString: Untagged
@@ -82,6 +83,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chemin: []
+--- !u!114 &215899580926136518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709385970848430609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c76c61e3c5b52c449d3ca360db55558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NPCVoitures: []
+  explosion: {fileID: 100000, guid: 15ca5b8fa431dc04291a79cadcd19874, type: 3}
 --- !u!1 &709385970848430611
 GameObject:
   m_ObjectHideFlags: 0

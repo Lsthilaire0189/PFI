@@ -11,8 +11,9 @@ public class GestionNPC : MonoBehaviour
     
     int BatimentLayer = 9;
     int JoueurLayer = 14;
+    int NPCLayer = 16;
 
-    public Transform explosion;
+    public GameObject explosion;
     
     private void Awake()
     {
@@ -26,10 +27,15 @@ public class GestionNPC : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.layer == BatimentLayer)
-        {
-            Instantiate(explosion, gameObject.transform.position, Quaternion.identity, transform);
-            Destroy(gameObject);
-        }
+        //if (other.gameObject.layer == BatimentLayer)
+        //{
+        //    Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+        //    Destroy(gameObject);
+        //}
+        //if (other.gameObject.layer == NPCLayer)
+        //{
+        //    Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+        //    Destroy(gameObject);
+        //}
     }
 }

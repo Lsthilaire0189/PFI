@@ -1761,6 +1761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   voiture1: {fileID: 1140775109633734, guid: c5c77be66559e0141a22b4c3c1ff564d, type: 3}
+  voiture2: {fileID: 0}
   XrOrigin: {fileID: 2074261984}
   RoadHelper: {fileID: 1592819121}
   NPCVoitures:
