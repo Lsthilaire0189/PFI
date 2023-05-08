@@ -637,6 +637,7 @@ GameObject:
   - component: {fileID: -803171093755688090}
   - component: {fileID: 3801656811441443237}
   - component: {fileID: 5874893533324008917}
+  - component: {fileID: 6192025680314565220}
   m_Layer: 14
   m_Name: Car White
   m_TagString: Untagged
@@ -779,7 +780,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PointFaible: {fileID: 2840792927908224597}
   sonCollection: {fileID: 2552905088370952436}
-  sonCollisionPolice: {fileID: 0}
   sonCollisionObjet: {fileID: 0}
   sonEssence: {fileID: 1738542308025180324}
   sonGainHP: {fileID: 587258505262064520}
@@ -853,6 +853,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cbc7dca846f3234e8e51137b0619dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6192025680314565220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140775109633734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8bddcb8d98aecd468a5e54e72d7cd18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roue: {fileID: 7518647108432024187}
 --- !u!1 &1197291943319550
 GameObject:
   m_ObjectHideFlags: 0
