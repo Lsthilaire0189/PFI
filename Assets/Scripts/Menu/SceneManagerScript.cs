@@ -59,6 +59,8 @@ public class SceneManagerScript : MonoBehaviour
     }
     public void PartieEstTerminée(int NbPoints, int argent)
     {
+
+       
         //gameManagerScript.ArgentDisponible = argent;
         //gameManagerScript.NbPoints = NbPoints;
     }
