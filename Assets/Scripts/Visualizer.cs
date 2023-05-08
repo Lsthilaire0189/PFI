@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Visualizer : MonoBehaviour
 {
-    Circuit circuit;
-    public GameObject Tree;
+    public GameObject Arbre;
     public LSystemGenerator lsystem;
     List<Vector3> positions = new List<Vector3>();
 
@@ -41,7 +40,7 @@ public class Visualizer : MonoBehaviour
     {
         var sequence = lsystem.GenerateSentence();
         VisualizeSequence(sequence);
-        circuit = gameObject.AddComponent<Circuit>();
+       
     }
 
     private void VisualizeSequence(string sequence)
@@ -99,10 +98,7 @@ public class Visualizer : MonoBehaviour
         }
 
         roadHelper.FixRoad();
-        //var listv = new List<Vector3>() { new Vector3(0, 0, 21), new Vector3(1, 0, 24), new Vector3(2, 0, 24), new Vector3(3, 0, 18), new Vector3(4, 0, 16) };
-        //var listv = ci
-        // circuit = new Circuit(listv,Tree);
-        //circuit.InstancierObjets();
+        CircuitCarte circuit = new CircuitCarte(Arbre, roadHelper); 
         instancierEnvironnement.InstancierEnvironnement();
         structureHelper.PlaceStructureAroundRoad(roadHelper.GetRoadPositions());
         instancierMonnaies.InstatierMonnaies();

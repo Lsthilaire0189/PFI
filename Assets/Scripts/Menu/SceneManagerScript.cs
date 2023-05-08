@@ -9,7 +9,6 @@ public class SceneManagerScript : MonoBehaviour
     GameManagerScript gameManagerScript;
 
     [SerializeField] GameObject voiture1;
-    [SerializeField] GameObject voiture2;
     [SerializeField] GameObject XrOrigin;
     [SerializeField] GameObject RoadHelper;
     [SerializeField] List<GameObject> NPCVoitures;
@@ -30,8 +29,8 @@ public class SceneManagerScript : MonoBehaviour
     
     private void Awake()
     {
-        //GameManager = GameObject.Find("GameManager");
-        //gameManagerScript = GameManager.GetComponent<GameManagerScript>();
+        GameManager = GameObject.Find("GameManager");
+        gameManagerScript = GameManager.GetComponent<GameManagerScript>();
         InstantierJoueur();
     }
     IEnumerator CréerUneCarte()
@@ -45,7 +44,7 @@ public class SceneManagerScript : MonoBehaviour
     {
         Joueur = Instantiate(voiture1, Vector3.zero, Quaternion.identity, gameObject.transform);
         Joueur.GetComponent<GestionJoueur>().AssocierCamera(XrOrigin);
-        //Joueur.GetComponent<GestionJoueur>().InitierSpécifications(gameManagerScript.upgradeAccélération, gameManagerScript.upgradeVitesseMaximale, gameManagerScript.upgradeForceFreinage, gameManagerScript.upgradeCapacitéEssence, gameManagerScript.upgradeVieMaximale, gameManagerScript.upgradePompe, gameManagerScript.upgradeWrench);
+        Joueur.GetComponent<GestionJoueur>().InitierSpécifications(gameManagerScript.upgradeAccélération, gameManagerScript.upgradeVitesseMaximale, gameManagerScript.upgradeForceFreinage, gameManagerScript.upgradeCapacitéEssence, gameManagerScript.upgradeVieMaximale, gameManagerScript.upgradePompe, gameManagerScript.upgradeWrench);
     }
     
     public void InstantierNPC()
@@ -59,7 +58,11 @@ public class SceneManagerScript : MonoBehaviour
     }
     public void PartieEstTerminée(int NbPoints, int argent)
     {
-        //gameManagerScript.ArgentDisponible = argent;
-        //gameManagerScript.NbPoints = NbPoints;
+
+       
+        gameManagerScript.ArgentDisponible = argent;
+        gameManagerScript.NbPoints = NbPoints;
+        
+        gameManagerScript.ChangerDeScène(0);
     }
 }
