@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using TMPro;
-using UnityEditor.Toolbars;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -136,5 +135,8 @@ public class GameManagerScript : MonoBehaviour
         SceneManager.LoadScene(NoScéne);
 
     }
-
+    private void Update()
+    {
+        NBargent.text = $"Argent disponible {GestionInformationJeuScript.instance.ArgentDisponible} ";
+    }
 }
