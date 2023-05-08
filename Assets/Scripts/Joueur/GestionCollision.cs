@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GestionCollision : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class GestionCollision : MonoBehaviour
 
     public Transform explosion;
 
+    private GameObject sceneManager;
+    private SceneManagerScript sceneManagerScript;
+
     int wrenchLayer = 7;
     int gasLayer = 8;
     int BatimentLayer = 9;
@@ -27,12 +31,15 @@ public class GestionCollision : MonoBehaviour
 
     public int gainHP;
     public int gainEssence;
+    
 
     private void Awake()
     {
         gestionVieJoueur = GetComponent<GestionVieJoueur>();
         gestionEssence = GetComponent<GestionEssence>();
         gestionArgent = GetComponent<GestionArgent>();
+        sceneManager = GameObject.Find("SceneManager");
+        sceneManagerScript = sceneManager.GetComponent<SceneManagerScript>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -41,6 +48,7 @@ public class GestionCollision : MonoBehaviour
             gestionArgent.ModifierArgent(1);
             sonCollection.Play();
             Destroy(other.gameObject);
+            ScoreManager.ChangerTypeScore(ScoreManager.scoreJoueurs[sceneManagerScript.getNumeroPartie()], 1, "Argent Collecté");
         }
         if (other.gameObject.layer == wrenchLayer)
         {

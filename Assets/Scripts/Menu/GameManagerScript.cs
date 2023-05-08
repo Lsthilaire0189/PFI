@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEditor.Toolbars;
 using UnityEngine;
@@ -14,16 +16,20 @@ public class GameManagerScript : MonoBehaviour
     public int upgradeVieMaximale;
     public int upgradeWrench;
     public int upgradePompe;
-
+    private EntréesManager entréesManager;
     public int ArgentDisponible;
     public int NbPoints;
     [SerializeField] TextMeshProUGUI MessageErreur;
     [SerializeField] TextMeshProUGUI NBargent, AccélérationText, VitesseText, FreinageText, EssenceText, VieText, WrenchText;
+    
+
+    //[NonSerialized] public int numeroPartie;
 
     // Start is called before the first frame update
     void Awake()
     {
         DontDestroyOnLoad(this);// pour permettre de peser sur escape pour sortir du jeu.
+        entréesManager = new EntréesManager(); 
     }
 
     public void AméliorerAccélération()
@@ -119,7 +125,13 @@ public class GameManagerScript : MonoBehaviour
     }
     public void ChangerDeScène(int NoScéne)
     {
-        SceneManager.LoadScene(NoScéne);
+        if (NoScéne == 2)
+        {
+            entréesManager.SauvegarderScoreFinDeJeu();
+            SceneManager.LoadScene(NoScéne);
+            entréesManager.AfficherScoreFinDeJeu();
+            //numeroPartie++;
+        }
 
         SceneManager.LoadScene(NoScéne);
 

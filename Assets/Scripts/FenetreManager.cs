@@ -10,6 +10,7 @@ public class FenetreManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        scoreBoard.SetActive(false);
     }
 
     // Update is called once per frame

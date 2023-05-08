@@ -30,13 +30,13 @@ public static class ScoreManager
     public class EntréeEnter
     {
         public string Nom { get; private set; }
-        public int Score { get; set; }
+        public int Temps { get; set; }
         public int ArgentCollecté { get; set; }
 
-        public EntréeEnter(string nom, int score, int argentCollecté)
+        public EntréeEnter(string nom, int temps, int argentCollecté)
         {
             Nom = nom;
-            Score = score;
+            Temps = temps;
             ArgentCollecté = argentCollecté;
         }
 
@@ -56,19 +56,17 @@ public static class ScoreManager
         InitialisationScoreJoueurs();
         int index;
 
-        if (!scoreJoueurs.Contains(entrée))
+        //if (!scoreJoueurs.Contains(entrée))
         {
-            return 0;
+            //return 0;
         }
-        else
-        {
-            index = scoreJoueurs.FindIndex(x => (x.ArgentCollecté == entrée.ArgentCollecté) && (x.Nom == entrée.Nom) && (x.Score == entrée.Score));
-        }
+        //else
+        index = scoreJoueurs.FindIndex(x => (x.ArgentCollecté == entrée.ArgentCollecté) && (x.Nom == entrée.Nom) && (x.Temps == entrée.Temps));
 
         switch (typeScore)
         {
-            case "Score":
-                return scoreJoueurs[index].Score;
+            case "Temps":
+                return scoreJoueurs[index].Temps;
 
             case "Argent Collecté":
                 return scoreJoueurs[index].ArgentCollecté;
@@ -90,24 +88,25 @@ public static class ScoreManager
 
         switch (typeScore)
         {
-            case "Score":
-                entrée.Score= valeur;
+            case "Temps":
+                entrée.Temps= valeur;
                 break;
 
             case "Argent Collecté":
-                entrée.Score = valeur;
+                entrée.ArgentCollecté = valeur;
                 break;
         }
     }
     
-    public static void SetJoueur(string nom, int score, int arentCollecte) // Sert a instancier
+    public static EntréeEnter SetJoueur(string nom, int temps, int argentCollecte) // Sert a instancier
     {
         InitialisationScoreJoueurs();
 
         changementScore++;
 
-        var entrée = new EntréeEnter(nom, score, arentCollecte);
+        var entrée = new EntréeEnter(nom, temps, argentCollecte);
         scoreJoueurs.Add(entrée);
+        return entrée;
     }
     public static void ChangerTypeScore(EntréeEnter entrée, int addition,string typeScore)
     {
@@ -122,7 +121,7 @@ public static class ScoreManager
     public static List<EntréeEnter> GetNoms() // on recoit les noms tries selon leur score
     {
         InitialisationScoreJoueurs();
-        return scoreJoueurs.OrderByDescending(x => x.Score).ToList();
+        return scoreJoueurs.OrderByDescending(x => x.Temps).ToList();
     }
 
     public static int GetchangementScore() => changementScore;

@@ -16,26 +16,37 @@ public class GestionTemps : MonoBehaviour
 
     private GestionVieJoueur gestionVieJoueur;
 
+    private EntréesManager entréesManager;
+    private GameObject sceneManager;
+    private SceneManagerScript sceneManagerScript;
+    private int tempsPresent;
+    private int tempsPrecedent;
 
     private void Awake()
     {
         gestionEssence =gameObject.GetComponent<GestionEssence>();
         gestionVieJoueur = gameObject.GetComponent<GestionVieJoueur>();
-        texte = GameObject.Find("Temps").GetComponent<TextMeshProUGUI>();
+        texte = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
         timer = new Stopwatch();
         timer.Start();
+        sceneManager = GameObject.Find("SceneManager");
+        sceneManagerScript = sceneManager.GetComponent<SceneManagerScript>();
     }
     
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        texte.text = timer.Elapsed.Seconds.ToString();
+        tempsPresent = timer.Elapsed.Seconds;
+        texte.text = tempsPresent.ToString();
         
         if (!gestionEssence.VérifierEssence() || !gestionVieJoueur.VérifierVieJoueur())
         {
             timer.Stop();
         }
+        ScoreManager.ChangerTypeScore(ScoreManager.scoreJoueurs[sceneManagerScript.getNumeroPartie()], tempsPresent-tempsPrecedent, "Temps");
+        tempsPrecedent = tempsPresent;
+
+
     }
 }

@@ -18,15 +18,14 @@ public class ListeJouerScore : MonoBehaviour
     {
         string a = "app";
         scorePrecedent = ScoreManager.GetchangementScore();
-        DEBUG();
         Debug.Log(a);
     }
  
     void Update()
     {
      
-        if (ScoreManager.GetchangementScore() == scorePrecedent)
-            return;
+        //if (ScoreManager.GetchangementScore() == scorePrecedent)
+            //return;
 
         scorePrecedent = ScoreManager.GetchangementScore();
 
@@ -48,16 +47,16 @@ public class ListeJouerScore : MonoBehaviour
             // On cherche ses enfants et on rajoute leur modification a chacun
             copiePrefabEntré.transform.Find("Nom").GetComponent<TMP_Text>().text = entrés[i].Nom;
             copiePrefabEntré.transform.Find("Rang").GetComponent<TMP_Text>().text = (i+1).ToString();
-            copiePrefabEntré.transform.Find("Score").GetComponent<TMP_Text>().text = ScoreManager.GetTypeScore(entrés[i],"Score").ToString();
+            copiePrefabEntré.transform.Find("Temps").GetComponent<TMP_Text>().text = ScoreManager.GetTypeScore(entrés[i],"Temps").ToString();
             copiePrefabEntré.transform.Find("Argent Collecté").GetComponent<TMP_Text>().text = ScoreManager.GetTypeScore(entrés[i], "Argent Collecté").ToString();
-
         }
-       
+
     }
+
     public void DEBUG_ADD_KILL_TO_QUILL()
     {
         var a = ScoreManager.scoreJoueurs.Find(x => x.Nom == "quill");
-        ScoreManager.ChangerTypeScore(a, 1,"Score");
+        ScoreManager.ChangerTypeScore(a, 1,"Temps");
     }
     public void DEBUG()
     {

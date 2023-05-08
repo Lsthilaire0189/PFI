@@ -15,7 +15,7 @@ public class AffichageVitesse : MonoBehaviour
 
     private void Awake()
     {
-        texte = VitesseTexte.GetComponent<TextMeshProUGUI>();
+        texte = GameObject.Find("Vitesse").GetComponent<TextMeshProUGUI>();
         rb =GetComponent<Rigidbody>();
     }
 

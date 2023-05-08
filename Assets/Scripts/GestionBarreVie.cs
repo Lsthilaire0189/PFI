@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class GestionBarreVie : MonoBehaviour
 {
-    [SerializeField] GameObject barreVie;
     private Slider slider;
     
     [SerializeField]
@@ -16,8 +15,7 @@ public class GestionBarreVie : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        slider = barreVie.GetComponentInChildren<Slider>();
-
+        slider = GameObject.Find("BarreVie").GetComponent<Slider>();
     }
 
     private void Start()
