@@ -724,12 +724,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   "Cam\xE9raEmplacement": {fileID: 576900304846021657}
-  JoueurEssence: 50
+  JoueurEssence: 100
   JoueurHP: 10
   JoueurArgent: 0
   JoueurPointage: 0
   VieMaximaleJoueur: 10
-  "Capacit\xE9EssenceMaximale": 20
+  "Capacit\xE9EssenceMaximale": 100
   FinPartie: 1
 --- !u!114 &9221356562852882615
 MonoBehaviour:
