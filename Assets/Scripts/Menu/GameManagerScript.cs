@@ -120,7 +120,7 @@ public class GameManagerScript : MonoBehaviour
     public void ChangerDeScène(int NoScéne)
     {
 
-        SceneManager.LoadScene(NoScéne,LoadSceneMode.Additive);
+        SceneManager.LoadScene(NoScéne);
 
     }
 

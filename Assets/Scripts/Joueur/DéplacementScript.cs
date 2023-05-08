@@ -36,8 +36,6 @@ public class DéplacementScript : MonoBehaviour
 
     private Rigidbody rbVoiture;
 
-    //private List<WheelCollider> listeRoues;
-
     public GameObject goRoueAvantDroite;
     public GameObject goRoueAvantGauche;
     public GameObject goRoueArrGauche;

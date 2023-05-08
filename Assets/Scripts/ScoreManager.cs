@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TypeScoreIntrouvableException : Exception
@@ -27,42 +26,42 @@ public class TypeScoreIntrouvableException : Exception
 public static class ScoreManager
 {
     [Serializable]
-    public class EntrÈeEnter
+    public class Entr√©eEnter
     {
         public string Nom { get; private set; }
         public int Score { get; set; }
-        public int ArgentCollectÈ { get; set; }
+        public int ArgentCollect√© { get; set; }
 
-        public EntrÈeEnter(string nom, int score, int argentCollectÈ)
+        public Entr√©eEnter(string nom, int score, int argentCollect√©)
         {
             Nom = nom;
             Score = score;
-            ArgentCollectÈ = argentCollectÈ;
+            ArgentCollect√© = argentCollect√©;
         }
 
     }
 
-    public static List<EntrÈeEnter> scoreJoueurs;
+    public static List<Entr√©eEnter> scoreJoueurs;
     private static int changementScore = 0;
 
 
     public static void InitialisationScoreJoueurs()
     {
         if (scoreJoueurs == null)
-            scoreJoueurs = new List<EntrÈeEnter>();
+            scoreJoueurs = new List<Entr√©eEnter>();
     }
-    public static int GetTypeScore(EntrÈeEnter entrÈe, string typeScore)
+    public static int GetTypeScore(Entr√©eEnter entr√©e, string typeScore)
     {
         InitialisationScoreJoueurs();
         int index;
 
-        if (!scoreJoueurs.Contains(entrÈe))
+        if (!scoreJoueurs.Contains(entr√©e))
         {
             return 0;
         }
         else
         {
-            index = scoreJoueurs.FindIndex(x => (x.ArgentCollectÈ == entrÈe.ArgentCollectÈ) && (x.Nom == entrÈe.Nom) && (x.Score == entrÈe.Score));
+            index = scoreJoueurs.FindIndex(x => (x.ArgentCollect√© == entr√©e.ArgentCollect√©) && (x.Nom == entr√©e.Nom) && (x.Score == entr√©e.Score));
         }
 
         switch (typeScore)
@@ -70,19 +69,19 @@ public static class ScoreManager
             case "Score":
                 return scoreJoueurs[index].Score;
 
-            case "Argent CollectÈ":
-                return scoreJoueurs[index].ArgentCollectÈ;
+            case "Argent Collect√©":
+                return scoreJoueurs[index].ArgentCollect√©;
 
             default:
                 break;
 
         }
 
-        throw new TypeScoreIntrouvableException("Type de score mal Ècrit ");
+        throw new TypeScoreIntrouvableException("Type de score mal √©crit ");
 
     }
 
-    public static void SetTypeScore(EntrÈeEnter entrÈe, int valeur,string typeScore)
+    public static void SetTypeScore(Entr√©eEnter entr√©e, int valeur,string typeScore)
     {
         InitialisationScoreJoueurs();
 
@@ -91,11 +90,11 @@ public static class ScoreManager
         switch (typeScore)
         {
             case "Score":
-                entrÈe.Score= valeur;
+                entr√©e.Score= valeur;
                 break;
 
-            case "Argent CollectÈ":
-                entrÈe.Score = valeur;
+            case "Argent Collect√©":
+                entr√©e.Score = valeur;
                 break;
         }
     }
@@ -106,20 +105,20 @@ public static class ScoreManager
 
         changementScore++;
 
-        var entrÈe = new EntrÈeEnter(nom, score, arentCollecte);
-        scoreJoueurs.Add(entrÈe);
+        var entr√©e = new Entr√©eEnter(nom, score, arentCollecte);
+        scoreJoueurs.Add(entr√©e);
     }
-    public static void ChangerTypeScore(EntrÈeEnter entrÈe, int addition,string typeScore)
+    public static void ChangerTypeScore(Entr√©eEnter entr√©e, int addition,string typeScore)
     {
 
         InitialisationScoreJoueurs();
 
-        int scoreCourrant = GetTypeScore(entrÈe, $"{typeScore}");
-        SetTypeScore(entrÈe, scoreCourrant + addition, typeScore);
+        int scoreCourrant = GetTypeScore(entr√©e, $"{typeScore}");
+        SetTypeScore(entr√©e, scoreCourrant + addition, typeScore);
     }
    
 
-    public static List<EntrÈeEnter> GetNoms() // on recoit les noms tries selon leur score
+    public static List<Entr√©eEnter> GetNoms() // on recoit les noms tries selon leur score
     {
         InitialisationScoreJoueurs();
         return scoreJoueurs.OrderByDescending(x => x.Score).ToList();
