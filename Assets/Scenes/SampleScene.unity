@@ -1866,7 +1866,7 @@ MonoBehaviour:
   - {fileID: 709385970848430609, guid: 208148a64b26ead429c28298b662a4f5, type: 3}
   Police: {fileID: 115512, guid: 7be733fca5977484eab72a8eca73b1b2, type: 3}
   ListePoints: []
-  NbAutos: 9
+  NbAutos: 1
 --- !u!114 &1373556474
 MonoBehaviour:
   m_ObjectHideFlags: 0
