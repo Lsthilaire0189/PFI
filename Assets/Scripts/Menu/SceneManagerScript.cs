@@ -19,6 +19,7 @@ public class SceneManagerScript : MonoBehaviour
     public List<GameObject> ListePoints;
 
     public int NbAutos = 5;
+    public int NbPolice = 5;
     public int NbAutosActuel;
     GameObject Joueur;
     [NonSerialized] public static int numeroPartie;
@@ -36,7 +37,8 @@ public class SceneManagerScript : MonoBehaviour
 
     private void Awake()
     {
-        InstantierJoueur();
+        NbAutos = Random.Range(5, 11);
+        //InstantierJoueur();
         if (compteurInitial == 0)
         {
             numeroPartie = -1;
@@ -52,6 +54,7 @@ public class SceneManagerScript : MonoBehaviour
         Carte = créerCarte.CréerLaCarte(RoadHelper);
         ListePoints = créerCarte.list;
         InstantierNPC();
+        InstantierPolice();
     }
 
     void InstantierJoueur()
@@ -66,13 +69,20 @@ public class SceneManagerScript : MonoBehaviour
         for (int i = 0; i < NbAutos; i++)
         {
             int NoVoiture = Random.Range(0, NPCVoitures.Count);
-            GameObject voiture = Instantiate(NPCVoitures[NoVoiture], Vector3.zero, Quaternion.identity,
-                gameObject.transform);
+            Instantiate(NPCVoitures[NoVoiture], Vector3.zero, Quaternion.identity,gameObject.transform);
+            NbAutosActuel++;
         }
 
-        Instantiate(Police, new Vector3(0, 0.01f, 0), Quaternion.identity, gameObject.transform);
+        Instantiate(Police,Vector3.zero, Quaternion.identity, gameObject.transform);
     }
-
+    public void InstantierPolice()
+    {
+        for (int i = 0; i < NbAutos; i++)
+        {
+            int NoVoiture = Random.Range(0, NPCVoitures.Count);
+            Instantiate(Police, Vector3.zero, Quaternion.identity, gameObject.transform);
+        }
+    }
     public void PartieEstTerminée(int NbPoints, int argent)
     {
         InformationJeu.inf.ArgentDisponible = argent ;
