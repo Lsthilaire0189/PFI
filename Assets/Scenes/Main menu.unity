@@ -1082,14 +1082,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad1d0329eb5b4d46ad1562a8e4548ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "upgradeAcc\xE9l\xE9ration": 0
-  upgradeVitesseMaximale: 0
-  upgradeForceFreinage: 0
-  "upgradeCapacit\xE9Essence": 0
-  upgradeVieMaximale: 0
-  upgradeWrench: 0
-  upgradePompe: 0
-  ArgentDisponible: 0
   NbPoints: 0
   MessageErreur: {fileID: 666000940}
   NBargent: {fileID: 40930392}
@@ -1127,7 +1119,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NbPoints: 0
-  argentDisponible: 0
+  "upgradeAcc\xE9l\xE9ration": 0
+  upgradeVitesseMaximale: 0
+  upgradeForceFreinage: 0
+  "upgradeCapacit\xE9Essence": 0
+  upgradeVieMaximale: 0
+  upgradeWrench: 0
+  upgradePompe: 0
 --- !u!1 &420529651
 GameObject:
   m_ObjectHideFlags: 0
@@ -4589,6 +4587,18 @@ MonoBehaviour:
       - m_Target: {fileID: 353812485}
         m_TargetAssemblyTypeName: GameManagerScript, Assembly-CSharp
         m_MethodName: BonifierWrench
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 353812485}
+        m_TargetAssemblyTypeName: GameManagerScript, Assembly-CSharp
+        m_MethodName: BonifierPompe
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

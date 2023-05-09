@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build;
+
 using UnityEngine;
 
 public class GestionJoueur : MonoBehaviour
@@ -39,15 +39,15 @@ public class GestionJoueur : MonoBehaviour
         gestionEssence = gameObject.GetComponent<GestionEssence>();
 
     }
-    public void InitierSpécifications(float UpgradeAccélération, int UpgradeVitesseMaximale, float UpgradeForceFreinage, int UpgradeEssence, int UpgradeVie, int UpgradeGainEssence, int UpgradeGainVie)
+    public void InitierSpécifications()
     {
-        déplacementScript.ValeurAccélération += UpgradeAccélération*0.007f;
-        déplacementScript.VitesseMaximale += UpgradeVitesseMaximale*10;
-        déplacementScript.ValeurForceFreinage += UpgradeForceFreinage*0.05f;
-        JoueurHP = VieMaximaleJoueur + UpgradeVie*3;
-        JoueurEssence = CapacitéEssenceMaximale + UpgradeEssence*5;
-        gestionCollision.gainEssence += UpgradeGainEssence*5;
-        gestionCollision.gainHP += UpgradeGainVie*2;
+        déplacementScript.ValeurAccélération += InformationJeu.inf.upgradeAccélération *0.007f;
+        déplacementScript.VitesseMaximale += InformationJeu.inf.upgradeVitesseMaximale *10;
+        déplacementScript.ValeurForceFreinage += InformationJeu.inf.upgradeForceFreinage *0.05f;
+        JoueurHP = VieMaximaleJoueur + InformationJeu.inf.upgradeVieMaximale *3;
+        JoueurEssence = CapacitéEssenceMaximale + InformationJeu.inf.upgradeCapacitéEssence *5;
+        gestionCollision.gainEssence += InformationJeu.inf.upgradePompe* 5;
+        gestionCollision.gainHP += InformationJeu.inf.upgradeWrench* 2;
     }
 
     public void AssocierCamera(GameObject XRorigin)

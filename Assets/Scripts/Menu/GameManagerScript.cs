@@ -8,15 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
-    public float upgradeAccélération;
-    public int upgradeVitesseMaximale;
-    public int upgradeForceFreinage;
-    public int upgradeCapacitéEssence;
-    public int upgradeVieMaximale;
-    public int upgradeWrench;
-    public int upgradePompe;
     private EntréesManager entréesManager;
-    public int ArgentDisponible;
     public int NbPoints;
     [SerializeField] TextMeshProUGUI MessageErreur;
     [SerializeField] TextMeshProUGUI NBargent, AccélérationText, VitesseText, FreinageText, EssenceText, VieText, WrenchText;
@@ -28,99 +20,142 @@ public class GameManagerScript : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(this);// pour permettre de peser sur escape pour sortir du jeu.
-        entréesManager = new EntréesManager(); 
+        entréesManager = new EntréesManager();
     }
 
     public void AméliorerAccélération()
     {
-        if (ArgentDisponible >= 3 && upgradeAccélération < 3)
+        if (InformationJeu.inf.ArgentDisponible >= 3 && InformationJeu.inf.upgradeAccélération< 3)
         {
-            upgradeAccélération++;
-            AccélérationText.text = $"Niveau d'amélioration: {upgradeAccélération}";
-            ArgentDisponible -= 3;
-            NBargent.text = $"Argent disponible {ArgentDisponible} ";
+            InformationJeu.inf.upgradeAccélération++;
+            AccélérationText.text = $"Niveau d'amélioration: {InformationJeu.inf.upgradeAccélération}";
+            InformationJeu.inf.ArgentDisponible -= 3;
+            NBargent.text = $"Argent disponible {InformationJeu.inf.ArgentDisponible} ";
         }
         else
         {
-            MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+            if (InformationJeu.inf.upgradeAccélération == 3)
+            {
+                MessageErreur.text = "Niveau maximum atteint";
+            }
+            else
+            {
+                MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+            }
         }
+        
     }
     public void AméliorerForceFreinage()
     {
-        if (ArgentDisponible >= 3 && upgradeForceFreinage < 3)
+        if (InformationJeu.inf.ArgentDisponible >= 3 && InformationJeu.inf.upgradeForceFreinage < 3)
         {
-            upgradeForceFreinage++;
-            FreinageText.text = $"Niveau d'amélioration: {upgradeForceFreinage}";
-            ArgentDisponible -= 3;
-            NBargent.text = $"Argent disponible {ArgentDisponible} ";
+            InformationJeu.inf.upgradeForceFreinage++;
+            FreinageText.text = $"Niveau d'amélioration: {InformationJeu.inf.upgradeForceFreinage}";
+            InformationJeu.inf.ArgentDisponible -= 3;
+            NBargent.text = $"Argent disponible {InformationJeu.inf.ArgentDisponible} ";
         }
         else
         {
-            MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+            if (InformationJeu.inf.upgradeForceFreinage== 3)
+            {
+                MessageErreur.text = "Niveau maximum atteint";
+            }
+            else
+            {
+                MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+            }
         }
     }
     public void AméliorerVitesseMaximale()
     {
-        if (ArgentDisponible >= 3 && upgradeVitesseMaximale < 3)
+        if (InformationJeu.inf.ArgentDisponible >= 3 && InformationJeu.inf.upgradeVitesseMaximale < 3)
         {
-            upgradeVitesseMaximale++;
-            VitesseText.text = $"Niveau d'amélioration: {upgradeVitesseMaximale}";
-            ArgentDisponible -= 3;
-            NBargent.text = $"Argent disponible {ArgentDisponible} ";
+            InformationJeu.inf.upgradeVitesseMaximale++;
+            VitesseText.text = $"Niveau d'amélioration: {InformationJeu.inf.upgradeVitesseMaximale}";
+            InformationJeu.inf.ArgentDisponible -= 3;
+            NBargent.text = $"Argent disponible {InformationJeu.inf.ArgentDisponible} ";
         }
         else
         {
-            MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+            if (InformationJeu.inf.upgradeVitesseMaximale == 3)
+            {
+                MessageErreur.text = "Niveau maximum atteint";
+            }
+            else
+            {
+                MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+            }
         }
     }
     public void AméliorerCapacitéEssenceMaximum()
     {
-        if (ArgentDisponible >= 3 && upgradeCapacitéEssence < 3)
+        if (InformationJeu.inf.ArgentDisponible >= 3 && InformationJeu.inf.upgradeCapacitéEssence < 3)
         {
-            upgradeCapacitéEssence++;
-            EssenceText.text = $"Niveau d'amélioration: {upgradeCapacitéEssence}";
-            ArgentDisponible -= 3;
-            NBargent.text = $"Argent disponible {ArgentDisponible} ";
+            InformationJeu.inf.upgradeCapacitéEssence++;
+            EssenceText.text = $"Niveau d'amélioration: {InformationJeu.inf.upgradeCapacitéEssence}";
+            InformationJeu.inf.ArgentDisponible -= 3;
+            NBargent.text = $"Argent disponible {InformationJeu.inf.ArgentDisponible} ";
         }
         else
         {
-            MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+            if (InformationJeu.inf.upgradeCapacitéEssence == 3)
+            {
+                MessageErreur.text = "Niveau maximum atteint";
+            }
+            else
+            {
+                MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+            }
         }
 
     }
     public void AméliorerVieMaximaleJoueur()
     {
-        if (ArgentDisponible >= 3 && upgradeVieMaximale < 3)
+        if (InformationJeu.inf.ArgentDisponible >= 3 && InformationJeu.inf.upgradeVieMaximale < 3)
         {
-            upgradeVieMaximale++;
-            VieText.text = $"Niveau d'amélioration: {upgradeVieMaximale}";
-            ArgentDisponible -= 3;
-            NBargent.text = $"Argent disponible {ArgentDisponible} ";
+            InformationJeu.inf.upgradeVieMaximale++;
+            VieText.text = $"Niveau d'amélioration: {InformationJeu.inf.upgradeVieMaximale}";
+            InformationJeu.inf.ArgentDisponible -= 3;
+            NBargent.text = $"Argent disponible {InformationJeu.inf.ArgentDisponible} ";
         }
         else
         {
-            MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+            if (InformationJeu.inf.upgradeVieMaximale == 3)
+            {
+                MessageErreur.text = "Niveau maximum atteint";
+            }
+            else
+            {
+                MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+            }
         }
     }
     public void BonifierWrench()
     {
-        if (ArgentDisponible >= 3 && upgradeWrench < 3)
+        if (InformationJeu.inf.ArgentDisponible >= 3 && InformationJeu.inf.upgradeWrench < 3)
         {
-            upgradeWrench++;
-            WrenchText.text = $"Niveau d'amélioration: {upgradeWrench}";
-            ArgentDisponible -= 3;
-            NBargent.text = $"Argent disponible {ArgentDisponible} ";
+            InformationJeu.inf.upgradeWrench++;
+            WrenchText.text = $"Niveau d'amélioration: {InformationJeu.inf.upgradeWrench}";
+            InformationJeu.inf.ArgentDisponible -= 3;
+            NBargent.text = $"Argent disponible {InformationJeu.inf.ArgentDisponible} ";
         }
         else
         {
-            MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+            if (InformationJeu.inf.upgradeWrench== 3)
+            {
+                MessageErreur.text = "Niveau maximum atteint";
+            }
+            else
+            {
+                MessageErreur.text = "Il n'y a pas assez d'argent disponible";
+            }
         }
 
     }
 
     public void BonifierPompe()
     {
-        upgradePompe += 5;
+       InformationJeu.inf.upgradePompe += 5;
     }
     public void ChangerDeScène(int NoScéne)
     {
@@ -137,6 +172,6 @@ public class GameManagerScript : MonoBehaviour
     }
     private void Update()
     {
-        NBargent.text = $"Argent disponible {GestionInformationJeuScript.instance.ArgentDisponible} ";
+        NBargent.text = $"Argent disponible { InformationJeu.inf.ArgentDisponible} ";
     }
 }

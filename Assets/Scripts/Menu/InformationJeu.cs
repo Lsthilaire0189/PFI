@@ -2,14 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GestionInformationJeuScript : MonoBehaviour
+public class InformationJeu : MonoBehaviour
 {
-    public static GestionInformationJeuScript instance;
+    public static InformationJeu inf;
     [HideInInspector]
     public int NbPoints;
-    
-    
+
+
     int argentDisponible;
+    [HideInInspector]
+    public float upgradeAccélération;
+    [HideInInspector]
+    public int upgradeVitesseMaximale,
+     upgradeForceFreinage,
+     upgradeCapacitéEssence,
+     upgradeVieMaximale,
+     upgradeWrench,
+     upgradePompe;
     public int ArgentDisponible
     {
         get
@@ -32,14 +41,14 @@ public class GestionInformationJeuScript : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if (inf != null && inf != this)
         {
             Destroy(this);
         }
         else
         {
-            instance = this;
-            instance.ArgentDisponible = 0;
+            inf = this;
+            inf.ArgentDisponible = 15;
         }
     }
 

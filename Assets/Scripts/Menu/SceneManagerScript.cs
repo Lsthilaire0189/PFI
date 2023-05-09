@@ -8,8 +8,6 @@ using Random = UnityEngine.Random;
 
 public class SceneManagerScript : MonoBehaviour
 {
-    GameObject GameManager;
-    GameManagerScript gameManagerScript;
 
     [SerializeField] GameObject voiture1;
     [SerializeField] GameObject XrOrigin;
@@ -38,8 +36,6 @@ public class SceneManagerScript : MonoBehaviour
 
     private void Awake()
     {
-        GameManager = GameObject.Find("GameManager");
-        gameManagerScript = GameManager.GetComponent<GameManagerScript>();
         InstantierJoueur();
         if (compteurInitial == 0)
         {
@@ -62,10 +58,7 @@ public class SceneManagerScript : MonoBehaviour
     {
         Joueur = Instantiate(voiture1, Vector3.zero, Quaternion.identity, gameObject.transform);
         Joueur.GetComponent<GestionJoueur>().AssocierCamera(XrOrigin);
-        Joueur.GetComponent<GestionJoueur>().InitierSpécifications(gameManagerScript.upgradeAccélération,
-            gameManagerScript.upgradeVitesseMaximale, gameManagerScript.upgradeForceFreinage,
-            gameManagerScript.upgradeCapacitéEssence, gameManagerScript.upgradeVieMaximale,
-            gameManagerScript.upgradePompe, gameManagerScript.upgradeWrench);
+        Joueur.GetComponent<GestionJoueur>().InitierSpécifications();
     }
 
     public void InstantierNPC()
@@ -82,8 +75,7 @@ public class SceneManagerScript : MonoBehaviour
 
     public void PartieEstTerminée(int NbPoints, int argent)
     {
-        GestionInformationJeuScript.instance.ArgentDisponible = argent ;
-        gameManagerScript.NbPoints = NbPoints;
+        InformationJeu.inf.ArgentDisponible = argent ;
         Task.Delay(2);
         SceneManager.LoadScene(0);
     }
