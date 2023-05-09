@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -83,7 +84,7 @@ public class SceneManagerScript : MonoBehaviour
     {
         gameManagerScript.ArgentDisponible = argent;
         gameManagerScript.NbPoints = NbPoints;
-
+        Task.Delay(2);
         SceneManager.LoadScene(0);
     }
 }

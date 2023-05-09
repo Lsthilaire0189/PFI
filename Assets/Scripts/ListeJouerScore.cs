@@ -58,7 +58,7 @@ public class ListeJouerScore : MonoBehaviour
         var a = ScoreManager.scoreJoueurs.Find(x => x.Nom == "quill");
         ScoreManager.ChangerTypeScore(a, 1,"Temps");
     }
-    public void DEBUG()
+    /*public void DEBUG()
     {
         
         ScoreManager.SetJoueur("bob", 1, 15);
@@ -67,5 +67,5 @@ public class ListeJouerScore : MonoBehaviour
         ScoreManager.SetJoueur("vetement", 4, 99);
         ScoreManager.SetJoueur("prada", 5, 101);
         ScoreManager.SetJoueur("quill", 0, 0);
-    }
+    }*/
 }
