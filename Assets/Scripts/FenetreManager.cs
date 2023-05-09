@@ -20,7 +20,7 @@ public class FenetreManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
-            scoreBoard.transform.SetParent(GameObject.Find("Canvas").transform, false);
+            //scoreBoard.transform.SetParent(GameObject.Find("Canvas").transform, false);
             scoreBoard.SetActive(!scoreBoard.activeSelf);
         }
        

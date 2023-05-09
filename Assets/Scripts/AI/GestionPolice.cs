@@ -8,6 +8,7 @@ public class GestionPolice : MonoBehaviour
     int BatimentLayer = 9;
     int JoueurLayer = 14;
     int NPCLayer = 16;
+    private int PoliceLayer = 10;
     Ray ray;
     float maxDistance = 2;
     public LayerMask layer = 14;
@@ -56,6 +57,10 @@ public class GestionPolice : MonoBehaviour
             Destroy(gameObject);
         }
         if (other.gameObject.layer == NPCLayer)
+        {
+            Destroy(gameObject);
+        }
+        if (other.gameObject.layer == PoliceLayer)
         {
             Destroy(gameObject);
         }

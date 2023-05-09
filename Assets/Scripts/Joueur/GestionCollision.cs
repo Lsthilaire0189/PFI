@@ -48,7 +48,7 @@ public class GestionCollision : MonoBehaviour
             gestionArgent.ModifierArgent(1);
             sonCollection.Play();
             Destroy(other.gameObject);
-            ScoreManager.ChangerTypeScore(ScoreManager.scoreJoueurs[sceneManagerScript.getNumeroPartie()], 1, "Argent Collecté");
+            ScoreManager.ChangerTypeScore(ScoreManager.scoreJoueurs[sceneManagerScript.getNumeroPartie()], 1, "Argent Collecte");
         }
         if (other.gameObject.layer == wrenchLayer)
         {

@@ -76,7 +76,7 @@ public static class ScoreManager
 
         }
 
-        throw new TypeScoreIntrouvableException("Type de score mal ecrit ");
+        throw new TypeScoreIntrouvableException("Type de score mal ecrit");
 
     }
 

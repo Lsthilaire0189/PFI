@@ -724,12 +724,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   "Cam\xE9raEmplacement": {fileID: 576900304846021657}
-  JoueurEssence: 20
+  JoueurEssence: 100
   JoueurHP: 10
   JoueurArgent: 0
   JoueurPointage: 0
   VieMaximaleJoueur: 10
-  "Capacit\xE9EssenceMaximale": 20
+  "Capacit\xE9EssenceMaximale": 100
   FinPartie: 1
 --- !u!114 &9221356562852882615
 MonoBehaviour:
@@ -4729,7 +4729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159561295035384964, guid: 0dec79500ccae6e44af5d396221bbb37, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -18.76
+      value: -9.7
       objectReference: {fileID: 0}
     - target: {fileID: 4159561295035384964, guid: 0dec79500ccae6e44af5d396221bbb37, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5063,7 +5063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8840820187890818787, guid: f24a1a40945382a429df07309953c6ff, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -66.23
+      value: -53.77
       objectReference: {fileID: 0}
     - target: {fileID: 8840820187890818787, guid: f24a1a40945382a429df07309953c6ff, type: 3}
       propertyPath: m_AnchoredPosition.y

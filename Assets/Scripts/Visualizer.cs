@@ -98,7 +98,7 @@ public class Visualizer : MonoBehaviour
         }
 
         roadHelper.FixRoad();
-        CircuitCarte circuit = new CircuitCarte(Arbre, Plan, roadHelper); 
+        //CircuitCarte circuit = new CircuitCarte(Arbre, Plan, roadHelper); 
         instancierEnvironnement.InstancierEnvironnement();
         structureHelper.PlaceStructureAroundRoad(roadHelper.GetRoadPositions());
         instancierMonnaies.InstatierMonnaies();
