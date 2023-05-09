@@ -17,24 +17,23 @@ public class GestionNPC : MonoBehaviour
     
     private void Awake()
     {
-        sceneManagerScript = GetComponent<SceneManagerScript>();
+        sceneManagerScript = GetComponentInParent<SceneManagerScript>();
     }
-    
-    public void CréerNpc(int NbAutos)
-    {
-
-    }
-
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.layer == BatimentLayer)
         {
-
+            sceneManagerScript.NbAutosActuel--;
+            Destroy(gameObject);
+        }
+        if (other.gameObject.layer == JoueurLayer)
+        {
+            sceneManagerScript.NbAutosActuel--;
             Destroy(gameObject);
         }
         if (other.gameObject.layer == NPCLayer)
         {
-
+            sceneManagerScript.NbAutosActuel--;
             Destroy(gameObject);
         }
     }
