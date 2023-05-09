@@ -8,10 +8,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
-    private EntréesManager entréesManager;
+    private EntreesManager entreesManager;
     public int NbPoints;
     [SerializeField] TextMeshProUGUI MessageErreur;
-    [SerializeField] TextMeshProUGUI NBargent, AccélérationText, VitesseText, FreinageText, EssenceText, VieText, WrenchText;
+    [SerializeField] TextMeshProUGUI NBargent, AccelerationText, VitesseText, FreinageText, EssenceText, VieText, WrenchText;
     
 
     //[NonSerialized] public int numeroPartie;
@@ -20,15 +20,15 @@ public class GameManagerScript : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(this);// pour permettre de peser sur escape pour sortir du jeu.
-        entréesManager = new EntréesManager();
+        entreesManager = new EntreesManager();
     }
 
-    public void AméliorerAccélération()
+    public void AmeliorerAcceleration()
     {
         if (InformationJeu.inf.ArgentDisponible >= 3 && InformationJeu.inf.upgradeAccélération< 3)
         {
             InformationJeu.inf.upgradeAccélération++;
-            AccélérationText.text = $"Niveau d'amélioration: {InformationJeu.inf.upgradeAccélération}";
+            AccelerationText.text = $"Niveau d'amelioration: {InformationJeu.inf.upgradeAccélération}";
             InformationJeu.inf.ArgentDisponible -= 3;
             NBargent.text = $"Argent disponible {InformationJeu.inf.ArgentDisponible} ";
         }
@@ -45,12 +45,12 @@ public class GameManagerScript : MonoBehaviour
         }
         
     }
-    public void AméliorerForceFreinage()
+    public void AmeliorerForceFreinage()
     {
         if (InformationJeu.inf.ArgentDisponible >= 3 && InformationJeu.inf.upgradeForceFreinage < 3)
         {
             InformationJeu.inf.upgradeForceFreinage++;
-            FreinageText.text = $"Niveau d'amélioration: {InformationJeu.inf.upgradeForceFreinage}";
+            FreinageText.text = $"Niveau d'amelioration: {InformationJeu.inf.upgradeForceFreinage}";
             InformationJeu.inf.ArgentDisponible -= 3;
             NBargent.text = $"Argent disponible {InformationJeu.inf.ArgentDisponible} ";
         }
@@ -66,12 +66,12 @@ public class GameManagerScript : MonoBehaviour
             }
         }
     }
-    public void AméliorerVitesseMaximale()
+    public void AmeliorerVitesseMaximale()
     {
         if (InformationJeu.inf.ArgentDisponible >= 3 && InformationJeu.inf.upgradeVitesseMaximale < 3)
         {
             InformationJeu.inf.upgradeVitesseMaximale++;
-            VitesseText.text = $"Niveau d'amélioration: {InformationJeu.inf.upgradeVitesseMaximale}";
+            VitesseText.text = $"Niveau d'amelioration: {InformationJeu.inf.upgradeVitesseMaximale}";
             InformationJeu.inf.ArgentDisponible -= 3;
             NBargent.text = $"Argent disponible {InformationJeu.inf.ArgentDisponible} ";
         }
@@ -87,12 +87,12 @@ public class GameManagerScript : MonoBehaviour
             }
         }
     }
-    public void AméliorerCapacitéEssenceMaximum()
+    public void AmeliorerCapaciteEssenceMaximum()
     {
         if (InformationJeu.inf.ArgentDisponible >= 3 && InformationJeu.inf.upgradeCapacitéEssence < 3)
         {
             InformationJeu.inf.upgradeCapacitéEssence++;
-            EssenceText.text = $"Niveau d'amélioration: {InformationJeu.inf.upgradeCapacitéEssence}";
+            EssenceText.text = $"Niveau d'amelioration: {InformationJeu.inf.upgradeCapacitéEssence}";
             InformationJeu.inf.ArgentDisponible -= 3;
             NBargent.text = $"Argent disponible {InformationJeu.inf.ArgentDisponible} ";
         }
@@ -109,12 +109,12 @@ public class GameManagerScript : MonoBehaviour
         }
 
     }
-    public void AméliorerVieMaximaleJoueur()
+    public void AmeliorerVieMaximaleJoueur()
     {
         if (InformationJeu.inf.ArgentDisponible >= 3 && InformationJeu.inf.upgradeVieMaximale < 3)
         {
             InformationJeu.inf.upgradeVieMaximale++;
-            VieText.text = $"Niveau d'amélioration: {InformationJeu.inf.upgradeVieMaximale}";
+            VieText.text = $"Niveau d'amelioration: {InformationJeu.inf.upgradeVieMaximale}";
             InformationJeu.inf.ArgentDisponible -= 3;
             NBargent.text = $"Argent disponible {InformationJeu.inf.ArgentDisponible} ";
         }
@@ -135,7 +135,7 @@ public class GameManagerScript : MonoBehaviour
         if (InformationJeu.inf.ArgentDisponible >= 3 && InformationJeu.inf.upgradeWrench < 3)
         {
             InformationJeu.inf.upgradeWrench++;
-            WrenchText.text = $"Niveau d'amélioration: {InformationJeu.inf.upgradeWrench}";
+            WrenchText.text = $"Niveau d'amelioration: {InformationJeu.inf.upgradeWrench}";
             InformationJeu.inf.ArgentDisponible -= 3;
             NBargent.text = $"Argent disponible {InformationJeu.inf.ArgentDisponible} ";
         }
@@ -157,17 +157,17 @@ public class GameManagerScript : MonoBehaviour
     {
        InformationJeu.inf.upgradePompe += 5;
     }
-    public void ChangerDeScène(int NoScéne)
+    public void ChangerDeScène(int NoScene)
     {
-        if (NoScéne == 2)
+        if (NoScene == 2)
         {
-            entréesManager.SauvegarderScoreFinDeJeu();
-            SceneManager.LoadScene(NoScéne);
-            entréesManager.AfficherScoreFinDeJeu();
+            entreesManager.SauvegarderScoreFinDeJeu();
+            SceneManager.LoadScene(NoScene);
+            entreesManager.AfficherScoreFinDeJeu();
             //numeroPartie++;
         }
 
-        SceneManager.LoadScene(NoScéne);
+        SceneManager.LoadScene(NoScene);
 
     }
     private void Update()

@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-// Écrit et lit des fichiers avec ce qui est sauve dans JsonUtility grâce à JsonHelper
+// ecrit et lit des fichiers avec ce qui est sauve dans JsonUtility grâce à JsonHelper
 public static class FileHandler
 {
 
@@ -59,7 +59,7 @@ public static class FileHandler
     }
 }
 
-// convertit la liste de EntréeManager en T[] avec  Wrapper<T> et ensuite on les sauve dans JsonUtility
+// convertit la liste de EntreeManager en T[] avec  Wrapper<T> et ensuite on les sauve dans JsonUtility
 public static class JsonHelper 
 {
     public static T[] FromJson<T>(string json)

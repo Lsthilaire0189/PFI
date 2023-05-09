@@ -8,7 +8,7 @@ using TMPro;
 using System;
 
 [Serializable]
-public class EntréesManager : MonoBehaviour
+public class EntreesManager : MonoBehaviour
 {
    
 
@@ -16,54 +16,54 @@ public class EntréesManager : MonoBehaviour
 
     [SerializeField] string filename;
 
-    List<EntréeEnter> entrées = new List<EntréeEnter>();//C'est utilisé entre les scènes (LeaderBoard)
+    List<EntreeEnter> entrees = new List<EntreeEnter>();//C'est utilise entre les scenes (LeaderBoard)
 
     const int NbRecordsMax = 6;
 
   
     private void Start()
     {
-        entrées = FileHandler.ReadListFromJSON<EntréeEnter>(filename);
+        entrees = FileHandler.ReadListFromJSON<EntreeEnter>(filename);
     }
 
-    public void AjouterEntréesÀListe(EntréeEnter entrée)
+    public void AjouterEntreesAListe(EntreeEnter entree)
     {
-        entrées.Add(new EntréeEnter(entrée.Nom, entrée.Temps, entrée.ArgentCollecté));
+        entrees.Add(new EntreeEnter(entree.Nom, entree.Temps, entree.ArgentCollecte));
 
-        FileHandler.SaveToJSON<EntréeEnter>(entrées, filename);
+        FileHandler.SaveToJSON<EntreeEnter>(entrees, filename);
     }
 
     public void SauvegarderScoreFinDeJeu()
     {
-        var entréesTemporaire = ScoreManager.GetNoms();
-        int entreCount = entrées.Count;
+        var entreesTemporaire = ScoreManager.GetNoms();
+        int entreCount = entrees.Count;
 
         for(int i =0; i< NbRecordsMax ;i++)
         {
-            if ( (entrées[entrées.Count].Temps < entréesTemporaire[i].Temps) || entreCount==0)
+            if ( (entrees[entrees.Count].Temps < entreesTemporaire[i].Temps) || entreCount==0)
             {
-                entrées.Add(entréesTemporaire[i]);
+                entrees.Add(entreesTemporaire[i]);
             }
             
         }
-        entrées.OrderByDescending(x => x.Temps).ToList();
-        FileHandler.SaveToJSON<EntréeEnter>(entrées, filename);
+        entrees.OrderByDescending(x => x.Temps).ToList();
+        FileHandler.SaveToJSON<EntreeEnter>(entrees, filename);
 
     }
 
     public void AfficherScoreFinDeJeu() 
     {
-        entrées = FileHandler.ReadListFromJSON<EntréeEnter>(filename);
-        for (int i = 0; i < entrées.Count; i++)
+        entrees = FileHandler.ReadListFromJSON<EntreeEnter>(filename);
+        for (int i = 0; i < entrees.Count; i++)
         {
-            GameObject copiePrefabEntré = (GameObject)Instantiate(prefabEntree);
-            copiePrefabEntré.transform.SetParent(this.transform); // on veut que listeJoueurScore soit notre parent
+            GameObject copiePrefabEntre = (GameObject)Instantiate(prefabEntree);
+            copiePrefabEntre.transform.SetParent(this.transform); // on veut que listeJoueurScore soit notre parent
 
             // On cherche ses enfants et on rajoute leur modification a chacun
-            copiePrefabEntré.transform.Find("Nom").GetComponent<TMP_Text>().text = entrées[i].Nom;
-            copiePrefabEntré.transform.Find("Rang").GetComponent<TMP_Text>().text = (i + 1).ToString();
-            copiePrefabEntré.transform.Find("Temps").GetComponent<TMP_Text>().text = ScoreManager.GetTypeScore(entrées[i], "Temps").ToString();
-            copiePrefabEntré.transform.Find("Argent Collecté").GetComponent<TMP_Text>().text = ScoreManager.GetTypeScore(entrées[i], "Argent Collecté").ToString();
+            copiePrefabEntre.transform.Find("Nom").GetComponent<TMP_Text>().text = entrees[i].Nom;
+            copiePrefabEntre.transform.Find("Rang").GetComponent<TMP_Text>().text = (i + 1).ToString();
+            copiePrefabEntre.transform.Find("Temps").GetComponent<TMP_Text>().text = ScoreManager.GetTypeScore(entrees[i], "Temps").ToString();
+            copiePrefabEntre.transform.Find("Argent Collecte").GetComponent<TMP_Text>().text = ScoreManager.GetTypeScore(entrees[i], "Argent Collecte").ToString();
 
         }
     }

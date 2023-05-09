@@ -16,7 +16,7 @@ public class GestionTemps : MonoBehaviour
 
     private GestionVieJoueur gestionVieJoueur;
 
-    private EntréesManager entréesManager;
+    private EntreesManager entreesManager;
     private GameObject sceneManager;
     private SceneManagerScript sceneManagerScript;
     private int tempsPresent;
@@ -40,7 +40,7 @@ public class GestionTemps : MonoBehaviour
         tempsPresent = timer.Elapsed.Seconds;
         texte.text = tempsPresent.ToString();
         
-        if (!gestionEssence.VérifierEssence() || !gestionVieJoueur.VérifierVieJoueur())
+        if (!gestionEssence.V�rifierEssence() || !gestionVieJoueur.V�rifierVieJoueur())
         {
             timer.Stop();
         }

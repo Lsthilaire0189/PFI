@@ -17,9 +17,9 @@ public class GestionEssence: MonoBehaviour
         gestionJoueur = GetComponent<GestionJoueur>();  
         voitureAvancer = GetComponent<DéplacementScript>();
     }
-    public void ModifierEssence(int EssenceAjoutée)
+    public void ModifierEssence(int EssenceAjoutee)
     {
-        gestionJoueur.JoueurEssence += EssenceAjoutée;
+        gestionJoueur.JoueurEssence += EssenceAjoutee;
     }
 
     public bool VérifierEssence()

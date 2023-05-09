@@ -38,7 +38,7 @@ public class SceneManagerScript : MonoBehaviour
     private void Awake()
     {
         NbAutos = Random.Range(5, 11);
-        //InstantierJoueur();
+        InstantierJoueur();
         if (compteurInitial == 0)
         {
             numeroPartie = -1;

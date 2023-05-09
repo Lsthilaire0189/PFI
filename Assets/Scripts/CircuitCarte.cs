@@ -51,7 +51,7 @@ public class CircuitCarte : MonoBehaviour
         var p4Spline2 = new Vector3(xMax, 0, zMin - éloignementMaison);
         var p5Spline2 = new Vector3(p5Spline1.x, 0, p5Spline1.z);
         
-        var pointMilieu = new Vector3(xMin + deltaX / 2, 0.485f, zMin + delatZ / 2);
+        var pointMilieu = new Vector3(xMin + deltaX / 2, 0, zMin + delatZ / 2);
         //var PointExtremeX = new Vector3(xMax + Éloignement, 0, zMin + delatZ / 2);
         //var PointExtremeZ = new Vector3(xMin + deltaX / 2, 0, zMax + Éloignement);
         var scale = new Vector3(Mathf.Abs( deltaX/2) , 1, Mathf.Abs(delatZ /2));
