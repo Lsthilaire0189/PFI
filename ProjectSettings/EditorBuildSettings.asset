@@ -11,9 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 3e23e5c10cd50f14d96ffaafc0283917
-  - enabled: 1
-    path: Assets/Scenes/ScoreBoardPannel.unity
-    guid: 1459af53c125c6546b562472fe5365b5
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 7e3420242ecf88243bfbd961dd87095e, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 09c0296efd6ac184e85acd3ec248a198, type: 2}
