@@ -41,7 +41,7 @@ public class ListeJouerScore : MonoBehaviour
         
         for (int i=0; i<entres.Count;i++)
         {
-            GameObject copiePrefabEntre = (GameObject)Instantiate(prefabEntree);
+            GameObject copiePrefabEntre = (GameObject)Instantiate(prefabEntree,transform.parent);
             copiePrefabEntre.transform.SetParent(this.transform); // on veut que listeJoueurScore soit notre parent
 
             // On cherche ses enfants et on rajoute leur modification a chacun
