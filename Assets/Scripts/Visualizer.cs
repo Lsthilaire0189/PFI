@@ -1,11 +1,11 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 
 public class Visualizer : MonoBehaviour
 {
     public GameObject Arbre;
+    public GameObject Plan; 
     public LSystemGenerator lsystem;
     List<Vector3> positions = new List<Vector3>();
 
@@ -98,7 +98,7 @@ public class Visualizer : MonoBehaviour
         }
 
         roadHelper.FixRoad();
-        CircuitCarte circuit = new CircuitCarte(Arbre, roadHelper); 
+        CircuitCarte circuit = new CircuitCarte(Arbre, Plan, roadHelper); 
         instancierEnvironnement.InstancierEnvironnement();
         structureHelper.PlaceStructureAroundRoad(roadHelper.GetRoadPositions());
         instancierMonnaies.InstatierMonnaies();
@@ -106,4 +106,3 @@ public class Visualizer : MonoBehaviour
 
     }
 }
-
