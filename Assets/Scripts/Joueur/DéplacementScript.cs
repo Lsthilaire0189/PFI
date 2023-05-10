@@ -95,8 +95,8 @@ public class DéplacementScript : MonoBehaviour
                     RoueArrièreGauche.motorTorque += Accélération;
                     RoueAvantDroite.motorTorque += Accélération;
                     RoueAvantGauche.motorTorque += Accélération;
-                    sonStatique.Pause();
-                    sonAcceleration.PlayDelayed(1);
+                    //sonStatique.Pause();
+                    //sonAcceleration.PlayDelayed(1);
                     //print("case 1 true");
 
                 }
@@ -109,8 +109,8 @@ public class DéplacementScript : MonoBehaviour
                     RoueArrièreGauche.motorTorque += Accélération;
                     RoueAvantDroite.motorTorque += Accélération;
                     RoueAvantGauche.motorTorque += Accélération;
-                    sonAcceleration.Pause();
-                    sonAcceleration.PlayDelayed(1);
+                    //sonAcceleration.Pause();
+                    //sonAcceleration.PlayDelayed(1);
                     //print("case 2 true");
                 }
             }
@@ -125,8 +125,8 @@ public class DéplacementScript : MonoBehaviour
                 RoueArrièreDroite.motorTorque -= ForceFreinage;
                 RoueArrièreGauche.motorTorque -= ForceFreinage;
                 //print("case 3 true");
-                sonAcceleration.Pause();
-                sonStatique.Play();
+                //sonAcceleration.Pause();
+                //sonStatique.Play();
             }
             else if (rec.lRz < 0 && RoueArrièreDroite.motorTorque > 0)
             {
@@ -135,8 +135,8 @@ public class DéplacementScript : MonoBehaviour
                 RoueAvantGauche.motorTorque -= ForceFreinage;
                 RoueArrièreDroite.motorTorque -= ForceFreinage;
                 RoueArrièreGauche.motorTorque -= ForceFreinage;
-                sonAcceleration.Pause();
-                sonStatique.Play();
+                //sonAcceleration.Pause();
+                //sonStatique.Play();
             }
 
 
@@ -148,8 +148,8 @@ public class DéplacementScript : MonoBehaviour
                 RoueAvantDroite.motorTorque -= sens*0.03f;
                 RoueAvantGauche.motorTorque -= sens*0.03f;
                 //print("case 4 true");
-                sonAcceleration.Pause();
-                sonStatique.Play();
+                //sonAcceleration.Pause();
+                //sonStatique.Play();
 
             }
 

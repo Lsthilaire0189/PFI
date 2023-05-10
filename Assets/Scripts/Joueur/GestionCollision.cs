@@ -70,6 +70,7 @@ public class GestionCollision : MonoBehaviour
         ContactPoint c = collision.GetContact(0);
         if (collision.gameObject.layer == BatimentLayer || collision.gameObject.layer == NPCLayer)
         {
+            sonCollisionObjet.Play();
             collisionDommage = 5;
             if (c.thisCollider.gameObject == PointFaible)
             {
@@ -86,6 +87,7 @@ public class GestionCollision : MonoBehaviour
         }
         else if (collision.gameObject.layer == policeLayer)
         {
+            sonCollisionObjet.Play();
             collisionDommage = 10;
             if (c.thisCollider.gameObject == PointFaible)
             {
