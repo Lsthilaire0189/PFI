@@ -105,7 +105,7 @@ public class StructureHelper : MonoBehaviour
                     rotation=Quaternion.Euler(0,0,0);
                 else if(gasStationEtGarageSpot.Value==Direction.Up)
                     rotation=Quaternion.Euler(0,-90,0);
-                Instantiate(Garage, gasStationEtGarageSpot.Key, rotation, transform);
+                Instantiate(Garage, gasStationEtGarageSpot.Key+ new Vector3(0, 0.072f, 0), rotation, transform);
             }
 
             nombreRepetion++;

@@ -5,13 +5,10 @@ using UnityEngine;
 public class InformationJeu : MonoBehaviour
 {
     public static InformationJeu inf;
-    [HideInInspector] public int NbPoints;
 
 
     int argentDisponible;
-
-    //[HideInInspector]
-    //public float ;
+    
     [HideInInspector] public int upgradeVitesseMaximale,
         upgradeAcceleration,
         upgradeForceFreinage,

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class CircuitCarte : MonoBehaviour 
 {
@@ -54,7 +53,7 @@ public class CircuitCarte : MonoBehaviour
         var pointMilieu = new Vector3(xMin + deltaX / 2, -0.22f, zMin + delatZ / 2);
         //var PointExtremeX = new Vector3(xMax + Éloignement, 0, zMin + delatZ / 2);
         //var PointExtremeZ = new Vector3(xMin + deltaX / 2, 0, zMax + Éloignement);
-        var scale = new Vector3(Mathf.Abs( deltaX/2)+2 , 1, Mathf.Abs(delatZ /2)+2);
+        var scale = new Vector3(Mathf.Abs( deltaX/2)+7 , 1, Mathf.Abs(delatZ /2)+7);
         //
         var pointsInitiauxSpline = new List<List<Vector3>>() { new List<Vector3> { p1Spline1,p2Spline1, p3Spline1, p4Spline1,p5Spline1 },
                                                                new List<Vector3> { p1Spline2, p2Spline2, p3Spline2, p4Spline2,  p5Spline2 },

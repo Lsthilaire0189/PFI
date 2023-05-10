@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 58239539601460830}
+  - component: {fileID: 3140308975590972228}
   m_Layer: 9
   m_Name: Apartment2
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3140308975590972228
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3866452111178995711}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.65860474, y: 0.9988252, z: 0.8689642}
+  m_Center: {x: 0.0038301349, y: 0.5239602, z: -0.0067723542}
 --- !u!1001 &8261913957276595740
 PrefabInstance:
   m_ObjectHideFlags: 0
