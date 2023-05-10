@@ -28,6 +28,7 @@ public class GestionCollision : MonoBehaviour
     int policeLayer = 10;
     int NPCLayer = 16;
     int ArgentLayer = 13;
+    int stopLayer = 17;
 
     public int gainHP;
     public int gainEssence;
@@ -98,6 +99,15 @@ public class GestionCollision : MonoBehaviour
             Destroy(collision.gameObject);
             
 
+            gestionVieJoueur.ModifierVie(-collisionDommage);
+
+
+        }
+        else if (collision.gameObject.layer == stopLayer)
+        {
+            sonCollisionObjet.Play();
+            collisionDommage = 1;
+            Destroy(collision.gameObject);
             gestionVieJoueur.ModifierVie(-collisionDommage);
 
 

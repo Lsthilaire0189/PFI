@@ -23,18 +23,18 @@ public class GameManagerScript : MonoBehaviour
         entreesManager = new EntreesManager();
     }
 
-    public void AmeliorerAcceleration()
+    public void AmeliorerAccélération()
     {
-        if (InformationJeu.inf.ArgentDisponible >= 3 && InformationJeu.inf.upgradeAccélération< 3)
+        if (InformationJeu.inf.ArgentDisponible >= 3 && InformationJeu.inf.upgradeAcceleration< 3)
         {
-            InformationJeu.inf.upgradeAccélération++;
-            AccelerationText.text = $"Niveau d'amelioration: {InformationJeu.inf.upgradeAccélération}";
+            InformationJeu.inf.upgradeAcceleration++;
+            AccelerationText.text = $"Niveau d'amelioration: {InformationJeu.inf.upgradeAcceleration}";
             InformationJeu.inf.ArgentDisponible -= 3;
             NBargent.text = $"Argent disponible {InformationJeu.inf.ArgentDisponible} ";
         }
         else
         {
-            if (InformationJeu.inf.upgradeAccélération == 3)
+            if (InformationJeu.inf.upgradeAcceleration == 3)
             {
                 MessageErreur.text = "Niveau maximum atteint";
             }
@@ -89,16 +89,16 @@ public class GameManagerScript : MonoBehaviour
     }
     public void AmeliorerCapaciteEssenceMaximum()
     {
-        if (InformationJeu.inf.ArgentDisponible >= 3 && InformationJeu.inf.upgradeCapacitéEssence < 3)
+        if (InformationJeu.inf.ArgentDisponible >= 3 && InformationJeu.inf.upgradeCapaciteEssence < 3)
         {
-            InformationJeu.inf.upgradeCapacitéEssence++;
-            EssenceText.text = $"Niveau d'amelioration: {InformationJeu.inf.upgradeCapacitéEssence}";
+            InformationJeu.inf.upgradeCapaciteEssence++;
+            EssenceText.text = $"Niveau d'amelioration: {InformationJeu.inf.upgradeCapaciteEssence}";
             InformationJeu.inf.ArgentDisponible -= 3;
             NBargent.text = $"Argent disponible {InformationJeu.inf.ArgentDisponible} ";
         }
         else
         {
-            if (InformationJeu.inf.upgradeCapacitéEssence == 3)
+            if (InformationJeu.inf.upgradeCapaciteEssence == 3)
             {
                 MessageErreur.text = "Niveau maximum atteint";
             }

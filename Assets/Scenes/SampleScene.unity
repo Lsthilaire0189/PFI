@@ -469,8 +469,8 @@ MonoBehaviour:
   - {fileID: 100000, guid: 03fa1f517dd413642a642fe54dab06b5, type: 3}
   - {fileID: 100000, guid: 7f7b06ca50927d44187ef6d72bbfe0e6, type: 3}
   - {fileID: 100000, guid: 545a6c38cb57f5a42a05d10f9c498379, type: 3}
-  "PourcentageR\xE9sidusEnvironnementaux": 100
-  PourcentageFlaquesEau: 100
+  "PourcentageR\xE9sidusEnvironnementaux": 45
+  PourcentageFlaquesEau: 45
   roadHelper: {fileID: 1592819122}
 --- !u!4 &455497247
 Transform:
@@ -1268,7 +1268,7 @@ MonoBehaviour:
   rootSentence: '[F]--F'
   iterationLimit: 4
   randomIgnoreRuleModifier: 1
-  chanceToIgnoreRule: 0
+  chanceToIgnoreRule: 0.42
 --- !u!4 &1099801924
 Transform:
   m_ObjectHideFlags: 0

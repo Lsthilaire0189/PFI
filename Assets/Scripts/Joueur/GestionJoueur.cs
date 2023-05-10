@@ -41,11 +41,11 @@ public class GestionJoueur : MonoBehaviour
     }
     public void InitierSpécifications()
     {
-        déplacementScript.ValeurAccélération += InformationJeu.inf.upgradeAccélération *0.007f;
+        déplacementScript.ValeurAccélération += InformationJeu.inf.upgradeAcceleration *0.007f;
         déplacementScript.VitesseMaximale += InformationJeu.inf.upgradeVitesseMaximale *10;
         déplacementScript.ValeurForceFreinage += InformationJeu.inf.upgradeForceFreinage *0.05f;
         JoueurHP = VieMaximaleJoueur + InformationJeu.inf.upgradeVieMaximale *3;
-        JoueurEssence = CapacitéEssenceMaximale + InformationJeu.inf.upgradeCapacitéEssence *5;
+        JoueurEssence = CapacitéEssenceMaximale + InformationJeu.inf.upgradeCapaciteEssence *5;
         gestionCollision.gainEssence += InformationJeu.inf.upgradePompe* 5;
         gestionCollision.gainHP += InformationJeu.inf.upgradeWrench* 2;
     }

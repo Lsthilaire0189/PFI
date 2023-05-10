@@ -690,7 +690,7 @@ MonoBehaviour:
   sonStatique: {fileID: 1727238833309039086}
   "ValeurAcc\xE9l\xE9ration": 0.03
   ValeurForceFreinage: 0.1
-  VitesseMaximale: 180
+  VitesseMaximale: 120
   ValeurAngleMaximum: 20
   goRoueAvantDroite: {fileID: 5533095950334554444, guid: 6f1970b1fd31ee64796d40690d666720, type: 3}
   goRoueAvantGauche: {fileID: 5533095950334554444, guid: 65461bfa16a5d934a99f02ad87f2d08a, type: 3}

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 487454}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: sign_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,6 +39,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 487454}
     m_Modifications:
+    - target: {fileID: 3836508011612423269, guid: 617289380408f5545ad1e01c126cdc04, type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 5270171679192184365, guid: 617289380408f5545ad1e01c126cdc04, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -99,9 +103,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5270171679192345101, guid: 617289380408f5545ad1e01c126cdc04, type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 5270171679192345103, guid: 617289380408f5545ad1e01c126cdc04, type: 3}
       propertyPath: m_Name
       value: stop sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270171679192345103, guid: 617289380408f5545ad1e01c126cdc04, type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7740947397045484849, guid: 617289380408f5545ad1e01c126cdc04, type: 3}
       propertyPath: m_Convex

@@ -5,26 +5,24 @@ using UnityEngine;
 public class InformationJeu : MonoBehaviour
 {
     public static InformationJeu inf;
-    [HideInInspector]
-    public int NbPoints;
+    [HideInInspector] public int NbPoints;
 
 
     int argentDisponible;
-    [HideInInspector]
-    public float upgradeAccélération;
-    [HideInInspector]
-    public int upgradeVitesseMaximale,
-     upgradeForceFreinage,
-     upgradeCapacitéEssence,
-     upgradeVieMaximale,
-     upgradeWrench,
-     upgradePompe;
+
+    //[HideInInspector]
+    //public float ;
+    [HideInInspector] public int upgradeVitesseMaximale,
+        upgradeAcceleration,
+        upgradeForceFreinage,
+        upgradeCapaciteEssence,
+        upgradeVieMaximale,
+        upgradeWrench,
+        upgradePompe;
+
     public int ArgentDisponible
     {
-        get
-        {
-            return argentDisponible;
-        }
+        get { return argentDisponible; }
         set
         {
             if (value < 0)
@@ -51,7 +49,4 @@ public class InformationJeu : MonoBehaviour
             inf.ArgentDisponible = 15;
         }
     }
-
-
-
 }
