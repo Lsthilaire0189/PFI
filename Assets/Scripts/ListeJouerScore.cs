@@ -52,20 +52,4 @@ public class ListeJouerScore : MonoBehaviour
         }
 
     }
-
-    public void DEBUG_ADD_KILL_TO_QUILL()
-    {
-        var a = ScoreManager.scoreJoueurs.Find(x => x.Nom == "quill");
-        ScoreManager.ChangerTypeScore(a, 1,"Temps");
-    }
-    /*public void DEBUG()
-    {
-        
-        ScoreManager.SetJoueur("bob", 1, 15);
-        ScoreManager.SetJoueur("amiri", 2, 20);
-        ScoreManager.SetJoueur("gucci", 3, 30);
-        ScoreManager.SetJoueur("vetement", 4, 99);
-        ScoreManager.SetJoueur("prada", 5, 101);
-        ScoreManager.SetJoueur("quill", 0, 0);
-    }*/
 }
