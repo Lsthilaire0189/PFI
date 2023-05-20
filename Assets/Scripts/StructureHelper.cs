@@ -105,7 +105,8 @@ public class StructureHelper : MonoBehaviour
         }
     }
     
-    private Dictionary<Vector3Int, Direction> FindFreeSpacesAroundRoad(List<Vector3Int> roadPositions)//method to allow use to find those free spaces
+    private Dictionary<Vector3Int, Direction> FindFreeSpacesAroundRoad(List<Vector3Int> roadPositions)//I did not code this. I took it from
+        //the internet source. This method to allow use to find those free spaces. https://www.youtube.com/watch?v=c9OTDfKJrAM&list=PLcRSafycjWFcbaI8Dzab9sTy5cAQzLHoy&index=11 
     {
         Dictionary<Vector3Int, Direction> freeSpaces = new Dictionary<Vector3Int, Direction>();
         foreach (var position in roadPositions)//we will go thru each road
