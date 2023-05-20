@@ -5,8 +5,8 @@ using UnityEngine;
 	public class RoadHelper : MonoBehaviour
 	{
 		public GameObject roadStraight, roadCorner, road3way, road4way, roadEnd;
-		public Dictionary<Vector3Int, GameObject> roadDictionary;
-		private HashSet<Vector3Int> fixRoadCandidates;
+		public Dictionary<Vector3Int, GameObject> roadDictionary = new Dictionary<Vector3Int, GameObject>();
+		private HashSet<Vector3Int> fixRoadCandidates = new HashSet<Vector3Int>();
 		
 		public List<Vector3Int> GetRoadPositions()//takes the Keys of roadDictionary (which are positions) and returns them as a list
 		{

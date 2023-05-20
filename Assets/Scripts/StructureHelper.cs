@@ -16,7 +16,7 @@ public class StructureHelper : MonoBehaviour
     [Range(0.2f, 1)]
     public float chanceToSpawnBigBuilding = 0.467f;
 
-    private List<Vector3Int> smallBuildingsDespawn;
+    private List<Vector3Int> smallBuildingsDespawn = new List<Vector3Int>();
 
     public void PlaceStructureAroundRoad(List<Vector3Int> roadPositions)//this function allows us to place structures around the road of the map
     {
