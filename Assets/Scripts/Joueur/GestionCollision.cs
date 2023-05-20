@@ -46,20 +46,23 @@ public class GestionCollision : MonoBehaviour
     {
         if (other.gameObject.layer == ArgentLayer)
         {
-            gestionArgent.ModifierArgent(1);
+            gestionArgent.ModifierArgent(1);//on augmente la quantité d'argent du joueur de +1
             sonCollection.Play();
             Destroy(other.gameObject);
-            ScoreManager.ChangerTypeScore(ScoreManager.scoreJoueurs[sceneManagerScript.getNumeroPartie()], 1, "Argent Collecte");
+            ScoreManager.ChangerTypeScore(ScoreManager.scoreJoueurs[sceneManagerScript.getNumeroPartie()], 1, "Argent Collecte"); 
+            //Fait par Theodor Trif -on ajoute +1 dans
+            //l'argent collecté dans la liste static de ScoreManager. Cette liste
+            //communiquera ensuite avec le gameobject 'ListeJoueurScore' dans la scene. 
         }
         if (other.gameObject.layer == wrenchLayer)
         {
-            gestionVieJoueur.ModifierVie(gainHP);
+            gestionVieJoueur.ModifierVie(gainHP); //on augmente la vie de joueur de +gainHP
             sonGainHP.Play();
             Destroy(other.gameObject);
         }
         if (other.gameObject.layer == gasLayer)
         {
-            gestionEssence.ModifierEssence(gainEssence);
+            gestionEssence.ModifierEssence(gainEssence); //on augmente l'essence du joueur de +gainEssence
             sonEssence.Play();
             Destroy(other.gameObject);
         }
@@ -75,7 +78,7 @@ public class GestionCollision : MonoBehaviour
             collisionDommage = 5;
             if (c.thisCollider.gameObject == PointFaible)
             {
-                collisionDommage += 3;
+                collisionDommage += 3;//si le joueur frappe l'objet avec son point faible situé derrière la voiture, il prendra 3 dégats de plus
             }
 
             if (collision.gameObject.layer == NPCLayer)
@@ -84,7 +87,7 @@ public class GestionCollision : MonoBehaviour
                 Destroy(collision.gameObject);
             }
 
-            gestionVieJoueur.ModifierVie(-collisionDommage);
+            gestionVieJoueur.ModifierVie(-collisionDommage);//on ajoute -collisionDommage à la quantité de vie totale du joueur
         }
         else if (collision.gameObject.layer == policeLayer)
         {
@@ -94,14 +97,10 @@ public class GestionCollision : MonoBehaviour
             {
                 collisionDommage += 3;
             }
-
             Instantiate(explosion, collision.gameObject.transform.position, Quaternion.identity, transform);
             Destroy(collision.gameObject);
-            
-
             gestionVieJoueur.ModifierVie(-collisionDommage);
-
-
+            
         }
         else if (collision.gameObject.layer == stopLayer)
         {
@@ -109,8 +108,6 @@ public class GestionCollision : MonoBehaviour
             collisionDommage = 1;
             Destroy(collision.gameObject);
             gestionVieJoueur.ModifierVie(-collisionDommage);
-
-
         }
     }
 }

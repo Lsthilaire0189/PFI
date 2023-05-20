@@ -11,7 +11,6 @@ public class GestionJoueur : MonoBehaviour
 
     DéplacementScript déplacementScript;
     GestionVieJoueur gestionVieJoueur;
-    GestionPointage gestionPointage;
     SceneManagerScript sceneManagerScript;
     GestionCollision gestionCollision; 
     GestionSurfaceCollision gestionSurfaceCollision; 
@@ -26,18 +25,15 @@ public class GestionJoueur : MonoBehaviour
     public int CapacitéEssenceMaximale = 100;
 
     public bool FinPartie = true;
-
-
+    
     public void Awake()
     {
         déplacementScript = gameObject.GetComponent<DéplacementScript>();
         gestionVieJoueur = gameObject.GetComponent<GestionVieJoueur>();
-        gestionPointage = gameObject.GetComponent<GestionPointage>();
         sceneManagerScript= gameObject.GetComponentInParent<SceneManagerScript>();
         gestionCollision = gameObject.GetComponent<GestionCollision>();
         gestionSurfaceCollision = gameObject.GetComponent<GestionSurfaceCollision>();
         gestionEssence = gameObject.GetComponent<GestionEssence>();
-
     }
     public void InitierSpécifications()
     {
@@ -49,7 +45,6 @@ public class GestionJoueur : MonoBehaviour
         gestionCollision.gainEssence += InformationJeu.inf.upgradePompe* 5;
         gestionCollision.gainHP += InformationJeu.inf.upgradeWrench* 2;
     }
-
     public void AssocierCamera(GameObject XRorigin)
     {
         Joueur = XRorigin;
@@ -58,15 +53,12 @@ public class GestionJoueur : MonoBehaviour
         var distanceDiff = CaméraEmplacement.position - Joueur.transform.position;
         Joueur.transform.position += distanceDiff;
     }
-    // Update is called once per frame
     void Update()
     {
         if (gestionVieJoueur.VérifierVieJoueur() && gestionEssence.VérifierEssence())
         {
             Joueur.transform.position = CaméraEmplacement.transform.position;
             Joueur.transform.rotation = CaméraEmplacement.transform.rotation;
-            //gestionPointage.ModifierPointage(1);
-            //Debug.Log(JoueurPointage);
         }
         else
         {

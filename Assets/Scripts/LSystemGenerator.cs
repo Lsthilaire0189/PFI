@@ -16,7 +16,7 @@ using UnityEngine;
 
 		private void Start()
 		{
-			Debug.Log(GenerateSentence());
+			GenerateSentence();
 		}
 
 		public string GenerateSentence(string word = null)

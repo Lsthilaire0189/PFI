@@ -4,40 +4,25 @@ using UnityEngine;
 
 public class DéplacementScript : MonoBehaviour
 {
-    
     private LogitechGSDK.DIJOYSTATE2ENGINES rec;
 
-    [SerializeField] WheelCollider RoueAvantDroite;
-    [SerializeField] WheelCollider RoueAvantGauche;
-    [SerializeField] WheelCollider RoueArrièreDroite;
-    [SerializeField] WheelCollider RoueArrièreGauche;
-
-    public AudioSource sonAcceleration;
-    public AudioSource sonStatique;
-
-    public float ValeurAccélération = 0.05f;// Est modifié par Génération joueur
-    public float ValeurForceFreinage = 0.2f;// Est modifiée par Génération joueur
-
-    public float VitesseMaximale = 50f; // Est modifiée par Génération joueur
-
+    public List<WheelCollider> listeWC;
+    
+    public float ValeurAccélération = 0.05f;
+    public float ValeurForceFreinage = 0.2f;
+    public float VitesseMaximale = 50f;
     public float ValeurAngleMaximum = 15f;
 
     private float Accélération;
     private float ForceFreinage;
     private float Angle;
-
     private float vRotation;
-
     private int sens=1;
 
     GestionEssence gestionEssence;
-
-    private GestionVieJoueur gestionVieJoueur;
-
-    private Rigidbody rbVoiture;
-
-    //private List<WheelCollider> listeRoues;
-
+    GestionVieJoueur gestionVieJoueur;
+    Rigidbody rbVoiture;
+    
     public GameObject goRoueAvantDroite;
     public GameObject goRoueAvantGauche;
     public GameObject goRoueArrGauche;
@@ -49,120 +34,95 @@ public class DéplacementScript : MonoBehaviour
         gestionEssence =gameObject.GetComponent<GestionEssence>();
         gestionVieJoueur = gameObject.GetComponent<GestionVieJoueur>();
         rbVoiture = gameObject.GetComponent<Rigidbody>();
-        RoueAvantDroite.ConfigureVehicleSubsteps(5,12,15);
-        RoueAvantGauche.ConfigureVehicleSubsteps(5,12,15);
-        RoueArrièreDroite.ConfigureVehicleSubsteps(5,12,15);
-        RoueArrièreGauche.ConfigureVehicleSubsteps(5,12,15);
+        listeWC[0].ConfigureVehicleSubsteps(5,12,15);//on fait WheelCollider.ConfigureVehiculeSubsteps pour modifier la suspension 
+        listeWC[1].ConfigureVehicleSubsteps(5,12,15);//du WheelCollider afin de faire en sorte que la voiture du joueur de tremble pas
+        listeWC[2].ConfigureVehicleSubsteps(5,12,15);//lorsqu'elle n'est pas en mouvement.
+        listeWC[3].ConfigureVehicleSubsteps(5,12,15);
     }
 
     private void FixedUpdate()
     {
-
-        rec = LogitechGSDK.LogiGetStateUnity(0);
+        rec = LogitechGSDK.LogiGetStateUnity(0);//permet de lire l'état du volant et des pédales unity
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button5))
         {
-            sens = -1;
+            sens = -1;//si le joueur appuie sur le shifter gauche du volant Logitech, son déplacement va se faire vers le sens inverse lorsqu'il ajoute du torque au WheelColliders des roues avec les pédales.
+            //Ceci fonctionne comme la marche arrière d'une voiture
         }
         else if(Input.GetKeyDown(KeyCode.Joystick1Button4))
         {
-            sens = 1;
+            sens = 1;//si le joueur appuie sur le shifter droit du volant Logitech, ceci met la voiture en marche avant
         }
 
-        Angle = ValeurAngleMaximum * Input.GetAxis("Horizontal");
-        RoueAvantDroite.steerAngle = Angle;
-        RoueAvantGauche.steerAngle = Angle;
+        Angle = ValeurAngleMaximum * Input.GetAxis("Horizontal");//on lit la position horizontale du volant pour donner ensuite donner un angle de direction aux roues avants. Ceci permet de faire tourner la voiture
+        listeWC[0].steerAngle = Angle;
+        listeWC[1].steerAngle = Angle;
         
-        vRotation = RoueArrièreDroite.rpm * (360f / 60) * Time.deltaTime;
+        vRotation = listeWC[0].rpm * (360f / 60) * Time.deltaTime;//on fait tourner les GameObjects qui représentent les roues de la voiture afin de leur donner une animation de rotation
+                                                                        // qui dépend de la rotation par minute du WheelCollider qui leur est associée.
         goRoueAvantDroite.transform.Rotate(-vRotation,Angle,0);
         goRoueAvantGauche.transform.Rotate(vRotation,Angle,0);
         goRoueArrGauche.transform.Rotate(vRotation,0,0);
         goRoueArrDroite.transform.Rotate(-vRotation,0,0);
-
-        print(rbVoiture.velocity.magnitude < VitesseMaximale);
-
-        if (gestionEssence.VérifierEssence() && gestionVieJoueur.VérifierVieJoueur())
+        
+        if (gestionEssence.VérifierEssence() && gestionVieJoueur.VérifierVieJoueur())//on vérifie si le joueur peut toujours continuer
         {
-            if (rbVoiture.velocity.magnitude*100 <= VitesseMaximale)
+            if (rbVoiture.velocity.magnitude*100 <= VitesseMaximale)//on vérifie si la vitesse de la voiture est en dessous de la vitesse maximale possible de la voiture
             {
-                if (rec.lY is < 32760 and > 0)
+                if (rec.lY is < 32760 and > 0)//rec.lY représente la position de la pédale d'accélération, allant de -32760 à 32760
                 {
                     Accélération =
-                        sens * Mathf.Log(ValeurAccélération * (32760f - rec.lY) / 32760f + 1,
-                            2);
-
-                    RoueArrièreDroite.motorTorque += Accélération;
-                    RoueArrièreGauche.motorTorque += Accélération;
-                    RoueAvantDroite.motorTorque += Accélération;
-                    RoueAvantGauche.motorTorque += Accélération;
-                    //sonStatique.Pause();
-                    //sonAcceleration.PlayDelayed(1);
-                    //print("case 1 true");
-
+                        sens * Mathf.Log(ValeurAccélération * (32760f - rec.lY) / 32760f + 1, //on divise par 32760 pour faire en sorte que la position de la pédale lue varie entre -1 et 1 au lieu de 32760 à 32760, facilitant son utilisation dans les calculs
+                            2);//on utilise Mathf.Log afin de caluler la quantité de torque à ajouter aux WheelCollders puisque ceci permet de représenter la courbe de progression de la quantité de torque
+                    //des roues d'une voiture possèdant un moteur à combustion interne en vraie vie lorsque la voiture accélère
+                    foreach (var roueCollider in listeWC)
+                    {
+                        roueCollider.motorTorque += Accélération;
+                    }
                 }
                 else if (rec.lY < 0)
                 {
                     Accélération = sens * Mathf.Log(ValeurAccélération * (-rec.lY + 32760) / 32760f + 1, 2);
-
-
-                    RoueArrièreDroite.motorTorque += Accélération;
-                    RoueArrièreGauche.motorTorque += Accélération;
-                    RoueAvantDroite.motorTorque += Accélération;
-                    RoueAvantGauche.motorTorque += Accélération;
-                    //sonAcceleration.Pause();
-                    //sonAcceleration.PlayDelayed(1);
-                    //print("case 2 true");
+                    foreach (var roueCollider in listeWC)
+                    {
+                        roueCollider.motorTorque += Accélération;
+                    }
                 }
             }
-
-
-
-            if (rec.lRz is < 32760 and > 0 && RoueArrièreDroite.motorTorque > 0)
+            
+            if (rec.lRz is < 32760 and > 0 && listeWC[0].motorTorque > 0)
             {
                 ForceFreinage = ValeurForceFreinage * (32760 - rec.lRz) / 32760f;
-                RoueAvantDroite.motorTorque -= ForceFreinage;
-                RoueAvantGauche.motorTorque -= ForceFreinage;
-                RoueArrièreDroite.motorTorque -= ForceFreinage;
-                RoueArrièreGauche.motorTorque -= ForceFreinage;
-                //print("case 3 true");
-                //sonAcceleration.Pause();
-                //sonStatique.Play();
+                foreach (var roueCollder in listeWC)
+                {
+                    roueCollder.motorTorque -= ForceFreinage;
+                }
             }
-            else if (rec.lRz < 0 && RoueArrièreDroite.motorTorque > 0)
+            else if (rec.lRz < 0 && listeWC[0].motorTorque > 0)
             {
                 ForceFreinage = ValeurForceFreinage * (rec.lY + 32760) / 32760f;
-                RoueAvantDroite.motorTorque -= ForceFreinage;
-                RoueAvantGauche.motorTorque -= ForceFreinage;
-                RoueArrièreDroite.motorTorque -= ForceFreinage;
-                RoueArrièreGauche.motorTorque -= ForceFreinage;
-                //sonAcceleration.Pause();
-                //sonStatique.Play();
+                foreach (var roueCollider in listeWC)
+                {
+                    roueCollider.motorTorque -= ForceFreinage;
+                }
             }
-
-
-            if (RoueArrièreDroite.motorTorque > 0 && RoueArrièreGauche.motorTorque > 0 &&
-                  RoueAvantDroite.motorTorque > 0 && RoueAvantGauche.motorTorque > 0 && rec.lY > 32760 && rec.lRz > 32760)
+            //si le joueur n'appuie sur aucune pédale et que la voiture est en mouvement,
+            //la quantité de torque sur les WheelColliders diminue petit à petit afin de donner l'impression que la résistance de l'air agit sur la voiture.
+            if (listeWC[0].motorTorque > 0 && listeWC[1].motorTorque > 0 &&
+                listeWC[2].motorTorque > 0 && listeWC[3].motorTorque > 0 && rec.lY > 32760 && rec.lRz > 32760)
             {
-                RoueArrièreDroite.motorTorque -= sens*0.03f;
-                RoueArrièreGauche.motorTorque -= sens*0.03f;
-                RoueAvantDroite.motorTorque -= sens*0.03f;
-                RoueAvantGauche.motorTorque -= sens*0.03f;
-                //print("case 4 true");
-                //sonAcceleration.Pause();
-                //sonStatique.Play();
-
+                foreach (var roueCollider in listeWC)
+                {
+                    roueCollider.motorTorque -= sens * 0.03f;
+                }
             }
-
         }
-        else
+        else //si la voiture ne possède plus d'essence ou de vie, la quantité de torque des WheelColliders est de 0, immobilisant ainsi la voiture du joueur
         {
-            RoueAvantDroite.motorTorque = 0;
-            RoueAvantGauche.motorTorque = 0;
-            RoueArrièreDroite.motorTorque = 0;
-            RoueArrièreGauche.motorTorque = 0;
+            foreach (var listeCollider in listeWC)
+            {
+                listeCollider.motorTorque = 0;
+            }
         }
     }
-
-    
-
 }

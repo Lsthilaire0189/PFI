@@ -9,7 +9,6 @@ using UnityEngine;
         public LSystemGenerator lsystem;
         List<Vector3> positions = new List<Vector3>();
         public GameObject prefab;
-        public Material lineMaterial;
 
         private int length = 8;
         private float angle = 90;
@@ -42,7 +41,6 @@ using UnityEngine;
             var currentPosition = Vector3.zero;
 
             Vector3 direction = Vector3.forward;
-            Vector3 tempPosition = Vector3.zero;
 
             positions.Add(currentPosition);
 
@@ -72,20 +70,11 @@ using UnityEngine;
                             throw new System.Exception("Dont have saved point in our stack");
                         }
                         break;
-                    case EncodingLetters.draw:
-                        tempPosition = currentPosition;
-                        currentPosition += direction * length;
-                        DrawLine(tempPosition, currentPosition, Color.red);
-                        Length -= 2;
-                        positions.Add(currentPosition);
-                        break;
                     case EncodingLetters.turnRight:
                         direction = Quaternion.AngleAxis(angle, Vector3.up) * direction;
                         break;
                     case EncodingLetters.turnLeft:
                         direction = Quaternion.AngleAxis(-angle, Vector3.up) * direction;
-                        break;
-                    default:
                         break;
                 }
             }
@@ -95,20 +84,6 @@ using UnityEngine;
                 Instantiate(prefab, position, Quaternion.identity);
             }
 
-        }
-
-        private void DrawLine(Vector3 start, Vector3 end, Color color)
-        {
-            GameObject line = new GameObject("line");
-            line.transform.position = start;
-            var lineRenderer = line.AddComponent<LineRenderer>();
-            lineRenderer.material = lineMaterial;
-            lineRenderer.startColor = color;
-            lineRenderer.endColor = color;
-            lineRenderer.startWidth = 0.1f;
-            lineRenderer.endWidth = 0.1f;
-            lineRenderer.SetPosition(0, end);
-            lineRenderer.SetPosition(1, start);
         }
 
         public enum EncodingLetters

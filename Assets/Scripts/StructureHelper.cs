@@ -14,43 +14,37 @@ public class StructureHelper : MonoBehaviour
     public GameObject apartementNoir;
     public GameObject bigBuilding;
     public GameObject gasStation; 
-    public GameObject Garage;
-    [Range(0, 6)] 
-    public int nombreStationEssence;
-    [Range(0, 6)] 
-    public int nombreGarage;
-    
+    public GameObject garage;
+
     [Range(0.2f, 1)]
     public float chanceToSpawnBigBuilding = 0.2f;
     private List<Vector3Int> smallBuildingsDespawn = new List<Vector3Int>();
-    public Dictionary<Vector3Int, GameObject> StructureDictionary = new Dictionary<Vector3Int, GameObject>(); //a dictionary containing the positions of all prefabs and their precise position
 
     public void PlaceStructureAroundRoad(List<Vector3Int> roadPositions)
     {
-
         int nombreRepetion = 0;
 
         Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions);
         Dictionary<Vector3, Direction> freeBigBuildingsSpots = BigBuildingPositionGetter(freeEstateSpots);
-        Dictionary<Vector3, Direction> freeGasStationEtGarageSpots = GasStationEtGaragePositionGetter(freeBigBuildingsSpots, nombreStationEssence, nombreGarage);
-
-
+        Dictionary<Vector3, Direction> freeGasStationEtGarageSpots = GasStationEtGaragePositionGetter(freeBigBuildingsSpots);
+        
         foreach (var smallBuilding in smallBuildingsDespawn)
         {
-            freeEstateSpots.Remove(smallBuilding);
+            freeEstateSpots.Remove(smallBuilding);//we remove all the small buildings we want to despawn from the city
         }
         
         foreach (var freeSpot in freeEstateSpots)//for each position in freeEstateSpots, we will Instantiate a prefab
         {
             var rotation = Quaternion.identity;
-            
+            //ensures that the building is well rotated
             if(freeSpot.Value==Direction.Up)
                 rotation=Quaternion.Euler(0,90,0);
             else if(freeSpot.Value==Direction.Down)
                 rotation=Quaternion.Euler(0,-90,0);
             else if(freeSpot.Value==Direction.Right)
                 rotation=Quaternion.Euler(0,180,0);
-
+            
+            //this allows diversification of the type of small building that will be spawned
             if (UnityEngine.Random.value < 0.3f)
             {
                 Instantiate(maison, freeSpot.Key, rotation, transform);
@@ -68,7 +62,7 @@ public class StructureHelper : MonoBehaviour
         foreach (var bigBuildingFreeSpot in freeBigBuildingsSpots)
         {
             var rotation = Quaternion.identity;
-            
+            //ensures that the big building is well rotated
             if(bigBuildingFreeSpot.Value==Direction.Up)
                 rotation=Quaternion.Euler(0,90,0);
             else if(bigBuildingFreeSpot.Value==Direction.Down)
@@ -83,9 +77,8 @@ public class StructureHelper : MonoBehaviour
         {
             var rotation = Quaternion.identity;
             
-            
-            if (nombreRepetion < nombreStationEssence)
-            {
+            if (nombreRepetion == 0)
+            {//ensures that the gasStation is well rotated
                 if(gasStationEtGarageSpot.Value==Direction.Left)
                     rotation=Quaternion.Euler(0,-90,0);
                 else if(gasStationEtGarageSpot.Value==Direction.Down)
@@ -97,7 +90,8 @@ public class StructureHelper : MonoBehaviour
                 Instantiate(gasStation, gasStationEtGarageSpot.Key, rotation, transform);
             }
             else
-            {if(gasStationEtGarageSpot.Value==Direction.Left)
+            {//ensures that the garage is well rotated
+                if(gasStationEtGarageSpot.Value==Direction.Left)
                     rotation=Quaternion.Euler(0,180,0);
                 else if(gasStationEtGarageSpot.Value==Direction.Down)
                     rotation=Quaternion.Euler(0,90,0);
@@ -105,13 +99,13 @@ public class StructureHelper : MonoBehaviour
                     rotation=Quaternion.Euler(0,0,0);
                 else if(gasStationEtGarageSpot.Value==Direction.Up)
                     rotation=Quaternion.Euler(0,-90,0);
-                Instantiate(Garage, gasStationEtGarageSpot.Key+ new Vector3(0, 0.072f, 0), rotation, transform);
+                Instantiate(garage, gasStationEtGarageSpot.Key+ new Vector3(0, 0.072f, 0), rotation, transform);
             }
 
             nombreRepetion++;
         }
     }
-
+    
     private Dictionary<Vector3Int, Direction> FindFreeSpacesAroundRoad(List<Vector3Int> roadPositions)//method to allow use to find those free spaces
     {
         Dictionary<Vector3Int, Direction> freeSpaces = new Dictionary<Vector3Int, Direction>();
@@ -133,18 +127,17 @@ public class StructureHelper : MonoBehaviour
                     freeSpaces.Add(newPosition, FindOrientation(newPosition, roadPositions));
                 }
             }
-            
         }
 
         return freeSpaces;
     }
     
-    public Direction FindOrientation(Vector3Int newPosition, List<Vector3Int> roadPositions)
-    {
+    public Direction FindOrientation(Vector3Int newPosition, List<Vector3Int> roadPositions) //this function allows us to get the orientation we need to give to the building we want  
+    {//to instantiate so that it faces the road
         Direction rotationBatiment = Direction.Up;
         foreach (var position in roadPositions)
         {
-            if (position + Vector3Int.right == newPosition)
+            if (position + Vector3Int.right == newPosition)//if the road is on the right of the building, the building will be rotated to the left so that it faces it and etc...
             {
                 rotationBatiment= Direction.Left;
             }
@@ -160,46 +153,43 @@ public class StructureHelper : MonoBehaviour
             {
                 rotationBatiment= Direction.Up;
             }
-            
         }
         return rotationBatiment;
     }
 
-    public Dictionary<Vector3, Direction> BigBuildingPositionGetter(Dictionary<Vector3Int, Direction> freeSpaces)
-    {
+    public Dictionary<Vector3, Direction> BigBuildingPositionGetter(Dictionary<Vector3Int, Direction> freeSpaces)//allows us to get the positions of where we can potentially spawn a big building
+    {//, occupying the space of 2 smaller buildings
         Dictionary<Vector3, Direction> bigBuildingPositions = new Dictionary<Vector3, Direction>();
         foreach (var position in freeSpaces)
         {
-            
             if(UnityEngine.Random.value < chanceToSpawnBigBuilding)
             {
-                var currentPositionRight = (position.Key +position.Key+Vector3.right)/2;
-                var currentPositionUp = (position.Key + position.Key + new Vector3(0, 0, 1)) / 2;
+                var currentPositionRight = (position.Key +position.Key+Vector3.right)/2;//allows us to obtain the position between the two next buildings to the right of our current position
+                var currentPositionUp = (position.Key + position.Key + new Vector3(0, 0, 1)) / 2;//allows us to obtain the position between the two next buildings above our current position
                 
                 if (freeSpaces.ContainsKey(position.Key+Vector3Int.right) && freeSpaces.ContainsKey(position.Key-Vector3Int.right) &&!bigBuildingPositions.ContainsKey
                         (currentPositionRight+Vector3.right) && 
-                    !bigBuildingPositions.ContainsKey(currentPositionRight-Vector3.right))
+                    !bigBuildingPositions.ContainsKey(currentPositionRight-Vector3.right))//verifies if a big building can be instantiated to the right of our current position and if it is not a duplicate
                 {
                     bigBuildingPositions.Add(currentPositionRight, position.Value);
-                    smallBuildingsDespawn.Add(position.Key);
+                    smallBuildingsDespawn.Add(position.Key);//we add the two next buildings to the right of our current position to the small buildings we want to despawn so that the big building can fit
                     smallBuildingsDespawn.Add(position.Key+Vector3Int.right);
                 } 
                 else if (freeSpaces.ContainsKey(position.Key+ new Vector3Int(0,0,1)) &&freeSpaces.ContainsKey(position.Key- new Vector3Int(0,0,1))
                          &&!bigBuildingPositions.ContainsKey(currentPositionUp+new Vector3(0,0,1)) && 
-                         !bigBuildingPositions.ContainsKey(currentPositionUp+new Vector3(0,0,-1)))
+                         !bigBuildingPositions.ContainsKey(currentPositionUp+new Vector3(0,0,-1)))//verifies if a big building can be instantiated above our current position and if it is not a duplicate
                 {
                     bigBuildingPositions.Add(currentPositionUp, position.Value);
-                    smallBuildingsDespawn.Add(position.Key);
+                    smallBuildingsDespawn.Add(position.Key);//we add the two next buildings above of our current position to the small buildings we want to despawn so that the big building can fit
                     smallBuildingsDespawn.Add(position.Key+new Vector3Int(0,0,1));
                 }
             }
         }
         return bigBuildingPositions;
     }
-
-
+    
     private Dictionary<Vector3, Direction> GasStationEtGaragePositionGetter(
-        Dictionary<Vector3, Direction> freeBigBuildingSpots, int nombreStationEssence, int nombreGarage)
+        Dictionary<Vector3, Direction> freeBigBuildingSpots)//this function allows us to instantiate a garage and a gasStation at the place of a big building.
     {
         var random = new Random();
 
@@ -213,35 +203,20 @@ public class StructureHelper : MonoBehaviour
         {
             listeNombrePossible.Add(i);
         }
-
-        for (int w = 0; w < nombreStationEssence; w++)
-        {
-            var nmbreHasard = random.Next(listeNombrePossible.Count);
-
-            GasStationEtGaragePositions.Add(freeBigBuildingSpots.ElementAt(nmbreHasard).Key,
-                freeBigBuildingSpots.ElementAt(nmbreHasard).Value);
-
-            freeBigBuildingSpots.Remove(freeBigBuildingSpots.ElementAt(nmbreHasard).Key);
-
-            listeNombrePossible.Remove(nmbreHasard);
-
-        }
         
-        for (int r = 0; r < nombreGarage; r++)
-        {
-            var nmbreHasard = random.Next(listeNombrePossible.Count);
-
-            GasStationEtGaragePositions.Add(freeBigBuildingSpots.ElementAt(nmbreHasard).Key, 
-                freeBigBuildingSpots.ElementAt(nmbreHasard).Value);
-
-            freeBigBuildingSpots.Remove(freeBigBuildingSpots.ElementAt(nmbreHasard).Key);
-
-            listeNombrePossible.Remove(nmbreHasard);
-
-        }
-
-        return GasStationEtGaragePositions;
+        var nmbreHasard = random.Next(listeNombrePossible.Count);//we randomly chose the big building we will replace by a gasStation
+        GasStationEtGaragePositions.Add(freeBigBuildingSpots.ElementAt(nmbreHasard).Key,
+            freeBigBuildingSpots.ElementAt(nmbreHasard).Value);//we add its position and rotation to the dictionary which contains these information for the gasStation and for the garage.
+        freeBigBuildingSpots.Remove(freeBigBuildingSpots.ElementAt(nmbreHasard).Key);//we remove the randomly chosen big building from the dictionary containing the information of the big buildings we
+        //will want to instantiate
+        listeNombrePossible.Remove(nmbreHasard);//avoids duplication
+        
+        nmbreHasard = random.Next(listeNombrePossible.Count);//we randomly chose the big building we will replace by a garage
+        GasStationEtGaragePositions.Add(freeBigBuildingSpots.ElementAt(nmbreHasard).Key, 
+                freeBigBuildingSpots.ElementAt(nmbreHasard).Value);//we add its position and rotation to the dictionary which contains these information for the gasStation and for the garage.
+            freeBigBuildingSpots.Remove(freeBigBuildingSpots.ElementAt(nmbreHasard).Key);//we remove the randomly chosen big building from the dictionary containing the information of the big buildings we
+            //will want to instantiate
+            return GasStationEtGaragePositions;
     }
-
 }
 

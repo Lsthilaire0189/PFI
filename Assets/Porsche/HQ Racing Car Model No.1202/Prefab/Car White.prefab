@@ -682,12 +682,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7dd5d917caa81478f737b86c1b04d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoueAvantDroite: {fileID: 5292095221039699474}
-  RoueAvantGauche: {fileID: 7518647108432024187}
-  "RoueArri\xE8reDroite": {fileID: 5303061791505333738}
-  "RoueArri\xE8reGauche": {fileID: 1169666349733410703}
-  sonAcceleration: {fileID: 3731495254824175019}
-  sonStatique: {fileID: 1727238833309039086}
+  RoueAvantDroite: {fileID: 7518647108432024187}
+  RoueAvantGauche: {fileID: 1169666349733410703}
+  "RoueArri\xE8reDroite": {fileID: 5292095221039699474}
+  "RoueArri\xE8reGauche": {fileID: 5303061791505333738}
+  listeWC:
+  - {fileID: 7518647108432024187}
+  - {fileID: 5292095221039699474}
+  - {fileID: 1169666349733410703}
+  - {fileID: 5303061791505333738}
   "ValeurAcc\xE9l\xE9ration": 0.03
   ValeurForceFreinage: 0.1
   VitesseMaximale: 120

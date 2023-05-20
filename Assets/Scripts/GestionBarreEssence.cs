@@ -11,8 +11,6 @@ public class GestionBarreEssence : MonoBehaviour
     
     [SerializeField]
     private GestionJoueur gestionJoueur;
-    
-    // Start is called before the first frame update
     private void Awake()
     {
         slider = GameObject.Find("BarreEssence").GetComponent<Slider>();
@@ -22,8 +20,6 @@ public class GestionBarreEssence : MonoBehaviour
     {
         slider.maxValue = gestionJoueur.CapacitéEssenceMaximale;
     }
-
-    // Update is called once per frame
     void Update()
     {
         slider.value =gestionJoueur.JoueurEssence;
