@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GestionCollision : MonoBehaviour
 {
@@ -50,7 +46,7 @@ public class GestionCollision : MonoBehaviour
             sonCollection.Play();
             Destroy(other.gameObject);
             ScoreManager.ChangerTypeScore(ScoreManager.scoreJoueurs[sceneManagerScript.getNumeroPartie()], 1, "Argent Collecte"); 
-            //Fait par Theodor Trif -on ajoute +1 dans
+            //Fait par Theodor Trif - on ajoute +1 dans
             //l'argent collecté dans la liste static de ScoreManager. Cette liste
             //communiquera ensuite avec le gameobject 'ListeJoueurScore' dans la scene. 
         }

@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,21 +5,18 @@ using Random = System.Random;
 
 public class EnvironnementScript : MonoBehaviour
 {
-    public List<GameObject> flaquesEau;
-    public List<GameObject> boues;
+    public List<GameObject> flaquesEau;//les différents types de flaques de d'eau
+    public List<GameObject> boues;//les différents types de flaques de boue
 
-    [Range(0, 100)] public int PourcentageRésidusEnvironnementaux;
+    [Range(0, 100)] public int PourcentageRésidusEnvironnementaux; //la chance qu'un résidus environnementaux s'instancient sur une route
 
-    [Range(0,100)] public int PourcentageFlaquesEau;
-
-
+    [Range(0,100)] public int PourcentageFlaquesEau;//la chace que le résidus environnementaux instancié soit une flaque d'eau
+    
     public RoadHelper roadHelper;
-
 
     public void InstancierEnvironnement()
     {
-
-        List<Vector3Int> positionsRoutes = roadHelper.GetRoadPositions();//cette fonction retourne une liste contenant toutes les positions des routes
+        List<Vector3Int> positionsRoutes = roadHelper.GetRoadPositions();//cette fonction retourne une liste contenant toutes les positions des routes présentent sur la carte
 
         List<int> positionsPossibles = Enumerable.Range(0, positionsRoutes.Count).ToList();
 
@@ -33,7 +28,7 @@ public class EnvironnementScript : MonoBehaviour
             {
                 var point = random.Next(0, positionsPossibles.Count);
                 var pointPossible = positionsPossibles[point];
-                Vector3 positionPrefab = new Vector3(positionsRoutes[pointPossible].x, -0.01007f, positionsRoutes[pointPossible].z);//-0.01007f
+                Vector3 positionPrefab = new Vector3(positionsRoutes[pointPossible].x, -0.01007f, positionsRoutes[pointPossible].z);
                 
                 if (random.Next(100)<= PourcentageFlaquesEau)
                 {
@@ -48,8 +43,5 @@ public class EnvironnementScript : MonoBehaviour
                 positionsPossibles.Remove(positionsPossibles.ElementAt(point));
             }
         }
-        
     }
-    
-    
 }

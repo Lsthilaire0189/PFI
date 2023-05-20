@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +5,7 @@ public class DéplacementScript : MonoBehaviour
 {
     private LogitechGSDK.DIJOYSTATE2ENGINES rec;
 
-    public List<WheelCollider> listeWC;
+    public List<WheelCollider> listeWC;//liste contenant tous les WheelColliders de la voiture
     
     public float ValeurAccélération = 0.05f;
     public float ValeurForceFreinage = 0.2f;

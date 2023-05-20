@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -15,7 +14,7 @@ using UnityEngine;
 		}
 		
 		public void PlaceStreetPositions(Vector3 startPosition, Vector3Int direction, int length)//I did not code this function. It was taken from the internet source
-		{
+		{//https://www.youtube.com/watch?v=-sr_RFdMaz4&list=PLcRSafycjWFcbaI8Dzab9sTy5cAQzLHoy&index=9
 			var rotation = Quaternion.identity;
 			if(direction.x == 0)
 			{
@@ -50,12 +49,12 @@ using UnityEngine;
 					if (neighborsDirections.Contains(Direction.Down))
 					{
 						rotation = Quaternion.Euler(0, 90, 0);//if the neighbouring road's position is beneath, we need to rotate the new roadEnd by 90 degrees
-						//to make it face the same way as the neighbouring roa
+						//to make it face the same way as the neighbouring road
 					}
 					else if (neighborsDirections.Contains(Direction.Left))
 					{
 						rotation = Quaternion.Euler(0, 180, 0);//if the neighbouring road's position is on the left, we need to rotate the new roadEnd by 180 degrees
-						//to make it face the same way as the neighbouring roa
+						//to make it face the same way as the neighbouring road
 					}
 					else if (neighborsDirections.Contains(Direction.Up))//if the neighbouring road's position is above, we need to rotate the new roadEnd by -90 degrees
 						//to make it face the same way as the neighbouring road

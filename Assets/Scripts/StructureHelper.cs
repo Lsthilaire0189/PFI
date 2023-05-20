@@ -1,11 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = System.Random;
-
 
 public class StructureHelper : MonoBehaviour
 {
@@ -17,14 +14,16 @@ public class StructureHelper : MonoBehaviour
     public GameObject garage;
 
     [Range(0.2f, 1)]
-    public float chanceToSpawnBigBuilding = 0.2f;
-    private List<Vector3Int> smallBuildingsDespawn = new List<Vector3Int>();
+    public float chanceToSpawnBigBuilding = 0.467f;
 
-    public void PlaceStructureAroundRoad(List<Vector3Int> roadPositions)
+    private List<Vector3Int> smallBuildingsDespawn;
+
+    public void PlaceStructureAroundRoad(List<Vector3Int> roadPositions)//this function allows us to place structures around the road of the map
     {
         int nombreRepetion = 0;
 
-        Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions);
+        Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions);//dictionary containing the position and the rotation of the spots where a small building can be instantiated.
+        //To get these spots, we call FindFreeSpacesAroundRoad() which returns a dictionary containing the positions and the direction of all the free estate spots located around the road.  
         Dictionary<Vector3, Direction> freeBigBuildingsSpots = BigBuildingPositionGetter(freeEstateSpots);
         Dictionary<Vector3, Direction> freeGasStationEtGarageSpots = GasStationEtGaragePositionGetter(freeBigBuildingsSpots);
         
@@ -128,7 +127,6 @@ public class StructureHelper : MonoBehaviour
                 }
             }
         }
-
         return freeSpaces;
     }
     
